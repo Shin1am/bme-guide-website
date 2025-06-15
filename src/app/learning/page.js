@@ -233,7 +233,10 @@ export default function Learning() {
                                 <div className="flex justify-between items-start mb-6">
                                     <h2 className="text-2xl font-bold">{selectedCourse.code}</h2>
                                     <button 
-                                        onClick={() => setSelectedCourse(null)}
+                                        onClick={() => {
+                                            setSelectedCourse(null);
+                                            setShowSyllabus(false);
+                                        }}
                                         className="text-gray-500 hover:text-gray-700 hover:rotate-180 transition-all duration-300"
                                     >
                                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

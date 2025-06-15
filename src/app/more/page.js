@@ -4,7 +4,6 @@ export default function More() {
             <h1 className="mt-10 text-4xl font-bold">Mahidol Club</h1>
             <div className="flex flex-row gap-10">
                 <div className="flex flex-col w-[30vw] justify-center items-start">
-            
                 </div>
             </div>
         </div>

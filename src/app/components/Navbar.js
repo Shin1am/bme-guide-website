@@ -15,6 +15,7 @@ export default function Navbar() {
             </div>
 
             <div className="hidden md:flex items-center gap-6 text-lg">
+                <Link href="/" className="hover:text-blue-200 hover:scale-110 transition-all duration-300">Home</Link>
                 <Link href="/learning" className="hover:text-blue-200 hover:scale-110 transition-all duration-300">Learning</Link>
                 <Link href="/map" className="hover:text-blue-200 hover:scale-110 transition-all duration-300">Map</Link>
                 <Link href="/lab" className="hover:text-blue-200 hover:scale-110 transition-all duration-300">Lab</Link>
@@ -54,6 +55,13 @@ export default function Navbar() {
             {isMenuOpen && (
                 <div className="absolute top-full left-0 right-0 bg-gradient-to-r from-blue-500 to-green-700 md:hidden">
                     <div className="flex flex-col p-4 space-y-4">
+                        <Link 
+                            href="/" 
+                            className="hover:text-blue-200 transition-colors"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                           Home
+                        </Link>
                         <Link 
                             href="/learning" 
                             className="hover:text-blue-200 transition-colors"

@@ -10,7 +10,7 @@ export default function Home() {
     <div className="min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)] ">
       <main className="w-full ">
         {/* Hero Section */}
-        <div className="flex flex-col items-start justify-center w-full h-[75vh] gap-6">
+        <div className="flex flex-col items-start justify-center w-full h-[50vh] gap-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold px-8 transition-all duration-300">
             <span className="inline-block overflow-hidden whitespace-nowrap border-r-4 border-r-black animate-[typing_3.5s_steps(40,end),blink-caret_.75s_step-end_infinite]">
               Welcome to BME Learning Platform!
@@ -19,6 +19,17 @@ export default function Home() {
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold px-8 transition-all duration-300">
             Your journey to becoming a better Biomedical Engineer starts here!
           </h2>
+        </div>
+
+        <div className='flex flex-col gap-8 w-full p-6 -mt-4 mb-10'>
+          <h2 className='text-3xl font-bold text-gray-800 mb-4'>Discover more on these topics</h2>
+          <div className='flex flex-row justify-around gap-6 items-start'>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/learning">Learning</Link>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/map">Map</Link>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/more">More</Link>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/about-us">About Us</Link>
+          </div>
         </div>
 
         {/*learning journey section*/}
@@ -80,6 +91,10 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className= 'flex flex-row'>
+          
         </div>
 
         {/*Mahidol Website, contact list*/}
@@ -185,17 +200,6 @@ export default function Home() {
           </div>
           
           
-        </div>
-
-        <div className='flex flex-col gap-8 w-full p-6'>
-          <h2 className='text-3xl font-bold text-gray-800 mb-4'>Discover more on these topics</h2>
-          <div className='flex flex-row gap-6 items-start'>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/learning">Learning</Link>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/map">Map</Link>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/more">More</Link>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/about-us">About Us</Link>
-          </div>
         </div>
 
       </main>
