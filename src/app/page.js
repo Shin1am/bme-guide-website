@@ -1,57 +1,207 @@
+'use client';
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [expandedStep, setExpandedStep] = useState(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)] ">
+      <main className="w-full ">
+        {/* Hero Section */}
+        <div className="flex flex-col items-start justify-center w-full h-[75vh] gap-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold px-8 transition-all duration-300">
+            <span className="inline-block overflow-hidden whitespace-nowrap border-r-4 border-r-black animate-[typing_3.5s_steps(40,end),blink-caret_.75s_step-end_infinite]">
+              Welcome to BME Learning Platform!
+            </span>
+          </h1>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold px-8 transition-all duration-300">
+            Your journey to becoming a better Biomedical Engineer starts here!
+          </h2>
         </div>
+
+        {/*learning journey section*/}
+        <div className="flex flex-col gap-8 w-full p-6 bg-white rounded-lg shadow-lg">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Roadmap Journey</h2>
+          <div className="space-y-4">
+            {[
+              {
+                title: "Complete Application Form",
+                description: "Fill out the online application form with your personal and academic information.",
+                requirements: [
+                  "Valid email address",
+                  "Academic transcripts",
+                  "Personal statement"
+                ]
+              },
+              {
+                title: "Submit Required Documents",
+                description: "Upload all necessary documentation to support your application.",
+                requirements: [
+                  "Resume/CV",
+                  "Letters of recommendation",
+                  "Portfolio (if applicable)"
+                ]
+              },
+              {
+                title: "Interview Process",
+                description: "Participate in an interview with our admissions committee.",
+                requirements: [
+                  "Schedule interview",
+                  "Prepare for technical questions",
+                  "Showcase your motivation"
+                ]
+              }
+            ].map((step, index) => (
+              <div key={index} className="relative pl-8 border-l-2 border-blue-200">
+                <div 
+                  className="flex items-center gap-4 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-all duration-300"
+                  onClick={() => setExpandedStep(expandedStep === index ? null : index)}
+                >
+                  <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-semibold">
+                    {index + 1}
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800">{step.title}</h3>
+                </div>
+                {expandedStep === index && (
+                  <div className="mt-2 ml-12 p-4 bg-gray-50 rounded-lg">
+                    <p className="text-gray-600 mb-3">{step.description}</p>
+                    <ul className="space-y-2">
+                      {step.requirements.map((req, i) => (
+                        <li key={i} className="flex items-center gap-2 text-gray-700">
+                          <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
+                          {req}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/*Mahidol Website, contact list*/}
+        <div className = "flex flex-row gap-6 w-full h-auto p-6 mt-15">
+          <div className="flex flex-col gap-8 w-full">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Mahidol Website, contact list</h2>
+            <div className="flex flex-row gap-6 items-start">
+              <div className="flex flex-col gap-6 items-start">
+                <a href="https://mahidol.ac.th/th/" target="_blank" rel="noopener noreferrer" 
+                  className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
+                  <div className="bg-blue-100 p-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 font-medium">Website</span>
+                </a>
+                <a href="https://smartedu.mahidol.ac.th/Authen/login.aspx" target="_blank" rel="noopener noreferrer" 
+                  className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
+                  <div className="bg-blue-100 p-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 font-medium">Smart EDU</span>
+                </a>
+                <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+                  className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
+                  <div className="bg-blue-100 p-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 font-medium">MU life pass</span>
+                </a>
+              </div>
+              <div className="flex flex-col gap-6 items-start">
+                <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+                  className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
+                  <div className="bg-blue-100 p-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 font-medium">MU life pass</span>
+                </a>
+                <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+                  className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
+                  <div className="bg-blue-100 p-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 font-medium">MU life pass</span>
+                </a>
+                <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+                  className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
+                  <div className="bg-blue-100 p-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 font-medium">MU life pass</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-8 w-full">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Engineering Website, contact list</h2>
+            <div className="flex flex-col gap-6 items-start">
+              <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+                className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
+                <div className="bg-blue-100 p-2 rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                </div>
+                <span className="text-gray-700 font-medium">Website</span>
+              </a>
+
+              <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+                className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
+                <div className="bg-blue-100 p-2 rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                </div>
+                <span className="text-gray-700 font-medium">Facebook</span>
+              </a>
+
+              <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+                className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
+                <div className="bg-blue-100 p-2 rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                </div>
+                <span className="text-gray-700 font-medium">Line</span>
+              </a>
+
+            </div>
+          </div>
+          
+          
+        </div>
+
+        <div className='flex flex-col gap-8 w-full p-6'>
+          <h2 className='text-3xl font-bold text-gray-800 mb-4'>Discover more on these topics</h2>
+          <div className='flex flex-row gap-6 items-start'>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/learning">Learning</Link>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/map">Map</Link>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/more">More</Link>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/about-us">About Us</Link>
+          </div>
+        </div>
+
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+
+
+      <footer className="mt-16 flex gap-[24px] flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
