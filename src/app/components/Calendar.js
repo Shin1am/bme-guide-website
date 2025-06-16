@@ -70,10 +70,11 @@ export default function HomeCalendar({ events}) {
                     // style={{ pointerEvents: 'none' }}
                     // --- Display settings ---
                     defaultView="month" // Good for an overview
-                    views={['month', 'week', 'day', 'agenda']} // Allow users to switch views
+                    views={['month']} // Allow users to switch views
                     toolbar={true} // Keep navigation toolbar for changing months/views
                     eventPropGetter={eventPropsGetter}
                     dayPropGetter={dayPropGetter}
+                    
                 />
             </div>
         </div>

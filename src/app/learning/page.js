@@ -288,7 +288,7 @@ export default function Learning() {
                         </div>
 
                         {showSyllabus && (
-                            <div className='bg-white border-5 border-blue-400 rounded-lg shadow-xl w-full max-w-lg mx-4 p-8 relative'>
+                            <div className={`bg-white border-5 ${selectedCourse.grade === "OSU" ? 'border-green-400' : 'border-blue-500'} rounded-lg shadow-xl w-full max-w-lg mx-4 p-8 relative`}>
                                 <h4 className='text-xl font-semibold mb-4'>Tips & Tricks</h4>
                                 <p className='text-gray-700'>{selectedCourse.tips}</p>
                             </div>

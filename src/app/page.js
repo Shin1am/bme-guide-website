@@ -108,7 +108,7 @@ export default function Home() { // Receive events as a prop
         </div>
 
         {/* --- Calendar Section --- */}
-        <div className="ml-[50%] justify-end items-end mt-16 w-[50%]">
+        <div className="ml-[60%] justify-end items-end mt-16 w-[40%]">
           <HomeCalendar events={events} />
         </div>
         {/* --- End Calendar Section --- */}

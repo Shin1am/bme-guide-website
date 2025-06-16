@@ -1,3 +1,14 @@
+
+.calendar-container {
+    border-radius: 15px; /* Rounded corners for the entire calendar */
+    overflow: hidden; /* Ensures content inside respects border-radius */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Subtle shadow */
+    background-color: #fff; /* White background for the calendar area */
+    padding-bottom: 20px; /* Add some space at the bottom */
+}
+
+
+
 .rbc-row-segment,
 .rbc-time-slot,
 .rbc-day-bg,
@@ -8,12 +19,7 @@
     border: none !important;
 }
 
-.rbc-day-bg {
 
-    border-radius: 100%;
-    width: full;
-    height: full;
-}
 
 .rbc-month-row {
     display: flex;
@@ -33,4 +39,37 @@
 
 .rbc-off-range-bg {
     opacity: 0;
+}
+
+.rbc-month-view .rbc-day-bg + .rbc-day-bg {
+    border-left: none !important;
+}
+.rbc-day-bg, .rbc-date-cell {
+    padding: -10;
+    margin: 10;
+}
+
+.rbc-event {
+    background-color: rgba(0, 123, 255, 0.1); /* Light blue, slightly transparent */
+    border: 1px solid rgba(0, 123, 255, 0.3);
+    color: #333;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.rbc-event-content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rbc-date-cell-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stack date and counts vertically */
+    height: 100%; /* Ensure it fills the cell */
+    position: relative; /* For absolute positioning if needed */
+    padding: 10px 0; /* Add some vertical padding */
 }

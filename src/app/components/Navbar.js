@@ -1,25 +1,30 @@
 'use client';
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+
 
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const currentPath = usePathname();
+
     return (
-        <nav className="flex justify-between items-center p-4 bg-gradient-to-r from-blue-500 to-green-700 text-white sticky top-0 z-50">
+        <nav className="flex justify-between items-center p-4 bg-[#FDFDF8] text-white sticky top-0 z-50">
             <div className="flex items-center gap-4">
                 <Link href="/">
-                    <h2 className="text-3xl font-sans">BME</h2>
+                    <Image src={'/logo.png'} alt={'logo'} width={75} height={75} />
                 </Link>
             </div>
 
-            <div className="hidden md:flex items-center gap-6 text-lg">
-                <Link href="/learning" className="hover:text-blue-200 hover:scale-110 transition-all duration-300">Learning</Link>
-                <Link href="/map" className="hover:text-blue-200 hover:scale-110 transition-all duration-300">Map</Link>
-                <Link href="/lab" className="hover:text-blue-200 hover:scale-110 transition-all duration-300">Lab</Link>
-                <Link href="/more" className="hover:text-blue-200 hover:scale-110 transition-all duration-300">More</Link>
-                <Link href="/about-us" className="hover:text-blue-200 hover:scale-110 transition-all duration-300">About Us</Link>
+            <div className="hidden md:flex items-center gap-6 text-lg text-gray-400">
+                <Link href="/learning" className={`${currentPath === '/learning' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Learning</Link>
+                <Link href="/map" className={`${currentPath === '/map' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Map</Link>
+                <Link href="/lab" className={`${currentPath === '/lab' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Lab</Link>
+                <Link href="/more" className={`${currentPath === '/more' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>More</Link>
+                <Link href="/about-us" className={`${currentPath === '/about-us' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>About Us</Link>
             </div>
 
             <button 
