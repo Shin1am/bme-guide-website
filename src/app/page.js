@@ -1,25 +1,50 @@
+// pages/index.js (Pages Router)
 'use client';
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import HomeCalendar from "./components/Calendar";
+import { schedule } from "./data/schedule";
 
-export default function Home() {
+
+
+
+export default function Home() { // Receive events as a prop
   const [expandedStep, setExpandedStep] = useState(null);
+
+  const events = schedule.map(event => ({
+    ...event,
+    start: new Date(event.start),
+    end: new Date(event.end)
+  }));
 
   return (
     <div className="min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)] ">
       <main className="w-full ">
         {/* Hero Section */}
-        <div className="flex flex-col items-start justify-center w-full h-[75vh] gap-6">
+        <div className="flex flex-col items-start justify-center w-full h-[55vh] gap-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold px-8 transition-all duration-300">
             <span className="inline-block overflow-hidden whitespace-nowrap border-r-4 border-r-black animate-[typing_3.5s_steps(40,end),blink-caret_.75s_step-end_infinite]">
               Welcome to BME Learning Platform!
             </span>
           </h1>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold px-8 transition-all duration-300">
+          <h2 className="text-2xl md:text-3x    l lg:text-4xl font-bold px-8 transition-all duration-300">
             Your journey to becoming a better Biomedical Engineer starts here!
           </h2>
         </div>
+
+
+        <div className='flex flex-col gap-8 w-full p-6 mb-20'>
+          <h2 className='text-3xl font-bold text-gray-800 mb-4'>Discover more on these topics</h2>
+          <div className='flex flex-row gap-6 items-start justify-around'>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/learning">Learning</Link>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/map">Map</Link>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/more">More</Link>
+            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/about-us">About Us</Link>
+          </div>
+        </div>
+
 
         {/*learning journey section*/}
         <div className="flex flex-col gap-8 w-full p-6 bg-white rounded-lg shadow-lg">
@@ -55,7 +80,7 @@ export default function Home() {
               }
             ].map((step, index) => (
               <div key={index} className="relative pl-8 border-l-2 border-blue-200">
-                <div 
+                <div
                   className="flex items-center gap-4 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-all duration-300"
                   onClick={() => setExpandedStep(expandedStep === index ? null : index)}
                 >
@@ -82,13 +107,20 @@ export default function Home() {
           </div>
         </div>
 
+        {/* --- Calendar Section --- */}
+        <div className="ml-[50%] justify-end items-end mt-16 w-[50%]">
+          <HomeCalendar events={events} />
+        </div>
+        {/* --- End Calendar Section --- */}
+
+
         {/*Mahidol Website, contact list*/}
         <div className = "flex flex-row gap-6 w-full h-auto p-6 mt-15">
           <div className="flex flex-col gap-8 w-full">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Mahidol Website, contact list</h2>
             <div className="flex flex-row gap-6 items-start">
               <div className="flex flex-col gap-6 items-start">
-                <a href="https://mahidol.ac.th/th/" target="_blank" rel="noopener noreferrer" 
+                <a href="https://mahidol.ac.th/th/" target="_blank" rel="noopener noreferrer"
                   className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
                   <div className="bg-blue-100 p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -97,7 +129,7 @@ export default function Home() {
                   </div>
                   <span className="text-gray-700 font-medium">Website</span>
                 </a>
-                <a href="https://smartedu.mahidol.ac.th/Authen/login.aspx" target="_blank" rel="noopener noreferrer" 
+                <a href="https://smartedu.mahidol.ac.th/Authen/login.aspx" target="_blank" rel="noopener noreferrer"
                   className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
                   <div className="bg-blue-100 p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -106,7 +138,7 @@ export default function Home() {
                   </div>
                   <span className="text-gray-700 font-medium">Smart EDU</span>
                 </a>
-                <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+                <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
                   className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
                   <div className="bg-blue-100 p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -117,7 +149,7 @@ export default function Home() {
                 </a>
               </div>
               <div className="flex flex-col gap-6 items-start">
-                <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+                <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
                   className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
                   <div className="bg-blue-100 p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -126,7 +158,7 @@ export default function Home() {
                   </div>
                   <span className="text-gray-700 font-medium">MU life pass</span>
                 </a>
-                <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+                <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
                   className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
                   <div className="bg-blue-100 p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -135,7 +167,7 @@ export default function Home() {
                   </div>
                   <span className="text-gray-700 font-medium">MU life pass</span>
                 </a>
-                <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+                <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
                   className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
                   <div className="bg-blue-100 p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -151,7 +183,7 @@ export default function Home() {
           <div className="flex flex-col gap-8 w-full">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Engineering Website, contact list</h2>
             <div className="flex flex-col gap-6 items-start">
-              <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+              <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
                 className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
                 <div className="bg-blue-100 p-2 rounded-full">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -161,7 +193,7 @@ export default function Home() {
                 <span className="text-gray-700 font-medium">Website</span>
               </a>
 
-              <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+              <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
                 className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
                 <div className="bg-blue-100 p-2 rounded-full">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -171,7 +203,7 @@ export default function Home() {
                 <span className="text-gray-700 font-medium">Facebook</span>
               </a>
 
-              <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer" 
+              <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
                 className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
                 <div className="bg-blue-100 p-2 rounded-full">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -183,19 +215,8 @@ export default function Home() {
 
             </div>
           </div>
-          
-          
-        </div>
 
-        <div className='flex flex-col gap-8 w-full p-6'>
-          <h2 className='text-3xl font-bold text-gray-800 mb-4'>Discover more on these topics</h2>
-          <div className='flex flex-row gap-6 items-start'>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/learning">Learning</Link>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/map">Map</Link>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/more">More</Link>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-lg w-auto h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/about-us">About Us</Link>
-          </div>
+
         </div>
 
       </main>
