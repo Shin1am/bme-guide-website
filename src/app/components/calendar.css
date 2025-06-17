@@ -4,7 +4,12 @@
     overflow: hidden; /* Ensures content inside respects border-radius */
     box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Subtle shadow */
     background-color: #fff; /* White background for the calendar area */
-    padding-bottom: 20px; /* Add some space at the bottom */
+    padding-bottom: 0px; /* Add some space at the bottom */
+}
+
+.rbc-calendar {
+    height: full;
+    width: full;
 }
 
 

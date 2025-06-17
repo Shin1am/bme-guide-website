@@ -12,7 +12,7 @@ export default function Navbar() {
     const currentPath = usePathname();
 
     return (
-        <nav className="flex justify-between items-center p-4 bg-[#FDFDF8] text-white sticky top-0 z-50">
+        <nav className="flex justify-between items-center p-4 bg-[#F3F3E4] text-white sticky top-0 z-50 border-b-2 border-b-black">
             <div className="flex items-center gap-4">
                 <Link href="/">
                     <Image src={'/logo.png'} alt={'logo'} width={75} height={75} />
@@ -20,7 +20,7 @@ export default function Navbar() {
             </div>
 
             <div className="hidden md:flex items-center gap-6 text-lg text-gray-400">
-                <Link href="/learning" className={`${currentPath === '/learning' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Learning</Link>
+                <Link href="/learning" className={`${currentPath === '/learning' ? 'text-black' : ''} hover:text-black hover:scale-120 transition-all duration-300`}>Learning</Link>
                 <Link href="/map" className={`${currentPath === '/map' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Map</Link>
                 <Link href="/lab" className={`${currentPath === '/lab' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Lab</Link>
                 <Link href="/more" className={`${currentPath === '/more' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>More</Link>

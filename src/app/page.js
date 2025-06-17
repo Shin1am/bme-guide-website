@@ -19,12 +19,12 @@ export default function Home() { // Receive events as a prop
   }));
 
   return (
-    <div className="min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)] ">
-      <main className="w-full ">
+    <div className="font-pixelify min-h-screen  pb-20 sm:p-20">
+      <main className="w-full">
         {/* Hero Section */}
-        <div className="flex flex-col items-start justify-center w-full h-[55vh] gap-6">
+        <div className="flex flex-col items-start justify-center w-full h-[55vh] gap-6 ">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold px-8 transition-all duration-300">
-            <span className="inline-block overflow-hidden whitespace-nowrap border-r-4 border-r-black animate-[typing_3.5s_steps(40,end),blink-caret_.75s_step-end_infinite]">
+            <span className="text-red-600 inline-block overflow-hidden whitespace-nowrap border-r-4 border-r-black animate-[typing_3.5s_steps(40,end),blink-caret_.75s_step-end_infinite]">
               Welcome to BME Learning Platform!
             </span>
           </h1>
