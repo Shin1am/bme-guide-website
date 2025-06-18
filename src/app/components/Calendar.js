@@ -1,13 +1,24 @@
 'use client';
-
 import moment from "moment";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../components/calendar.css';
+import { useCallback, useMemo, useState } from "react";
 
 const localizer = momentLocalizer(moment);
 
 export default function HomeCalendar({ events}) {
+
+    const [date, setDate] = useState(moment().toDate());
+
+    const onPrevClick = useCallback(() => {
+      setDate(moment(date).subtract(1, "M").toDate())
+    }, [date])
+
+    const onNextClick = useCallback(() => {
+      setDate(moment(date).add(1, "M").toDate())
+    }, [date])
+
 
     const eventPropsGetter = (event, start, end, isSelected) => {
         
@@ -51,9 +62,23 @@ export default function HomeCalendar({ events}) {
         return {}; // Return empty object if no event for this day, or no specific style
       };
 
+
+    const formats = useMemo(
+      () => ({
+        weekdayFormat: (date, culture, localizer) => localizer.format(date, 'ddd', culture),
+        dateFormat: (date,culture,localizer) => localizer.format(date, 'D', culture),
+      }),
+      []
+    )
+
     return (
         <div className="bg-white rounded-lg shadow-lg p-6">
             <div style={{ height: 600 }}> {/* Adjust height as needed */}
+              <div className="flex gap-3 justify-center items-center mb-3">
+                <button className=" hover:scale-110 transition-all duration-200" onClick={onPrevClick}>test</button>
+                <h2>{moment(date).format("MMMM YYYY")}</h2>
+                <button className=" hover:scale-110 transition-all duration-200" onClick={onNextClick}>test</button>
+              </div>
                 <Calendar
                     localizer={localizer}
                     events={events}
@@ -69,12 +94,12 @@ export default function HomeCalendar({ events}) {
                     // Optional: Add a general style to prevent pointer interactions on the calendar itself
                     // style={{ pointerEvents: 'none' }}
                     // --- Display settings ---
-                    defaultView="month" // Good for an overview
-                    views={['month']} // Allow users to switch views
-                    toolbar={true} // Keep navigation toolbar for changing months/views
+                    view="month"
+                    toolbar={false} // Keep navigation toolbar for changing months/views
                     eventPropGetter={eventPropsGetter}
                     dayPropGetter={dayPropGetter}
-                    
+                    formats={formats}
+                    date={date}
                 />
             </div>
         </div>
