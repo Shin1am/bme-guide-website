@@ -1,9 +1,9 @@
-// pages/index.js (Pages Router)
 'use client';
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HomeCalendar from "./components/Calendar";
+import EventTable from "./components/EventTable";
 import { schedule } from "./data/schedule";
 
 
@@ -11,6 +11,11 @@ import { schedule } from "./data/schedule";
 
 export default function Home() { // Receive events as a prop
   const [expandedStep, setExpandedStep] = useState(null);
+  const [schedules, setSchedules] = useState([]);
+
+  useEffect(() => {
+    setSchedules(schedule);
+  }, []);
 
   const events = schedule.map(event => ({
     ...event,
@@ -19,23 +24,22 @@ export default function Home() { // Receive events as a prop
   }));
 
   return (
-    <div className="font-pixelify min-h-screen  pb-20 sm:p-20">
+    <div className="font-pixelify min-h-screen p-8 sm:p-20">
       <main className="w-full">
         {/* Hero Section */}
-        <div className="flex flex-col justify-center w-full h-[60vh]">
+        <div className="flex flex-col justify-center w-full h-[60vh] border-b-2 border-b-[#bfb9b0]">
           <div className="flex flex-col items-start justify-center gap-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold px-8 transition-all duration-300">
-            <span className="text-red-600 inline-block overflow-hidden whitespace-nowrap border-r-4 border-r-black animate-[typing_3.5s_steps(40,end),blink-caret_.75s_step-end_infinite]">
+            <span className="text-[#b61c1c] inline-block overflow-hidden whitespace-nowrap border-r-4 border-r-black animate-[typing_3.5s_steps(40,end),blink-caret_.75s_step-end_infinite]">
               Welcome to BME Learning Platform!
             </span>
             </h1>
-            <h2 className="text-2xl md:text-3x    l lg:text-4xl font-bold px-8 transition-all duration-300">
+            <h2 className="text-[#292625] text-2xl md:text-3x lg:text-4xl font-bold px-8 transition-all duration-300">
               Your journey to becoming a better Biomedical Engineer starts here!
             </h2>
           </div>
 
-          <h2 className='font-medodica text-center text-3xl font-bold text-gray-800/20 px-8 mt-20'>Discover more on these topics</h2>
-          <div className='px-8 flex flex-row gap-6 mt-5 text-center items-center justify-center'>
+          <div className='px-8 flex flex-row gap-6 mt-25 text-center items-center justify-center'>
             <Link className='text-md bg-white rounded-3xl shadow-lg text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/learning">Learning</Link>
             <Link className='text-md bg-white rounded-3xl shadow-lg text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/map">Map</Link>
             <Link className='text-md bg-white rounded-3xl shadow-lg text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link>
@@ -48,7 +52,7 @@ export default function Home() { // Receive events as a prop
 
 
         {/*learning journey section*/}
-        <div className="flex flex-col gap-8 w-full p-6 bg-white rounded-lg shadow-lg">
+        {/* <div className="flex flex-col gap-8 w-full p-6 bg-white rounded-lg shadow-lg">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">Roadmap Journey</h2>
           <div className="space-y-4">
             {[
@@ -106,10 +110,11 @@ export default function Home() { // Receive events as a prop
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* --- Calendar Section --- */}
-        <div className="ml-[60%] justify-end items-end mt-16 w-[40%]">
+        <div className="flex justify-end mt-15">
+          <EventTable events={schedules} />
           <HomeCalendar events={events} />
         </div>
         {/* --- End Calendar Section --- */}

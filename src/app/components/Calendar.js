@@ -5,6 +5,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import '../components/calendar.css';
 import { useCallback, useMemo, useState } from "react";
 
+
 const localizer = momentLocalizer(moment);
 
 export default function HomeCalendar({ events}) {
@@ -36,13 +37,14 @@ export default function HomeCalendar({ events}) {
           };
     };
 
-    const dayPropGetter = (date) => {
+    const dayPropGetter = (currentDay) => {
+
         // Find if there's any event that overlaps with this 'date'
         const eventOnDay = events.find(event => {
           // Normalize dates to the start of the day for accurate comparison
           const eventStart = moment(event.start).startOf('day');
           const eventEnd = moment(event.end).startOf('day');
-          const checkDate = moment(date).startOf('day');
+          const checkDate = moment(currentDay).startOf('day');
     
           // Check if the current 'date' falls within the event's start and end range
           // This handles multi-day events by coloring all days they span
@@ -59,25 +61,35 @@ export default function HomeCalendar({ events}) {
             },
           };
         }
+
         return {}; // Return empty object if no event for this day, or no specific style
       };
 
 
+
+
     const formats = useMemo(
       () => ({
-        weekdayFormat: (date, culture, localizer) => localizer.format(date, 'ddd', culture),
+        weekdayFormat: (date, culture, localizer) => localizer.format(date, 'dd', culture),
         dateFormat: (date,culture,localizer) => localizer.format(date, 'D', culture),
       }),
       []
     )
 
     return (
-        <div className="bg-white rounded-lg shadow-lg p-6">
-            <div style={{ height: 600 }}> {/* Adjust height as needed */}
-              <div className="flex gap-3 justify-center items-center mb-3">
-                <button className=" hover:scale-110 transition-all duration-200" onClick={onPrevClick}>test</button>
-                <h2>{moment(date).format("MMMM YYYY")}</h2>
-                <button className=" hover:scale-110 transition-all duration-200" onClick={onNextClick}>test</button>
+        <div className="rounded-lg p-6 w-[40%]" >
+            <div style={{ height: 450 }}> {/* Adjust height as needed */}
+              <div className="flex flex-row justify-between mx-6 mt-3 mb-6">
+                  <h1 className="text-[27px] text-[#4d639b]">MU Schedule</h1>
+                  <div className="flex gap-3 justify-center items-center">
+                    <button className="text-[#5b70a5] hover:scale-120 transition-all duration-200" onClick={onPrevClick}>
+                      <i className="fa-solid fa-chevron-left fa-lg"></i>
+                    </button>
+                    <h2 className="text-2xl text-[#5b70a5]">{moment(date).format("MMM YY")}</h2>
+                    <button className="text-[#5b70a5] hover:scale-120 transition-all duration-200" onClick={onNextClick}>
+                      <i className="fa-solid fa-chevron-right fa-lg"></i>
+                    </button>
+                  </div>
               </div>
                 <Calendar
                     localizer={localizer}

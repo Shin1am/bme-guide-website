@@ -12,7 +12,7 @@ export default function Navbar() {
     const currentPath = usePathname();
 
     return (
-        <nav className="font-sans flex justify-between items-center p-4 bg-[#F3F3E4] text-white sticky top-0 z-50 border-b-2 border-b-black">
+        <nav className="font-sans flex justify-between items-center p-4 bg-[#F3F3E4] text-white sticky top-0 z-50 border-b-2 border-b-[#bfb9b0]">
             <div className="flex items-center gap-4">
                 <Link href="/">
                     <Image src={'/logo.png'} alt={'logo'} width={75} height={75} />
