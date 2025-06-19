@@ -25,7 +25,7 @@ export default function EventTable({ events }) {
             <tr key={event.id}>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{event.title}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {moment(event.start).format('MMM D, YYYY')}
+                {moment(event.start).format('D/MM/YY')} - {moment(event.end).format('D/MM/YY')}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {moment(event.start).format('h:mm A')} - {moment(event.end).format('h:mm A')}

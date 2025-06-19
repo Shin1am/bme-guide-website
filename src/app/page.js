@@ -4,35 +4,76 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import HomeCalendar from "./components/Calendar";
 import EventTable from "./components/EventTable";
-import { schedule } from "./data/schedule";
+import { schedule as initialScheduleData } from "./data/schedule";
+import moment from "moment";
 
-
-
-
-export default function Home() { // Receive events as a prop
-  const [expandedStep, setExpandedStep] = useState(null);
-  const [schedules, setSchedules] = useState([]);
+export default function Home() {
+  const [schedules, setSchedules] = useState([]); // This state is actually redundant if you're using allEvents
+  const [allEvents, setAllEvents] = useState([]);
+  const [filteredEvents, setFilteredEvents] = useState([]);
+  const [currentCalendarDate, setCurrentCalendarDate] = useState(new Date());
 
   useEffect(() => {
-    setSchedules(schedule);
+    const convertedEvents = initialScheduleData.map(event => ({
+      ...event,
+      start: new Date(event.start),
+      end: new Date(event.end)
+    }));
+    setAllEvents(convertedEvents);
+    filterAndSetEvents(convertedEvents, new Date()); // Initial filter
   }, []);
 
-  const events = schedule.map(event => ({
-    ...event,
-    start: new Date(event.start),
-    end: new Date(event.end)
-  }));
+  const filterAndSetEvents = (eventsToFilter, date) => {
+    const startOfMonth = moment(date).startOf('month').toDate();
+    const endOfMonth = moment(date).endOf('month').toDate();
+    const now = moment().startOf('day').toDate();
+
+    // First, filter for events within the current calendar month AND are future/current
+    const monthlyAndFutureEvents = eventsToFilter.filter(event => {
+      const eventStart = moment(event.start).toDate();
+      const eventEnd = moment(event.end).toDate();
+
+      const isFutureOrCurrent = moment(eventEnd).isSameOrAfter(now, 'day');
+
+      const startsInMonth = moment(eventStart).isBetween(startOfMonth, endOfMonth, null, '[]');
+      const endsInMonth = moment(eventEnd).isBetween(startOfMonth, endOfMonth, null, '[]');
+      const spansMonth = moment(eventStart).isBefore(startOfMonth, 'day') && moment(eventEnd).isAfter(endOfMonth, 'day');
+
+      const isInCurrentMonthView = startsInMonth || endsInMonth || spansMonth;
+
+      return isFutureOrCurrent && isInCurrentMonthView;
+    });
+
+    // If no events are found for the current month view, then show ALL future/current events
+    if (monthlyAndFutureEvents.length === 0) {
+      const allFutureEvents = eventsToFilter.filter(event => {
+        const eventEnd = moment(event.end).toDate();
+        return moment(eventEnd).isSameOrAfter(now, 'day');
+      });
+      allFutureEvents.sort((a, b) => a.start.getTime() - b.start.getTime());
+      setFilteredEvents(allFutureEvents);
+    } else {
+      // Otherwise, show the monthly filtered events
+      monthlyAndFutureEvents.sort((a, b) => a.start.getTime() - b.start.getTime());
+      setFilteredEvents(monthlyAndFutureEvents);
+    }
+  };
+
+  const handleCalendarNavigate = (newDate) => {
+    setCurrentCalendarDate(newDate);
+    filterAndSetEvents(allEvents, newDate);
+  };
 
   return (
-    <div className="font-pixelify min-h-screen p-8 sm:p-20">
-      <main className="w-full">
-        {/* Hero Section */}
+    <div className="font-pixelify min-h-screen">
+      <main className="w-full p-8 sm:p-20">
+        {/* Hero Section*/}
         <div className="flex flex-col justify-center w-full h-[60vh] border-b-2 border-b-[#bfb9b0]">
           <div className="flex flex-col items-start justify-center gap-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold px-8 transition-all duration-300">
-            <span className="text-[#b61c1c] inline-block overflow-hidden whitespace-nowrap border-r-4 border-r-black animate-[typing_3.5s_steps(40,end),blink-caret_.75s_step-end_infinite]">
-              Welcome to BME Learning Platform!
-            </span>
+              <span className="text-[#b61c1c] inline-block overflow-hidden whitespace-nowrap border-r-4 border-r-black animate-[typing_3.5s_steps(40,end),blink-caret_.75s_step-end_infinite]">
+                Welcome to BME Learning Platform!
+              </span>
             </h1>
             <h2 className="text-[#292625] text-2xl md:text-3x lg:text-4xl font-bold px-8 transition-all duration-300">
               Your journey to becoming a better Biomedical Engineer starts here!
@@ -48,79 +89,19 @@ export default function Home() { // Receive events as a prop
           </div>
         </div>
 
-
-
-
-        {/*learning journey section*/}
-        {/* <div className="flex flex-col gap-8 w-full p-6 bg-white rounded-lg shadow-lg">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Roadmap Journey</h2>
-          <div className="space-y-4">
-            {[
-              {
-                title: "Complete Application Form",
-                description: "Fill out the online application form with your personal and academic information.",
-                requirements: [
-                  "Valid email address",
-                  "Academic transcripts",
-                  "Personal statement"
-                ]
-              },
-              {
-                title: "Submit Required Documents",
-                description: "Upload all necessary documentation to support your application.",
-                requirements: [
-                  "Resume/CV",
-                  "Letters of recommendation",
-                  "Portfolio (if applicable)"
-                ]
-              },
-              {
-                title: "Interview Process",
-                description: "Participate in an interview with our admissions committee.",
-                requirements: [
-                  "Schedule interview",
-                  "Prepare for technical questions",
-                  "Showcase your motivation"
-                ]
-              }
-            ].map((step, index) => (
-              <div key={index} className="relative pl-8 border-l-2 border-blue-200">
-                <div
-                  className="flex items-center gap-4 cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-all duration-300"
-                  onClick={() => setExpandedStep(expandedStep === index ? null : index)}
-                >
-                  <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-semibold">
-                    {index + 1}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-800">{step.title}</h3>
-                </div>
-                {expandedStep === index && (
-                  <div className="mt-2 ml-12 p-4 bg-gray-50 rounded-lg">
-                    <p className="text-gray-600 mb-3">{step.description}</p>
-                    <ul className="space-y-2">
-                      {step.requirements.map((req, i) => (
-                        <li key={i} className="flex items-center gap-2 text-gray-700">
-                          <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
-                          {req}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div> */}
-
         {/* --- Calendar Section --- */}
         <div className="flex justify-end mt-15">
-          <EventTable events={schedules} />
-          <HomeCalendar events={events} />
+          <EventTable events={filteredEvents} />
+          <HomeCalendar
+            events={allEvents}
+            currentDate={currentCalendarDate}
+            onNavigate={handleCalendarNavigate}
+          />
         </div>
         {/* --- End Calendar Section --- */}
 
 
-        {/*Mahidol Website, contact list*/}
+        {/*Mahidol Website, contact list - NO STYLE CHANGES*/}
         <div className = "flex flex-row gap-6 w-full h-auto p-6 mt-15">
           <div className="flex flex-col gap-8 w-full">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Mahidol Website, contact list</h2>
@@ -218,63 +199,10 @@ export default function Home() { // Receive events as a prop
                 </div>
                 <span className="text-gray-700 font-medium">Line</span>
               </a>
-
             </div>
           </div>
-
-
         </div>
-
       </main>
-
-
-      <footer className="mt-16 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }

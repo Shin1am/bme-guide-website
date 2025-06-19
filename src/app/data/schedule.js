@@ -2,10 +2,10 @@ export const schedule = [
     {
         id: "1",
         title: "Annual Company Retreat",
-        start: "2025-07-01T09:00:00",
-        end: "2025-07-03T17:00:00",
+        start: "2025-06-18T09:00:00",
+        end: "2025-06-18T17:00:00",
         description: "Team building and strategy sessions.",
-        color: "#ff0000"
+        color: "#3357FF"
       },
       {
         id: "2",
