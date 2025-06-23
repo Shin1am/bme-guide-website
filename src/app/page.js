@@ -89,8 +89,75 @@ export default function Home() {
           </div>
         </div>
 
+        {/*roadmap journey*/}
+        <div className="p-8">
+          <div className="flex flex-col justify-center items-center p-10">
+            <p className="text-[80px]">Roadmap</p>
+            <p className="text-[56px] -mt-10">Journey</p>
+          </div>
+          <div className="p-20">
+            <div className="flex flex-row">
+              <div className="flex flex-col items-center hover:scale-110 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" fill="#4D639B" viewBox="0 0 120 100" stroke="none">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M100 30A45 45 0 1 0 100 70 1 1 0 1 1 100 30z"/>
+                  <g transform="translate(44.64 30) scale(0.07)">
+                    <path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z" fill="white"/>
+                  </g>
+                  <circle r={17} cx={100} cy={50} fill="#000000d1"/>
+                  <text x={90.5} y={55} fontSize={18} fill="#ffffff">01</text>
+                </svg>
+                <p className="text-2xl text-center w-auto">Submit English Test</p>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" viewBox="0 0 100 100" stroke="#B6AFA6" strokeWidth={9}>
+                <line x1={20} y1={50} x2={80} y2={50} />
+              </svg>
+              <div className="flex flex-col items-center hover:scale-110 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" fill="#4D639B" viewBox="0 0 120 100" stroke="none">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M100 30A45 45 0 1 0 100 70 1 1 0 1 1 100 30z"/>
+                  <g transform="translate(44.64 30) scale(0.07)">
+                    <path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z" fill="white"/>
+                  </g>
+                  <circle r={17} cx={100} cy={50} fill="#000000d1"/>
+                  <text x={90.5} y={55} fontSize={18} fill="#ffffff">02</text>
+                </svg>
+                <p className="text-2xl text-center w-auto">Submit English Test</p>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" viewBox="0 0 100 100" stroke="#B6AFA6" strokeWidth={9}>
+                <line x1={20} y1={50} x2={80} y2={50} />
+              </svg>
+              <div className="flex flex-col items-center hover:scale-110 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" fill="#4D639B" viewBox="0 0 120 100" stroke="none">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M100 30A45 45 0 1 0 100 70 1 1 0 1 1 100 30z"/>
+                  <g transform="translate(44.64 30) scale(0.07)">
+                    <path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z" fill="white"/>
+                  </g>
+                  <circle r={17} cx={100} cy={50} fill="#000000d1"/>
+                  <text x={90.5} y={55} fontSize={18} fill="#ffffff">03</text>
+                </svg>
+                <p className="text-2xl text-center w-auto">Submit English Test</p>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" viewBox="0 0 100 100" stroke="#B6AFA6" strokeWidth={9}>
+                <line x1={20} y1={50} x2={80} y2={50} />
+              </svg>
+              <div className="flex flex-col items-center hover:scale-110 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" fill="#4D639B" viewBox="0 0 120 100" stroke="none">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M100 30A45 45 0 1 0 100 70 1 1 0 1 1 100 30z"/>
+                  <g transform="translate(44.64 30) scale(0.07)">
+                    <path d="M0 64C0 28.7 28.7 0 64 0L224 0l0 128c0 17.7 14.3 32 32 32l128 0 0 288c0 35.3-28.7 64-64 64L64 512c-35.3 0-64-28.7-64-64L0 64zm384 64l-128 0L256 0 384 128z" fill="white"/>
+                  </g>
+                  <circle r={17} cx={100} cy={50} fill="#000000d1"/>
+                  <text x={90.5} y={55} fontSize={18} fill="#ffffff">04</text>
+                </svg>
+                <p className="text-2xl text-center w-auto">Submit English Test</p>
+              </div>
+          
+            </div>
+            
+          </div>
+        </div>
+
         {/* --- Calendar Section --- */}
-        <div className="flex justify-end mt-15">
+        <div className="flex justify-between mt-15">
           <EventTable events={filteredEvents} />
           <HomeCalendar
             events={allEvents}
@@ -136,14 +203,14 @@ export default function Home() {
                 </a>
               </div>
               <div className="flex flex-col gap-6 items-start">
-                <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
+                <a href="https://student.mahidol.ac.th/portal/" target="_blank" rel="noopener noreferrer"
                   className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
                   <div className="bg-blue-100 p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                     </svg>
                   </div>
-                  <span className="text-gray-700 font-medium">MU life pass</span>
+                  <span className="text-gray-700 font-medium">Student Portal</span>
                 </a>
                 <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
                   className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">

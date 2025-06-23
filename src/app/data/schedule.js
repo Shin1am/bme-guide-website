@@ -1,19 +1,21 @@
 export const schedule = [
     {
         id: "1",
-        title: "Annual Company Retreat",
-        start: "2025-06-18T09:00:00",
-        end: "2025-06-18T17:00:00",
-        description: "Team building and strategy sessions.",
-        color: "#3357FF"
+        title: "Open First Semester",
+        start: "2025-08-04",
+        end: "2025-08-04",
+        description: "First Semester Open",
+        color: "#3357FF",
+        specificTime: false
       },
       {
         id: "2",
-        title: "Q3 Financial Review",
-        start: "2025-09-15T10:00:00",
-        end: "2025-09-15T12:00:00",
-        description: "Review of the third quarter's financial performance.",
-        color: "#33FF57"
+        title: "Midterm Exam",
+        start: "2025-09-29T10:00:00",
+        end: "2025-10-03T10:00:00",
+        description: "Each subject will tell date 1-2 week b4 midterm",
+        color: "#33FF57",
+        specificTime: true
       },
       {
         id: "3",

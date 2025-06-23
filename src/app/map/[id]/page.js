@@ -45,8 +45,7 @@ export default function BuildingPage() {
                 <div className="flex flex-row justify-between items-center gap-10">
                     <div className="relative w-[60%] h-[60vh] mb-4 overflow-hidden rounded-lg shadow-lg">
                         <div 
-                            className="absolute w-full h-full transition-transform duration-4000 ease-in-out" 
-                            style={{transform: zoomed ? `scale(3.4) translate(${(50-building.x)}%, ${(50 - building.y)}%)` : 'scale(1) translate(0%, 0%)'}}>
+                            className="absolute w-full h-full transition-transform duration-4000 ease-in-out">
                             <Image src={"/mapsalaya.jpg"} alt="map-salaya" fill className="object-cover" />
         
                         </div>

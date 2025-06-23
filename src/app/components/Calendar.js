@@ -60,7 +60,7 @@ export default function HomeCalendar({ events, currentDate, onNavigate }) { // R
     );
 
     return (
-        <div className="rounded-lg p-6 w-[40%]" > {/* Original width, no changes */}
+        <div className="rounded-lg p-6 w-[60%]" > {/* Original width, no changes */}
             <div style={{ height: 450 }}> {/* Original height, no changes */}
               <div className="flex flex-row justify-between mx-6 mt-3 mb-6">
                   <h1 className="text-[27px] text-[#4d639b]">MU Schedule</h1>

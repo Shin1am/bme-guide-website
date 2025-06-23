@@ -35,7 +35,7 @@ export default function Map() {
                             >
                                 {/* Hotspot Marker */}
                                 <div 
-                                    className="w-6 h-6 rounded-full cursor-pointer transform transition-all duration-300 bg-red-500"
+                                    className="w-6 h-6 rounded-full cursor-pointer transform transition-all duration-300 bg-red-50"
                                     onMouseEnter={() => setHoveredBuilding(building)}
                                     onMouseLeave={() => setHoveredBuilding(null)}
                                 >

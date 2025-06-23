@@ -74,12 +74,13 @@
     color: red !important;
 }
 
+
 .rbc-month-view .rbc-date-cell.rbc-off-range {
     opacity: 0.6 !important;
 }
 
 .rbc-month-view .rbc-day-bg.rbc-today {
-    background-color: green;
+    background-color: #419622b5;
 }
 
 .rbc-date-cell.rbc-now.rbc-current {

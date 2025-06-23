@@ -10,12 +10,12 @@ export default function Learning() {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCourse, setSelectedCourse] = useState(null);
     const [showSyllabus, setShowSyllabus] = useState(false);
+    const [showGradeDropdown, setShowGradeDropdown] = useState(false);
+    const [selectedGradeType, setSelectedGradeType] = useState(null);
 
     const handleSearch = (e) => {
         setQuery(e.target.value);
     };
-
-    
 
     const filteredCourses = courses.filter(course => {
         // Search filter
@@ -32,56 +32,152 @@ export default function Learning() {
         return searchMatch && yearMatch && termMatch && gradeMatch;
     });
 
+    const handleCourseClick = (course) => {
+        if (selectedCourse && selectedCourse.code === course.code) {
+            // If clicking the same course, close it
+            setSelectedCourse(null);
+            setShowSyllabus(false);
+        } else {
+            // Open new course details
+            setSelectedCourse(course);
+            setShowSyllabus(false);
+        }
+    };
+
     return (
-        <div className="flex flex-col min-h-screen p-8">
-            <div className="flex justify-center align-middle">
-                <h1 className="text-4xl font-bold mb-8">About Learning</h1>
+    <div className="flex flex-col min-h-screen p-8">
+        <div className="relative flex justify-between items-start w-full mb-10">
+        {/* Centered "Learning Center" text */}
+            <div className="flex flex-col items-center justify-center w-full font-medodica absolute left-1/2 transform -translate-x-1/2">
+                <h1 className="text-[60px] font-bold mt-3 -mb-8">Learning</h1>
+                <h2 className="text-[40px]">Center</h2>
             </div>
-            <div className="flex flex-col gap-4">
-                <h1 className="text-4xl font-bold mt-10 ml-20">Grading Systems</h1>
-                <div className="flex flex-row justify-start items-start mt-10 ml-20 gap-8">
-                    <div className="relative group">
-                        <button className="w-[200px] bg-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer text-left flex justify-between items-center">
-                            <span>Normal</span>
-                            <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        <div className="absolute w-full mt-2 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-y-0 group-hover:scale-y-100">
-                            <div className="py-2">
-                                <a href="#" className="block px-6 py-2 hover:bg-gray-100">A: 4.00</a>
-                                <a href="#" className="block px-6 py-2 hover:bg-gray-100">B+: 3.50</a>
-                                <a href="#" className="block px-6 py-2 hover:bg-gray-100">B: 3.00</a>
-                                <a href="#" className="block px-6 py-2 hover:bg-gray-100">C+: 2.50</a>
-                                <a href="#" className="block px-6 py-2 hover:bg-gray-100">C: 2.00</a>
-                                <a href="#" className="block px-6 py-2 hover:bg-gray-100">D+: 1.50</a>
-                                <a href="#" className="block px-6 py-2 hover:bg-gray-100">D: 1.00</a>
-                                <a href="#" className="block px-6 py-2 hover:bg-gray-100">F: 0.00</a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div className="relative group">
-                        <button className="w-[200px] bg-white px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent cursor-pointer text-left flex justify-between items-center">
-                            <span>OSU</span>
-                            <svg className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        <div className="absolute w-full mt-2 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-y-0 group-hover:scale-y-100">
-                            <div className="py-2">
-                                <a href="#" className="block px-6 py-2 hover:bg-gray-100 text-green-600">O: Outstanding</a>
-                                <a href="#" className="block px-6 py-2 hover:bg-gray-100 text-green-600">S: Satisfactory</a>
-                                <a href="#" className="block px-6 py-2 hover:bg-gray-100 text-red-600">U: Unsatisfactory</a>
-                            </div>
-                        </div>
-                    </div>
+        {/* Top-right current filter + Grading */}
+        <div className="absolute right-0 top-0 mt-4 mr-8 z-10 flex flex-col items-end space-y-3">
+            {/* Year & Term Display */}
+            {(selectedYear !== 'all' && selectedTerm !== 'all') && (
+                <div className="text-left text-gray-600 text-md bg-white border rounded-xl px-5 py-2 shadow-md text-xl">
+                    {selectedYear !== 'all' && `Year ${selectedYear}`}
+                    {selectedYear !== 'all' && selectedTerm !== 'all' && ' • '}
+                    {selectedTerm !== 'all' && `Semester ${selectedTerm}`}
                 </div>
-            </div>
+            )}
 
-            <div className="flex flex-col gap-4 mt-20">
-                <div className="flex flex-row gap-4 justify-between items-start">
-                    <h1 className="text-4xl font-bold mb-8 flex justify-start items-start mt-10 ml-20">Course Syllabus</h1>
+            {/* Grading System Dropdown */}
+            <div className="relative">
+                {/* Main Button */}
+                <button
+                    onClick={() => {
+                        if (selectedGradeType !== null) {
+                            setSelectedGradeType(null);
+                            setShowGradeDropdown(!showGradeDropdown);
+                        } else {
+                            setShowGradeDropdown(!showGradeDropdown);
+                        }
+                    }}
+                    className="bg-white text-gray-600 px-6 py-2 rounded-xl border shadow-xl hover:scale-105 transition-all duration-300 text-lg"
+                >
+                    Grading System
+                </button>
+
+                {/* Dropdown: Normal / OSU */}
+                {showGradeDropdown && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg z-20 p-2">
+                        <button
+                            onClick={() =>
+                                setSelectedGradeType(selectedGradeType === 'Normal' ? null : 'Normal')
+                            }
+                            onMouseEnter={() => setSelectedGradeType(selectedGradeType === 'Normal' ? null : 'Normal')}
+                            onMouseLeave={() => setSelectedGradeType(selectedGradeType === 'Normal' ? null : 'Normal')}
+                            className="block w-full text-left px-4 py-2 rounded-lg hover:bg-gray-100"
+                        >
+                            Normal
+                        </button>
+                        <button
+                            onClick={() =>
+                                setSelectedGradeType(selectedGradeType === 'OSU' ? null : 'OSU')
+                            }
+                            onMouseEnter={() => setSelectedGradeType(selectedGradeType === 'OSU' ? null : 'OSU')}
+                            onMouseLeave={() => setSelectedGradeType(selectedGradeType === 'OSU' ? null : 'OSU')}
+                            className="block w-full text-left px-4 py-2 rounded-lg hover:bg-gray-100"
+                        >
+                            OSU
+                        </button>
+                    </div>
+                )}
+
+                {/* Sliding Box: Grade Info */}
+                {(selectedGradeType === 'Normal' || selectedGradeType === 'OSU') && (
+                    <div className="absolute right-full top-14 mr-4 bg-white rounded-xl shadow-lg border p-4 w-60 z-10">
+                        {selectedGradeType === 'Normal' && (
+                            <>
+                                <h4 className="mb-2 text-blue-500">Normal Grading</h4>
+                                <ul className="space-y-1 text-sm text-gray-700">
+                                    <li>A: 4.00</li>
+                                    <li>B+: 3.50</li>
+                                    <li>B: 3.00</li>
+                                    <li>C+: 2.50</li>
+                                    <li>C: 2.00</li>
+                                    <li>D+: 1.50</li>
+                                    <li>D: 1.00</li>
+                                    <li>F: 0.00</li>
+                                </ul>
+                            </>
+                        )}
+                        {selectedGradeType === 'OSU' && (
+                            <>
+                                <h4 className="mb-2 text-green-600">OSU Grading</h4>
+                                <ul className="space-y-1 text-sm">
+                                    <li className="text-green-600">O: Outstanding</li>
+                                    <li className="text-green-600">S: Satisfactory</li>
+                                    <li className="text-red-500">U: Unsatisfactory</li>
+                                </ul>
+                            </>
+                        )}
+                    </div>
+                )}
+            </div>
+        </div>
+    </div>
+
+        <div className="flex flex-col gap-4 mt-20">
+            <div className="flex flex-row gap-4 justify-between items-start">
+                <h1 className="text-4xl mb-4 flex justify-start items-start mt-10 ml-20 ">Course Syllabus</h1>
+            </div>
+            
+            {/* Filter Controls */}
+            <div className="mb-8 ml-20 flex flex-col gap-4">
+                {/* Search Input */}
+
+                <div className="flex gap-4">
+                <select 
+                    value={selectedYear}
+                    onChange={(e) => setSelectedYear(e.target.value)}
+                    className="appearance-none w-[9vw] bg-white px-4 py-2.5 pr-10 rounded-3xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400 cursor-pointer bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:8px_10px] bg-[right_12px_center] bg-no-repeat"
+                >
+                    <option value="all">Select Year</option>
+                    <option value="1">Year 1</option>
+                    <option value="2">Year 2</option>
+                    <option value="3">Year 3</option>
+                    <option value="4">Year 4</option>
+                </select>
+                
+                <select 
+                    value={selectedTerm}
+                    onChange={(e) => setSelectedTerm(e.target.value)}
+                    className="appearance-none w-[9vw] bg-white px-4 py-2.5 pr-10 rounded-3xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400 cursor-pointer bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:8px_10px] bg-[right_12px_center] bg-no-repeat"
+                >
+                    <option value="all">Select Semester</option>
+                    <option value="1">Semester 1</option>
+                    <option value="2">Semester 2</option>
+                </select>
+                </div>
+                
+                <div className='flex flex-row gap-10 justify-start items-center'>
+                    <div className='mt-10'>
+                        <h1 className='text-4xl'>Course Subject</h1>
+                    </div>
                     <div className="relative mt-10 mr-20">
                         <input
                             type="text"
@@ -104,49 +200,11 @@ export default function Learning() {
                                 />
                             </svg>
                     </div>
-
                 </div>
-            
-            {/* Filter Controls */}
-            <div className="mb-8 ml-20 flex flex-col gap-4">
-                {/* Search Input */}
 
-                <div className="flex gap-4">
-                <select 
-                    value={selectedYear}
-                    onChange={(e) => setSelectedYear(e.target.value)}
-                    className="appearance-none w-[9vw] bg-white px-4 py-2.5 pr-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400 cursor-pointer bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:8px_10px] bg-[right_12px_center] bg-no-repeat"
-                >
-                    <option value="all">Select Year</option>
-                    <option value="1">Year 1</option>
-                    <option value="2">Year 2</option>
-                    <option value="3">Year 3</option>
-                </select>
-                
-                <select 
-                    value={selectedTerm}
-                    onChange={(e) => setSelectedTerm(e.target.value)}
-                    className="appearance-none w-[9vw] bg-white px-4 py-2.5 pr-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400 cursor-pointer bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:8px_10px] bg-[right_12px_center] bg-no-repeat"
-                >
-                    <option value="all">Select Term</option>
-                    <option value="1">Term 1</option>
-                    <option value="2">Term 2</option>
-                </select>
-
-                <select
-                    value={selectedGrade}
-                    onChange={(e) => setSelectedGrade(e.target.value)}
-                    className="appearance-none w-[9vw] bg-white px-4 py-2.5 pr-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400 cursor-pointer bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:8px_10px] bg-[right_12px_center] bg-no-repeat"
-                >
-                    <option value="all">Select Grade</option>
-                    <option value="Normal">Normal</option>
-                    <option value="OSU">OSU</option>
-                </select>
-                </div>
-                
             </div>
 
-            {/* Course Grid - Updated with smaller cards */}
+            {/* Course Grid - Updated with dropdown details */}
             <div className="flex flex-col gap-8 ml-20 mr-20">
                 {(() => {
                     // Group courses by year and term
@@ -171,41 +229,91 @@ export default function Learning() {
                         const showHeader = true;
 
                         const sortedCourses = courses.sort((a, b) => {
-                            // First sort by grade
-                            const gradeCompare = a.grade.localeCompare(b.grade);
-                            // If grades are equal, sort by code
-                            return gradeCompare !== 0 ? gradeCompare : a.code.localeCompare(b.code);
+                            return a.code.localeCompare(b.code);
                         });
+                        
                         return (
                             <div key={key} className="flex flex-col gap-4">
                                 {showHeader && (
-                                    <h2 className="text-2xl font-bold text-gray-800">
+                                    <h2 className="text-2xl text-gray-800">
                                         Year {year} • Term {term}
                                         <span className="text-sm text-gray-500/80 ml-4">(Total {courses.length} courses, Normal: {courses.filter(course => course.grade === 'Normal').length}, OSU: {courses.filter(course => course.grade === 'OSU').length})</span>
                                     </h2>
                                 )}
-                                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                                <div className="flex flex-col justify-center p-4 text-2xl bg-white border rounded-xl h-auto">
                                     {sortedCourses.map((course, index) => (
-                                        <div 
-                                            key={index}
-                                            onClick={() => setSelectedCourse(course)}
-                                            className={`block p-4 bg-white border ${course.grade === 'OSU' ? 'border-green-500'  : 'border-blue-400'} rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer`}
-                                            style={{
-                                                boxShadow: course.grade === 'OSU' ? '0px 2px 10px rgba(62,163,64,0.43)' : '0px 2px 10px rgba(59, 130, 246, 0.43)'
-                                            }}
-                                        >
-                                            <div className="flex justify-between items-start">
-                                                <div>
-                                                    <h4 className="font-medium text-base">{course.code}</h4>
-                                                    <h5 className="text-gray-700 mt-1 text-sm">{course.title}</h5>
-                                                </div>
-                                                <span className="text-black text-sm">
-                                                   {course.grade}
+                                        <div key={index}>
+                                            {/* Course Item */}
+                                            <p 
+                                                className={`group p-3 cursor-pointer ${course.grade === "OSU" ? 'text-[#21B512]' : 'text-[#1869C5]'} hover:underline hover:bg-gray-100/50 ${selectedCourse && selectedCourse.code === course.code ? 'bg-gray-100' : ''}`}
+                                                onClick={() => handleCourseClick(course)}
+                                            >
+                                                {course.code} {course.title}
+                                                <span className={`${selectedCourse && selectedCourse.code === course.code ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'} px-4`}>
+                                                    <i className={`fa-solid fa-caret-left transition-all duration-300 ${selectedCourse && selectedCourse.code === course.code ? '-rotate-90' : ''}`}></i>
                                                 </span>
-                                            </div>
-                                            <div className="mt-2 text-xs text-gray-500">
-                                                Year {course.year} • Term {course.term} • {course.room}
-                                            </div>
+                    
+                                            </p>
+
+                                            {/* Course Details Dropdown */}
+                                            {selectedCourse && selectedCourse.code === course.code && (
+                                                <div className={`mx-3 mb-4 p-6 bg-gray-50 border-l-4 ${course.grade === 'OSU' ? 'border-green-500' : 'border-blue-400'} rounded-r-lg shadow-sm`}>
+                                                    <div className='flex flex-row gap-[20%]'>
+                                                        <div className="space-y-4">
+                                                                <h3 className="text-2xl font-semibold text-gray-800">{course.fullTitle ? course.fullTitle : course.title}</h3>
+                                                           
+                                                        
+                                                            <div>
+                                                                <h4 className="text-lg font-medium text-gray-500 mb-2">Description</h4>
+                                                                <p className="text-gray-700 text-xl">{course.description}</p>
+                                                            </div>
+                                                        
+                                                            <div>
+                                                                <h4 className="text-lg font-medium text-gray-500 mb-2">Details</h4>
+                                                                <div className="space-y-1 text-xl">
+                                                                    <p className="text-gray-700">Year: {course.year} <span className='px-2'> Semester: {course.term}</span></p>
+                                                                    <p className='text-gray-700'>Room: {course.room} <span className='px-2'> Building: {course.building}</span></p>
+                                                                    <p className="text-gray-700">Grading System: {course.grade}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div className='flex flex-row justify-between items-center gap-4 pt-4'>
+                                                            
+
+                                                                <button 
+                                                                    onClick={() => setShowSyllabus(!showSyllabus)} 
+                                                                    className='py-2 text-gray-500/80 rounded-lg hover:text-gray-600 transition-all duration-300 text-lg'
+                                                                >
+                                                                    {showSyllabus ? 'Hide Tips & Tricks' : 'Show Tips & Tricks'}
+                                                                </button>
+                                                            </div>
+
+                                                            {/* Tips & Tricks Section */}
+                                                            {showSyllabus && (
+                                                                <div className="mt-4 p-4 bg-white rounded-lg border border-gray-200">
+                                                                    <h4 className='text-lg font-semibold mb-3 text-gray-800'>Tips & Tricks</h4>
+                                                                    <p className='text-gray-700 text-base'>{course.tips}</p>
+                                                                </div>
+                                                            )}
+                                                        </div>
+                                                        <div className='flex flex-col'>
+                                                            <p className='text-gray-800 mt-1'>Course Meterials</p>
+                                                            <a className='px-10 pt-5 pb-3 hover:underline'>
+                                                                <i class="group fa-solid fa-folder-open text-amber-800/50"></i>
+                                                                <span className='px-5 text-xl'>Syllabus</span>
+                                                            </a>
+                                                            <a className='px-10 pt-5 pb-3 hover:underline'>
+                                                                <i class="group fa-solid fa-folder-open text-amber-800/50"></i>
+                                                                <span className='px-5 text-xl'>Textbook</span>
+                                                            </a>
+                                                            <a className='px-10 pt-5 pb-3 hover:underline'>
+                                                                <i class="group fa-solid fa-folder-open text-amber-800/50"></i>
+                                                                <span className='px-5 text-xl'>Work</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                     ))}
                                 </div>
@@ -214,90 +322,7 @@ export default function Learning() {
                     });
                 })()}
             </div>
-
-            {/* Course Details Modal */}
-            {selectedCourse && (
-                <>
-                    {/* Overlay */}
-                    <div 
-                        className="fixed inset-0 bg-black/80 transition-opacity z-40"
-                        onClick={() => {
-                            setSelectedCourse(null);
-                        }}
-                    />
-                    
-                    {/* Modal */}
-                    <div className="fixed inset-0 flex items-center justify-center z-50">
-                        <div className={`bg-white border-5 ${selectedCourse.grade === 'OSU' ? 'border-green-500'  : 'border-blue-400'} rounded-lg shadow-xl w-full max-w-lg mx-4 p-8 relative`}>
-                            <div className="p-6">
-                                <div className="flex justify-between items-start mb-6">
-                                    <h2 className="text-2xl font-bold">{selectedCourse.code}</h2>
-                                    <button 
-                                        onClick={() => setSelectedCourse(null)}
-                                        className="text-gray-500 hover:text-gray-700 hover:rotate-180 transition-all duration-300"
-                                    >
-                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                
-                                <div className='flex flex-row justify-between items-end gap-4'>
-                                    <h3 className="text-xl font-semibold mb-4">{selectedCourse.fullTitle ? selectedCourse.fullTitle : selectedCourse.title}</h3>
-                                    <span className='text-xl text-gray-500 mb-4'>
-                                        <Link href={`/map/${selectedCourse.building}`} className='hover:text-blue-500 hover:underline'>{selectedCourse.room}</Link>
-                                    </span>
-                                </div>
-                                
-                                <div className="space-y-4">
-                                    <div >
-                                        <h4 className="text-sm font-medium text-gray-500">Description</h4>
-                                        <p className="mt-1 text-gray-700">{selectedCourse.description}</p>
-                                    </div>
-                                    
-                                    <div>
-                                        <h4 className="text-sm font-medium text-gray-500">Details</h4>
-                                        <div className="mt-1 space-y-1">
-                                            <p className="text-gray-700">Year: {selectedCourse.year}</p>
-                                            <p className="text-gray-700">Term: {selectedCourse.term}</p>
-                                            <p className="text-gray-700">Grading System: {selectedCourse.grade}</p>
-                                        </div>
-                                    </div>
-
-                                    <div className='flex flex-row justify-between items-end gap-4 mt-7'>
-                                        <a 
-                                            href={selectedCourse.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-block px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-600 transition-colors"
-                                        >
-                                            View Course Materials
-                                        </a>
-
-                                        <span>
-                                            <button onClick={() => setShowSyllabus(!showSyllabus)} className='px-4 py-2 text-gray-500/80 rounded-lg hover:text-gray-500 transition-all duration-300'>
-                                                Tips & Tricks
-                                            </button>
-                                        </span>
-                                    </div>
-
-
-                                    
-                                </div>
-                            </div>
-                        </div>
-
-                        {showSyllabus && (
-                            <div className={`bg-white border-5 ${selectedCourse.grade === "OSU" ? 'border-green-400' : 'border-blue-500'} rounded-lg shadow-xl w-full max-w-lg mx-4 p-8 relative`}>
-                                <h4 className='text-xl font-semibold mb-4'>Tips & Tricks</h4>
-                                <p className='text-gray-700'>{selectedCourse.tips}</p>
-                            </div>
-                        )}
-                    </div>
-                </>
-            )}
-            </div>
-
         </div>
+    </div>
     );
 }

@@ -2,9 +2,9 @@ export const courses = [
     {
         year: 1,
         term: 1,
-        code: 'SCPY 161',
+        code: 'SCPY161',
         title: 'General Physics 1',
-        building: 'sc2-building',
+        building: 'SC2',
         room: 'SC3-323',
         description: 'Basic principles of physics, including mechanics, thermodynamics, and electromagnetism.',
         grade: 'Normal',
@@ -14,7 +14,7 @@ export const courses = [
     {
         year: 1,
         term: 1,
-        code: 'SCBE 100',
+        code: 'SCBE100',
         title: 'Wonder of Life',
         description: 'Study of the human body and its systems.',
         grade: 'OSU',
@@ -23,7 +23,7 @@ export const courses = [
     {
         year: 1,
         term: 1,
-        code: 'EGBI 180',
+        code: 'EGBI180',
         title: 'Entrepreneurial Skills for BME',
         fullTitle: 'Entrepreneurial Skills for Biomedical Engineering',
         description: 'Basic principles of entrepreneurship and business management.',
@@ -33,7 +33,7 @@ export const courses = [
     {
         year: 1,
         term: 1,
-        code: 'LAEN 180',
+        code: 'LAEN180',
         title: 'English for Academic Purposes 1',
         description: 'Basic principles of English for academic purposes.',
         grade: 'OSU',
@@ -42,7 +42,7 @@ export const courses = [
     {
         year: 1,
         term: 1,
-        code: 'SCBE 102',
+        code: 'SCBE102',
         title: 'General Biology Laboratory 1',
         description: 'Study of the human body and its systems.',
         grade: 'Normal',
@@ -51,7 +51,7 @@ export const courses = [
     {
         year: 1,
         term: 1,
-        code: 'EGBI 100',
+        code: 'EGBI100',
         title: 'BME in the Real World',
         description: 'Study of the human body and its systems.',
         grade: 'OSU',
@@ -60,7 +60,7 @@ export const courses = [
     {
         year: 1,
         term: 1,
-        code: 'SCMA 174',
+        code: 'SCMA174',
         title: 'Calculus and Systems of ODE',
         fullTitle: 'Calculus and Systems of Ordinary Differential Equations',
         description: 'Study of the human body and its systems.',
@@ -70,7 +70,7 @@ export const courses = [
     {
         year: 1,
         term: 1,
-        code: 'ENGE 113',
+        code: 'ENGE113',
         title: 'Integrating Health and Environment',
         description: 'Study of the human body and its systems.',
         grade: 'OSU',
@@ -79,7 +79,7 @@ export const courses = [
     {
         year: 1,
         term: 1,
-        code: 'SCCH 161',
+        code: 'SCCH161',
         title: 'General Chemistry',
         description: 'Study of the human body and its systems.',
         grade: 'Normal',
@@ -88,7 +88,7 @@ export const courses = [
     {
         year: 1,
         term: 1,
-        code: 'SCPY 111',
+        code: 'SCPY111',
         title: 'Physics Laboratory 1',
         description: 'Study of the human body and its systems.',
         grade: 'Normal',
@@ -97,7 +97,7 @@ export const courses = [
     {
         year: 1,
         term: 1,
-        code: 'SCCH 169',
+        code: 'SCCH169',
         title: 'General Chemistry Laboratory 1',
         description: 'Study of the human body and its systems.',
         grade: 'Normal',
@@ -106,7 +106,7 @@ export const courses = [
     {
         year: 1,
         term: 2,
-        code: 'LAEN 380',
+        code: 'LAEN380',
         title: 'Academic Presentation in English',
         description: 'Basic principles of physics, including mechanics, thermodynamics, and electromagnetism.',
         grade: 'OSU',
@@ -115,7 +115,7 @@ export const courses = [
     {
         year: 1,
         term: 2,
-        code: 'EGBI 120',
+        code: 'EGBI120',
         title: 'Engineering Drawing and CAD',
         fullTitle: 'Engineering Drawing and Computer-Aided Design',
         description: 'Basic principles of physics, including mechanics, thermodynamics, and electromagnetism.',
@@ -125,7 +125,7 @@ export const courses = [
     {
         year: 1,
         term: 2,
-        code: 'SCPY 162',
+        code: 'SCPY162',
         title: 'General Physics 2',
         description: 'Basic principles of physics, including mechanics, thermodynamics, and electromagnetism.',
         grade: 'Normal',
@@ -134,7 +134,7 @@ export const courses = [
     {
         year: 1,
         term: 2,
-        code: 'LAEN 181',
+        code: 'LAEN181',
         title: 'English for Academic Purposes 2',
         description: 'Basic principles of physics, including mechanics, thermodynamics, and electromagnetism.',
         grade: 'OSU',
@@ -143,7 +143,7 @@ export const courses = [
     {
         year: 2,
         term: 1,
-        code: 'BME 301',
+        code: 'BME301',
         title: 'Medical Imaging Systems',
         description: 'Principles and applications of various medical imaging modalities.',
         link: 'https://drive.google.com'
@@ -151,7 +151,7 @@ export const courses = [
     {
         year: 2,
         term: 2,
-        code: 'BME 302',
+        code: 'BME302',
         title: 'Biomaterials',
         description: 'Study of materials used in medical devices and implants.',
         link: 'https://drive.google.com'
@@ -159,7 +159,7 @@ export const courses = [
     {
         year: 3,
         term: 1,
-        code: 'BME 401',
+        code: 'BME401',
         title: 'Clinical Engineering',
         description: 'Management and maintenance of medical equipment in clinical settings.',
         link: 'https://drive.google.com'
@@ -167,7 +167,7 @@ export const courses = [
     {
         year: 3,
         term: 2,
-        code: 'BME 402',
+        code: 'BME402',
         title: 'Medical Robotics',
         description: 'Introduction to robotic systems in medical applications.',
         link: 'https://drive.google.com'
