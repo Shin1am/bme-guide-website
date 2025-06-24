@@ -13,10 +13,7 @@ export default function Learning() {
     const [showGradeDropdown, setShowGradeDropdown] = useState(false);
     const [selectedGradeType, setSelectedGradeType] = useState(null);
 
-    const handleSearch = (e) => {
-        setQuery(e.target.value);
-    };
-
+   
     const filteredCourses = courses.filter(course => {
         // Search filter
         const searchMatch = searchQuery === '' || 
@@ -299,15 +296,15 @@ export default function Learning() {
                                                         <div className='flex flex-col'>
                                                             <p className='text-gray-800 mt-1'>Course Meterials</p>
                                                             <a className='px-10 pt-5 pb-3 hover:underline'>
-                                                                <i class="group fa-solid fa-folder-open text-amber-800/50"></i>
+                                                                <i className="group fa-solid fa-folder-open text-amber-800/50"></i>
                                                                 <span className='px-5 text-xl'>Syllabus</span>
                                                             </a>
                                                             <a className='px-10 pt-5 pb-3 hover:underline'>
-                                                                <i class="group fa-solid fa-folder-open text-amber-800/50"></i>
+                                                                <i className="group fa-solid fa-folder-open text-amber-800/50"></i>
                                                                 <span className='px-5 text-xl'>Textbook</span>
                                                             </a>
                                                             <a className='px-10 pt-5 pb-3 hover:underline'>
-                                                                <i class="group fa-solid fa-folder-open text-amber-800/50"></i>
+                                                                <i className="group fa-solid fa-folder-open text-amber-800/50"></i>
                                                                 <span className='px-5 text-xl'>Work</span>
                                                             </a>
                                                         </div>

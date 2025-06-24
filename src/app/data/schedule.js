@@ -56,5 +56,5 @@ export const schedule = [
         end: "2026-10-24T00:00:00", // Covers 23rd
         description: "Public Holiday in Thailand, commemorating King Chulalongkorn.",
         color: "#4682B4" // SteelBlue
-      }
+      },
 ]

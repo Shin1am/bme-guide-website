@@ -40,7 +40,7 @@ export default function Footer() {
                         <p className="font-semibold">Contact</p>
                         <div className="flex flex-col justify-center items-start gap-3">
                             <Link href={'/'} className="hover:underline">Phone</Link>
-                            <Link href={'/learning'} className="hover:underline">Email</Link>
+                            <a className="hover:underline" href="https://mail.google.com/mail/?view=cm&fs=1&to=maimmchanel@gmail.com" target="_blank">Email</a>
                         </div>
                     </div>
                 </div>
