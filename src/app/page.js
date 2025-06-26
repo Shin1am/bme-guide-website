@@ -6,9 +6,10 @@ import HomeCalendar from "./components/Calendar";
 import EventTable from "./components/EventTable";
 import { schedule as initialScheduleData } from "./data/schedule";
 import moment from "moment";
+import DayBanner from "./components/DayBanner";
+
 
 export default function Home() {
-  const [schedules, setSchedules] = useState([]); // This state is actually redundant if you're using allEvents
   const [allEvents, setAllEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [currentCalendarDate, setCurrentCalendarDate] = useState(new Date());
@@ -68,35 +69,35 @@ export default function Home() {
     <div className="font-pixelify min-h-screen">
       <main className="w-full p-8 sm:p-20">
         {/* Hero Section*/}
-        <div className="flex flex-col justify-center w-full h-[60vh] border-b-2 border-b-[#bfb9b0]">
+        <div className="flex flex-col justify-center w-[80vw] h-[40vh] md:h-[40vh] lg:w-full lg:h-[60vh] border-b-2 border-b-[#bfb9b0]">
           <div className="flex flex-col items-start justify-center gap-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold px-8 transition-all duration-300">
+            <h1 className="text-3xl w-1/2 md:text-5xl lg:text-6xl font-bold px-8 transition-all duration-300">
               <span className="text-[#b61c1c] inline-block overflow-hidden whitespace-nowrap border-r-4 border-r-black animate-[typing_3.5s_steps(40,end),blink-caret_.75s_step-end_infinite]">
                 Welcome to BME Learning Platform!
               </span>
             </h1>
-            <h2 className="text-[#292625] text-2xl md:text-3x lg:text-4xl font-bold px-8 transition-all duration-300">
+            <h2 className="text-[#292625] text-xl md:text-3xl lg:text-4xl font-bold px-8 transition-all duration-300">
               Your journey to becoming a better Biomedical Engineer starts here!
             </h2>
           </div>
 
           <div className='px-8 flex flex-row gap-6 mt-25 text-center items-center justify-center'>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/learning">Learning</Link>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/map">Map</Link>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/more">More</Link>
-            <Link className='text-md bg-white rounded-3xl shadow-lg text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/about-us">About Us</Link>
+            <Link className='text-base bg-white rounded-3xl shadow-lg md:text-xl lg:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/learning">Learning</Link>
+            <Link className='text-base bg-white rounded-3xl shadow-lg md:text-xl lg:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/map">Map</Link>
+            <Link className='text-base bg-white rounded-3xl shadow-lg md:text-xl lg:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link>
+            <Link className='text-base bg-white rounded-3xl shadow-lg md:text-xl lg:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/more">More</Link>
+            <Link className='text-base bg-white rounded-3xl shadow-lg md:text-xl lg:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/about-us">About Us</Link>
           </div>
         </div>
 
         {/*roadmap journey*/}
         <div className="p-8">
           <div className="flex flex-col justify-center items-center p-10">
-            <p className="text-[80px]">Roadmap</p>
-            <p className="text-[56px] -mt-10">Journey</p>
+            <p className="text-4xl lg:text-[80px]">Roadmap</p>
+            <p className="text-3xl lg:text-[56px] lg:-mt-5">Journey</p>
           </div>
           <div className="p-20">
-            <div className="flex flex-row">
+            <div className="flex flex-col lg:flex-row">
               <div className="flex flex-col items-center hover:scale-110 transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" fill="#4D639B" viewBox="0 0 120 100" stroke="none">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M100 30A45 45 0 1 0 100 70 1 1 0 1 1 100 30z"/>
@@ -165,6 +166,7 @@ export default function Home() {
             onNavigate={handleCalendarNavigate}
           />
         </div>
+        {/* <DayBanner events={filteredEvents} /> */}
         {/* --- End Calendar Section --- */}
 
 

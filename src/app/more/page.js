@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { club } from "../data/club";
 import { MahidolStore } from "../data/store";
-import StoreCard from "../components/StoreCard";
+import StoreCarousel from "../components/StoreCard";
 
 
 
@@ -11,6 +11,13 @@ export default function More() {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedType, setSelectedType] = useState(['All']); // Initialize with 'All' selected
+    const [selectedStoreType, setSelectedStoreType] = useState('mahidol');
+
+    const AllStoreType = [
+        ...new Set(MahidolStore.flatMap(c => c.category))
+    ].sort((a,b) => {
+        return a.localeCompare(b)
+    })
 
     const AllAvailableType = [
         'All', // Add 'All' as the first option
@@ -69,7 +76,9 @@ export default function More() {
         return partialMatches; // Fallback to partial matches
     })(); // The IIFE is immediately executed
 
-    
+    const filteredStore = MahidolStore.filter(store => {
+        return store.category === selectedStoreType;
+    })
 
     return (
         <div className="p-4 min-h-screen">
@@ -144,11 +153,27 @@ export default function More() {
                 ))}
             </div>
 
-            <div className="mt-20 flex justify-center items-center">
-                <h1 className="text-5xl">STORE</h1>
+            <div className="mt-20 ml-30 flex justify-start items-center">
+                <h1 className="text-6xl">STORE</h1>
+                <div className="flex flex-row gap-4 ml-10 capitalize">
+                    {AllStoreType.map((type, index) => (
+                    <div key={index} className="flex justify-center items-center">
+                        <div 
+                            className={`flex px-4 py-1 text-xl border-2 rounded-4xl transition-all duration-300 ease-in-out
+                                ${selectedStoreType.includes(type) ? 'border-blue-500 bg-blue-50 text-blue-800' : 'border-gray-300 bg-white text-gray-800'}
+                                cursor-pointer hover:scale-105 hover:shadow-lg active:scale-98 active:shadow-md
+                            `}
+                            onClick={() => setSelectedStoreType(type)}    
+                        >
+                            {type}
+                        </div>
+                    </div>
+                ))}
+                </div>
+                
             </div>
             <div className="m-15">
-                <StoreCard data={MahidolStore} />
+                <StoreCarousel data={filteredStore} />
             </div>
 
         </div>  

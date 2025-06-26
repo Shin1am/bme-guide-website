@@ -255,8 +255,8 @@ export default function Learning() {
                                             {/* Course Details Dropdown */}
                                             {selectedCourse && selectedCourse.code === course.code && (
                                                 <div className={`mx-3 mb-4 p-6 bg-gray-50 border-l-4 ${course.grade === 'OSU' ? 'border-green-500' : 'border-blue-400'} rounded-r-lg shadow-sm`}>
-                                                    <div className='flex flex-row gap-[20%]'>
-                                                        <div className="space-y-4">
+                                                    <div className='flex flex-row gap-[10%]'>
+                                                        <div className="space-y-4 w-1/2">
                                                                 <h3 className="text-2xl font-semibold text-gray-800">{course.fullTitle ? course.fullTitle : course.title}</h3>
                                                            
                                                         
@@ -295,18 +295,24 @@ export default function Learning() {
                                                         </div>
                                                         <div className='flex flex-col'>
                                                             <p className='text-gray-800 mt-1'>Course Meterials</p>
-                                                            <a className='px-10 pt-5 pb-3 hover:underline'>
-                                                                <i className="group fa-solid fa-folder-open text-amber-800/50"></i>
-                                                                <span className='px-5 text-xl'>Syllabus</span>
-                                                            </a>
-                                                            <a className='px-10 pt-5 pb-3 hover:underline'>
-                                                                <i className="group fa-solid fa-folder-open text-amber-800/50"></i>
-                                                                <span className='px-5 text-xl'>Textbook</span>
-                                                            </a>
-                                                            <a className='px-10 pt-5 pb-3 hover:underline'>
-                                                                <i className="group fa-solid fa-folder-open text-amber-800/50"></i>
-                                                                <span className='px-5 text-xl'>Work</span>
-                                                            </a>
+                                                            {course.links?.syllabus && (
+                                                                <a className='px-10 pt-5 pb-3 hover:underline' href={course.links.syllabus} target='_blank' rel='noopener noreferrer'>
+                                                                    <i className="fa-solid fa-folder-open text-amber-800/50"></i>
+                                                                    <span className='px-5 text-xl'>Syllabus</span>
+                                                                </a>
+                                                            )}
+                                                            {course.links?.material && (
+                                                                <a className='px-10 pt-5 pb-3 hover:underline' href={course.links.material} target='_blank' rel='noopener noreferrer'>
+                                                                    <i className="fa-solid fa-folder-open text-amber-800/50"></i>
+                                                                    <span className='px-5 text-xl'>Material</span>
+                                                                </a>
+                                                            )}
+                                                            {course.links?.work && (
+                                                                <a className='px-10 pt-5 pb-3 hover:underline' href={course.links.work} target='_blank' rel='noopener noreferrer'>
+                                                                    <i className="fa-solid fa-folder-open text-amber-800/50"></i>
+                                                                    <span className='px-5 text-xl'>Work</span>
+                                                                </a>
+                                                            )}
                                                         </div>
                                                     </div>
                                                 </div>

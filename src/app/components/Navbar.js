@@ -20,6 +20,7 @@ export default function Navbar() {
             </div>
 
             <div className="hidden md:flex items-center gap-6 text-lg text-gray-400">
+                <Link href="/" className={`${currentPath === '/' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Home</Link>
                 <Link href="/learning" className={`${currentPath === '/learning' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Learning</Link>
                 <Link href="/map" className={`${currentPath === '/map' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Map</Link>
                 <Link href="/lab" className={`${currentPath === '/lab' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Lab</Link>
@@ -28,7 +29,7 @@ export default function Navbar() {
             </div>
 
             <button 
-                className="md:hidden p-2"
+                className="text-gray-800 md:hidden p-2"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
             >
@@ -57,7 +58,7 @@ export default function Navbar() {
             </button>
 
             {isMenuOpen && (
-                <div className="absolute top-full left-0 right-0 bg-gradient-to-r from-blue-500 to-green-700 md:hidden">
+                <div className="absolute top-full left-0 right-0 bg-[#F3F3E4] text-gray-800 md:hidden">
                     <div className="flex flex-col p-4 space-y-4">
                         <Link 
                             href="/learning" 

@@ -68,7 +68,7 @@ export default function HomeCalendar({ events, currentDate, onNavigate }) { // R
                     <button className="text-[#5b70a5] hover:scale-120 transition-all duration-200" onClick={onPrevClick}>
                       <i className="fa-solid fa-chevron-left fa-lg"></i>
                     </button>
-                    <h2 className="text-2xl text-[#5b70a5]">{moment(currentDate).format("MMM YY")}</h2>
+                    <h2 className="text-4xl text-[#5b70a5] font-medodica">{moment(currentDate).format("MMM YYYY")}</h2>
                     <button className="text-[#5b70a5] hover:scale-120 transition-all duration-200" onClick={onNextClick}>
                       <i className="fa-solid fa-chevron-right fa-lg"></i>
                     </button>
