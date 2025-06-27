@@ -35,7 +35,10 @@ export const courses = [
     fullTitle: 'Entrepreneurial Skills for Biomedical Engineering',
     description: 'TODO: Add description',
     grade: 'Normal',
-    links: { syllabus: '', material: '', work: '' }
+    links: { 
+        syllabus: 'https://drive.google.com/drive/folders/1GjMkz6fXRD2zfeLDPw62Pp2A7IKQxFVU', 
+        material: 'https://drive.google.com/drive/folders/12Hi9bYEg2vxmmqKafP97_F8JiozXTbSz', 
+        work: '' }
   },
   {
     year: 1,
@@ -44,7 +47,10 @@ export const courses = [
     title: 'English for Academic Purposes 1',
     description: 'TODO: Add description',
     grade: 'OSU',
-    links: { syllabus: '', material: '', work: '' }
+    links: { 
+        syllabus: 'https://drive.google.com/drive/folders/1mUJIvoJ9JnxvFx9BiNGnGEvmJdA95PDV',
+        material: 'https://drive.google.com/drive/folders/1A3ZgxzUKMjCtSBOSE_R1hP3PsV1nTSat',
+        work: '' }
   },
   {
     year: 1,
@@ -53,7 +59,10 @@ export const courses = [
     title: 'General Biology Laboratory 1',
     description: 'TODO: Add description',
     grade: 'Normal',
-    links: { syllabus: '', material: '', work: '' }
+    links: { 
+        syllabus: 'https://drive.google.com/drive/folders/1MyELo6KzJEYmzFiE7nsv2wmxuXaBZv3z', 
+        material: 'https://drive.google.com/drive/folders/1n0tZZ1U-JoAX16PsR6GgbaThSEjHiNTD', 
+        work: '' }
   },
   {
     year: 1,
@@ -62,7 +71,10 @@ export const courses = [
     title: 'BME in the Real World',
     description: 'TODO: Add description',
     grade: 'OSU',
-    links: { syllabus: '', material: '', work: '' }
+    links: { 
+        syllabus: 'https://drive.google.com/drive/folders/1sk-DsrOWnAFXzqHvmXUf1BLewITyAay3', 
+        material: 'https://drive.google.com/drive/folders/1L0iUgfI3RwOBvmy-CeOgbm5JgeVhuyP4', 
+        work: '' }
   },
   {
     year: 1,
@@ -72,7 +84,10 @@ export const courses = [
     fullTitle: 'Calculus and Systems of Ordinary Differential Equations',
     description: 'TODO: Add description',
     grade: 'Normal',
-    links: { syllabus: '', material: '', work: '' }
+    links: { 
+        syllabus: 'https://drive.google.com/drive/folders/17OE82m8H-f213fUMyKliHdpSFOrw4ZsP', 
+        material: 'https://drive.google.com/drive/folders/1QzkADymPlimzUiiY-jbhsMMoNlWFQ9n9', 
+        work: '' }
   },
   {
     year: 1,
@@ -81,7 +96,10 @@ export const courses = [
     title: 'Integrating Health and Environment',
     description: 'TODO: Add description',
     grade: 'OSU',
-    links: { syllabus: '', material: '', work: '' }
+    links: { 
+        syllabus: 'https://drive.google.com/drive/folders/1DDjVcw57WLixbHiH3qVL5AvmXBnRVwhQ', 
+        material: 'https://drive.google.com/drive/folders/1qDYeQi2LpdXAcLkEn8u9OT1skyMd8QCK',
+        work: '' }
   },
   {
     year: 1,
@@ -90,7 +108,10 @@ export const courses = [
     title: 'General Chemistry',
     description: 'TODO: Add description',
     grade: 'Normal',
-    links: { syllabus: '', material: '', work: '' }
+    links: { 
+        syllabus: 'https://drive.google.com/drive/folders/1tPQcutLJPD98RtyRjnWwE4S0wsM0A3lu', 
+        material: 'https://drive.google.com/drive/folders/1wgE2Ywh4jafQp-ocfUT6q6tLmdXmEvxG', 
+        work: '' }
   },
   {
     year: 1,
@@ -111,7 +132,10 @@ export const courses = [
     title: 'General Chemistry Laboratory 1',
     description: 'TODO: Add description',
     grade: 'Normal',
-    links: { syllabus: '', material: '', work: '' }
+    links: { 
+        syllabus: 'https://drive.google.com/drive/folders/1J0Fki0PKkVtnvlTsICkXX7XQKWE9ZKqr', 
+        material: 'https://drive.google.com/drive/folders/12H5-1333DHy1ocEdDf-XLxnYayE2Lxln', 
+        work: '' }
   },
   {
     year: 1,

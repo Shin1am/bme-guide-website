@@ -131,7 +131,7 @@ export default function Map() {
                         className="object-contain rounded-xl shadow-xl hover:scale-105 transition-all duration-150 border-2 border-black"
                     />
 
-                    {buildings.map((building) =>
+                    {/* {buildings.map((building) =>
                         <div 
                             key={building.id} 
                             className="absolute transform -translate-x-1/2 -translate-y-1/2 group"
@@ -147,7 +147,7 @@ export default function Map() {
                                 </div>
 
                         </div>
-                    )};
+                    )}; */}
                 </div>
                 <div className="flex flex-col gap-5 mt-5">
                     {filteredBuildings.map((building) => (

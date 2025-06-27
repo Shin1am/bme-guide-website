@@ -185,13 +185,13 @@ export default function Home() {
 
         {/*Mahidol Website, contact list - NO STYLE CHANGES*/}
         <div className = "flex flex-row gap-6 w-full h-auto p-6 mt-15">
-          <div className="flex flex-col gap-8 w-full">
+          <div className="flex flex-col gap-8 w-full bg-white p-8 rounded-3xl shadow-2xl justify-center items-center">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Mahidol Website, contact list</h2>
             <div className="flex flex-row gap-6 items-start">
               <div className="flex flex-col gap-6 items-start">
                 <a href="https://mahidol.ac.th/th/" target="_blank" rel="noopener noreferrer"
-                  className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
-                  <div className="bg-blue-100 p-2 rounded-full">
+                  className="group flex items-center gap-3 rounded-full px-4 py-2 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                  <div className="p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                     </svg>
@@ -199,8 +199,8 @@ export default function Home() {
                   <span className="text-gray-700 font-medium">Website</span>
                 </a>
                 <a href="https://smartedu.mahidol.ac.th/Authen/login.aspx" target="_blank" rel="noopener noreferrer"
-                  className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
-                  <div className="bg-blue-100 p-2 rounded-full">
+                  className="group flex items-center gap-3 rounded-full px-4 py-2 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                  <div className="p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                     </svg>
@@ -208,8 +208,8 @@ export default function Home() {
                   <span className="text-gray-700 font-medium">Smart EDU</span>
                 </a>
                 <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
-                  className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
-                  <div className="bg-blue-100 p-2 rounded-full">
+                  className="group flex items-center gap-3 rounded-full px-4 py-2 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                  <div className="p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                     </svg>
@@ -219,8 +219,8 @@ export default function Home() {
               </div>
               <div className="flex flex-col gap-6 items-start">
                 <a href="https://student.mahidol.ac.th/portal/" target="_blank" rel="noopener noreferrer"
-                  className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
-                  <div className="bg-blue-100 p-2 rounded-full">
+                  className="group flex items-center gap-3 rounded-full px-4 py-2 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                  <div className="p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                     </svg>
@@ -228,8 +228,8 @@ export default function Home() {
                   <span className="text-gray-700 font-medium">Student Portal</span>
                 </a>
                 <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
-                  className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
-                  <div className="bg-blue-100 p-2 rounded-full">
+                  className="group flex items-center gap-3 rounded-full px-4 py-2 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                  <div className="p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                     </svg>
@@ -237,8 +237,8 @@ export default function Home() {
                   <span className="text-gray-700 font-medium">MU life pass</span>
                 </a>
                 <a href="https://mustudent.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
-                  className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
-                  <div className="bg-blue-100 p-2 rounded-full">
+                  className="group flex items-center gap-3 rounded-full px-4 py-2 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                  <div className="p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                     </svg>
@@ -249,12 +249,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-8 w-full">
+          <div className="flex flex-col gap-8 w-full rounded-3xl bg-white shadow-2xl justify-center items-center">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Engineering Website, contact list</h2>
             <div className="flex flex-col gap-6 items-start">
               <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
-                className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
-                <div className="bg-blue-100 p-2 rounded-full">
+                className="group flex items-center gap-3 rounded-full px-4 py-2 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <div className="p-2 rounded-full">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                   </svg>
@@ -263,8 +263,8 @@ export default function Home() {
               </a>
 
               <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
-                className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
-                <div className="bg-blue-100 p-2 rounded-full">
+                className="group flex items-center gap-3 rounded-full px-4 py-2 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <div className="p-2 rounded-full">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                   </svg>
@@ -273,8 +273,8 @@ export default function Home() {
               </a>
 
               <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
-                className="group flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 hover:pr-8">
-                <div className="bg-blue-100 p-2 rounded-full">
+                className="group flex items-center gap-3 rounded-full px-4 py-2 hover:shadow-lg hover:scale-105 transition-all duration-300">
+                <div className="p-2 rounded-full">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                   </svg>

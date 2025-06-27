@@ -125,7 +125,7 @@ export default function EventTable({ events, allFutureEvents, maxEvents, current
             onClick={() => setAllEventsView(!allEventsView)}
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               allEventsView
-                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                ? 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             }`}
           >
@@ -158,7 +158,7 @@ export default function EventTable({ events, allFutureEvents, maxEvents, current
             onClick={() => setAllEventsView(!allEventsView)}
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               allEventsView
-                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                ? 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
             }`}
           >
