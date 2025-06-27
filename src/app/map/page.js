@@ -19,7 +19,7 @@ export default function Map() {
     });
 
     return (
-        <div className="min-h-screen p-8">
+        <div className="min-h-screen p-10">
             {/*<div className="max-w-7xl mx-auto">
                 <h1 className="text-4xl font-bold mb-8">Campus Map</h1>
                 
@@ -85,9 +85,18 @@ export default function Map() {
                     ))}
                 </div>
             </div> */}
-            <div className="flex flex-row justify-start">
-                <h1 className="text-5xl p-8"> Campus Map</h1>
+            <div className="flex flex-row justify-start mt-5">
+                <h1 className="text-5xl p-8 "> Campus Map</h1>
                 <div className="relative mt-8 mr-20 ">
+                    {/* Cat Image - Positioned absolutely relative to this parent div */}
+                    <div className="absolute z-10" style={{ top: '-130px', left: '350px' }}> {/* Adjust top/left for precise placement */}
+                        <Image
+                            src={'/cat.png'}
+                            alt='cat-on-searchbar'
+                            width={150} // Adjust size for optimal look
+                            height={150} // Adjust size for optimal look
+                        />
+                    </div>
                     <input 
                         type="text"
                         value={searchQuery}
@@ -112,7 +121,7 @@ export default function Map() {
         
                 
             </div>       
-            <div className="flex flex-row w-full h-[80vh] mt-10">
+            <div className="flex flex-row w-full h-[80vh] mt-5">
                 <div className="relative w-1/2 h-auto justify-center items-center mx-10 my-5">
                     <Image 
                         src="/mapsalaya.jpg" 

@@ -10,9 +10,10 @@ const EVENT_TYPES = {
   meeting: { colors: ['#FFC300'], label: 'Meetings', icon: '👥' }
 };
 
-export default function EventTable({ events, maxEvents = 5 }) {
+export default function EventTable({ events, allFutureEvents, maxEvents, currentDate }) {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [showAll, setShowAll] = useState(false);
+  const [allEventsView, setAllEventsView] = useState(false);
 
   // Get event type based on color
   const getEventType = (event) => {
@@ -32,10 +33,29 @@ export default function EventTable({ events, maxEvents = 5 }) {
     const now = moment();
     
     // Filter events that haven't ended yet
-    let upcomingEvents = events.filter(event => {
+    let upcomingEvents = (allEventsView ? allFutureEvents : events).filter(event => {
       const eventEnd = event.end ? moment(event.end) : moment(event.start);
       return eventEnd.isAfter(now) || eventEnd.isSame(now, 'day');
     });
+
+    // Filter by month if not in allEventsView mode
+    if (!allEventsView && currentDate) {
+      const selectedMonth = moment(currentDate).month();
+      const selectedYear = moment(currentDate).year();
+      
+      upcomingEvents = upcomingEvents.filter(event => {
+        const eventStart = moment(event.start);
+        const eventEnd = event.end ? moment(event.end) : eventStart;
+        
+        // Include events that start or end in the selected month, or span across it
+        return (
+          (eventStart.month() === selectedMonth && eventStart.year() === selectedYear) ||
+          (eventEnd.month() === selectedMonth && eventEnd.year() === selectedYear) ||
+          (eventStart.isBefore(moment(currentDate).startOf('month')) && 
+           eventEnd.isAfter(moment(currentDate).endOf('month')))
+        );
+      });
+    }
 
     // Apply type/color filters
     if (selectedFilters.length > 0) {
@@ -50,9 +70,15 @@ export default function EventTable({ events, maxEvents = 5 }) {
       return moment(a.start).diff(moment(b.start));
     });
 
-    // Return limited or all events based on showAll state
-    return showAll ? sortedEvents : sortedEvents.slice(0, maxEvents);
-  }, [events, selectedFilters, maxEvents, showAll]);
+    return sortedEvents;
+  }, [events, allFutureEvents, selectedFilters, allEventsView, currentDate]);
+
+  // Get displayed events (limited by maxEvents unless showAll is true)
+  const displayedEvents = useMemo(() => {
+
+    
+    return showAll ? getFilteredEvents : getFilteredEvents.slice(0, maxEvents);
+  }, [getFilteredEvents, maxEvents, showAll]);
 
   // Toggle filter
   const toggleFilter = (filterType) => {
@@ -74,12 +100,15 @@ export default function EventTable({ events, maxEvents = 5 }) {
       return [];
     }
     const types = new Set();
-    events.forEach(event => {
+    (allEventsView ? allFutureEvents : events).forEach(event => {
       const type = getEventType(event);
       types.add(type);
     });
     return Array.from(types);
-  }, [events]);
+  }, [events, allEventsView, allFutureEvents]);
+
+  // Calculate remaining events count
+  const remainingEventsCount = getFilteredEvents.length - displayedEvents.length;
 
   // Early return after all hooks
   if (!events || events.length === 0) {
@@ -89,8 +118,22 @@ export default function EventTable({ events, maxEvents = 5 }) {
   if (getFilteredEvents.length === 0 && selectedFilters.length === 0) {
     return (
       <div className="bg-white shadow-lg rounded-lg p-6 w-full">
-        <h3 className="text-2xl font-bold mb-4 text-[#292625]">Upcoming Events</h3>
-        <p className="p-4 text-gray-600">No upcoming events to display.</p>
+        <h3 className="text-2xl font-bold mb-4 text-[#292625]">
+           {allEventsView ? 'Upcoming Events' : `Events for ${moment(currentDate).format('MMMM YYYY')}`}
+        </h3>
+        <button
+            onClick={() => setAllEventsView(!allEventsView)}
+            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              allEventsView
+                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            }`}
+          >
+            {allEventsView ? 'Show Month View' : 'All Events View'}
+          </button>
+        <div className='flex justify-center items-center'>
+            <p className="text-gray-600">No upcoming events to display.</p>
+        </div>
       </div>
     );
   }
@@ -99,14 +142,35 @@ export default function EventTable({ events, maxEvents = 5 }) {
     <div className="bg-white shadow-lg rounded-lg p-6 max-h-[80vh] w-full overflow-y-auto">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
-        <h3 className="text-2xl font-bold text-[#292625]">Upcoming Events</h3>
+        <h3 className="text-2xl font-bold text-[#292625]">
+          {allEventsView ? 'All Upcoming Events' : `Events for ${moment(currentDate).format('MMMM YYYY')}`}
+        </h3>
         <span className="text-sm text-gray-500">
-          Showing {getFilteredEvents.length} events
+          Showing {displayedEvents.length} of {getFilteredEvents.length} events
         </span>
       </div>
 
       {/* Filter Controls */}
       <div className="mb-6">
+        {/* All Events View Toggle */}
+        <div className="flex items-center gap-4 mb-4">
+          <button
+            onClick={() => setAllEventsView(!allEventsView)}
+            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              allEventsView
+                ? 'bg-blue-600 text-white hover:bg-blue-700'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+            }`}
+          >
+            {allEventsView ? 'Show Month View' : 'All Events View'}
+          </button>
+          {!allEventsView && currentDate && (
+            <span className="text-sm text-gray-600">
+              Viewing events for {moment(currentDate).format('MMMM YYYY')}
+            </span>
+          )}
+        </div>
+
         <div className="flex flex-wrap gap-2 mb-3">
           <span className="text-sm font-medium text-gray-700 self-center mr-2">Filter by type:</span>
           {availableTypes.map(type => (
@@ -142,7 +206,7 @@ export default function EventTable({ events, maxEvents = 5 }) {
             className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
           />
           <label htmlFor="showAll" className="text-sm text-gray-700">
-            Show all events (not limited to {maxEvents})
+            Show all events
           </label>
         </div>
       </div>
@@ -170,7 +234,7 @@ export default function EventTable({ events, maxEvents = 5 }) {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {getFilteredEvents.map((event, index) => {
+              {displayedEvents.map((event, index) => {
                 const eventType = getEventType(event);
                 return (
                   <tr key={event.id} style={{backgroundColor: `${event.color}1A`}}>
@@ -201,6 +265,15 @@ export default function EventTable({ events, maxEvents = 5 }) {
               })}
             </tbody>
           </table>
+
+          {/* Show remaining events count */}
+          {remainingEventsCount > 0 && !showAll && (
+            <div className="flex justify-center items-center mt-4">
+              <p className="text-base text-gray-700">
+                + {remainingEventsCount} more events
+              </p>
+            </div>
+          )}
         </>
       )}
     </div>

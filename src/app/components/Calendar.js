@@ -19,6 +19,10 @@ export default function HomeCalendar({ events, currentDate, onNavigate }) { // R
       onNavigate(moment(currentDate).add(1, "M").toDate());
     }, [currentDate, onNavigate]);
 
+    const onTodayClick = useCallback(() => {
+      onNavigate(moment().toDate());
+    }, [onNavigate]);
+
     const eventPropsGetter = (event, start, end, isSelected) => {
         let newStyle = {
             backgroundColor: event.color,
@@ -63,7 +67,7 @@ export default function HomeCalendar({ events, currentDate, onNavigate }) { // R
         <div className="rounded-lg p-6 w-[60%]" > {/* Original width, no changes */}
             <div style={{ height: 450 }}> {/* Original height, no changes */}
               <div className="flex flex-row justify-between mx-6 mt-3 mb-6">
-                  <h1 className="text-[27px] text-[#4d639b]">MU Schedule</h1>
+                  <h1 className="text-[27px] text-[#4d639b]" onClick={onTodayClick}>MU Schedule</h1>
                   <div className="flex gap-3 justify-center items-center">
                     <button className="text-[#5b70a5] hover:scale-120 transition-all duration-200" onClick={onPrevClick}>
                       <i className="fa-solid fa-chevron-left fa-lg"></i>

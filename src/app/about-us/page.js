@@ -1,15 +1,29 @@
+import Image from "next/image"
+
 export default function AboutUs() {
     return (
         <div className="max-h-screen px-30 py-20">
             <div className="flex flex-row gap-30 h-screen">
                 <div className="">
-                    <h1 className="text-[200px] uppercase">About Us</h1>
+                    <h1 className="text-[200px] uppercase">About 
+                        <span className="text-[#4D639B]"> Us 
+                            <span className="relative bottom-65 left-60">
+                                <Image 
+                                    src={'/glasses.png'}
+                                    alt="glasses"
+                                    width={400}
+                                    height={100}
+                                    className="object-contain"
+                                />
+                            </span>
+                        </span>
+                    </h1>
                 </div>
                 <div className="flex flex-col gap-10">
                     <div className="mt-20">
                         <p className="text-4xl text-justify">
                             We aim to help Your journey to becoming a better Biomedical Engineer.
-                            We are A DEVELOPER AND UX/UI DESIGNER BASED IN MAHIDOL UNIVERSITY. 
+                            We are A developer and UX/UI designer based in Mahidol University. 
                         </p>
                     </div>
                     <div className="flex flex-col gap-4">
@@ -21,7 +35,7 @@ export default function AboutUs() {
                     </div>
                     <p className="text-3xl">Supporting Us</p>
                     <div className="flex rounded-2xl border-2 h-[20vh] justify-center items-center">
-                        <p className="text-4xl">BLAZE PICTURE</p>
+                        <p className="text-4xl">Test</p>
                     </div>
                 </div>
             </div>

@@ -50,3 +50,22 @@ body {
   from, to { border-color: transparent; }
  50% { border-color: orange; }
 }
+
+/* In your styles/globals.css or similar */
+
+@keyframes revealText {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.char-animation {
+  opacity: 0; /* Initially hide each character */
+  animation: revealText 0.6s ease-out forwards;
+  display: inline-block; /* Crucial for transform to work on inline elements */
+}

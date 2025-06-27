@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { courses } from '../data/courses';
-import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Learning() {
     const [selectedYear, setSelectedYear] = useState('1');
@@ -175,28 +175,38 @@ export default function Learning() {
                     <div className='mt-10'>
                         <h1 className='text-4xl'>Course Subject</h1>
                     </div>
-                    <div className="relative mt-10 mr-20">
-                        <input
-                            type="text"
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            placeholder="Search courses by code, title, or description..."
-                            className=" px-4 py-2.5 pl-10 w-[30vw] rounded-lg border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400"
+                    <div className="relative mt-10"> {/* Removed mr-20 as it might conflict with cat positioning later */}
+                            {/* Cat Image - Positioned absolutely relative to this parent div */}
+                            <div className="absolute z-10" style={{ top: '-130px', left: '350px' }}> {/* Adjust top/left for precise placement */}
+                                <Image
+                                    src={'/cat.png'}
+                                    alt='cat-on-searchbar'
+                                    width={150} // Adjust size for optimal look
+                                    height={150} // Adjust size for optimal look
+                                />
+                            </div>
+
+                            <input
+                                type="text"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                placeholder="Search courses by code, title, or description..."
+                                className="px-4 py-2.5 pl-10 w-[30vw] rounded-lg border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400"
                             />
                             <svg
-                            className="absolute left-3 top-3 h-5 w-5 text-gray-400"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
+                                className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" // Centered vertically
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
                             >
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    strokeWidth={4}
+                                    strokeWidth={2} // Changed to 2 for better icon appearance
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                                 />
                             </svg>
-                    </div>
+                        </div>
                 </div>
 
             </div>

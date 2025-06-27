@@ -87,6 +87,15 @@ export default function More() {
             </div>
             <div className="flex flex-row pl-25 py-15">
                 <div className="relative">
+                    {/* Cat Image - Positioned absolutely relative to this parent div */}
+                    <div className="absolute z-10" style={{ top: '-130px', left: '350px' }}> {/* Adjust top/left for precise placement */}
+                        <Image
+                            src={'/cat.png'}
+                            alt='cat-on-searchbar'
+                            width={150} // Adjust size for optimal look
+                            height={150} // Adjust size for optimal look
+                        />
+                    </div>
                     <input 
                         type="text"
                         value={searchQuery}

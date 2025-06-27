@@ -11,6 +11,7 @@ import DayBanner from "./components/DayBanner";
 
 export default function Home() {
   const [allEvents, setAllEvents] = useState([]);
+  const [allFutureEventsProps, setAllFutureEventsProps] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [currentCalendarDate, setCurrentCalendarDate] = useState(new Date());
 
@@ -45,6 +46,13 @@ export default function Home() {
       return isFutureOrCurrent && isInCurrentMonthView;
     });
 
+    const allFutureEventsProps = eventsToFilter.filter(event => {
+        const eventEnd = moment(event.end).toDate();
+        return moment(eventEnd).isSameOrAfter(now, 'day');
+      });
+      allFutureEventsProps.sort((a, b) => a.start.getTime() - b.start.getTime());
+      setAllFutureEventsProps(allFutureEventsProps);
+
     // If no events are found for the current month view, then show ALL future/current events
     if (monthlyAndFutureEvents.length === 0) {
       const allFutureEvents = eventsToFilter.filter(event => {
@@ -59,6 +67,7 @@ export default function Home() {
       setFilteredEvents(monthlyAndFutureEvents);
     }
   };
+
 
   const handleCalendarNavigate = (newDate) => {
     setCurrentCalendarDate(newDate);
@@ -159,7 +168,11 @@ export default function Home() {
 
         {/* --- Calendar Section --- */}
         <div className="flex justify-between mt-15">
-          <EventTable events={filteredEvents} />
+          <EventTable 
+            events={filteredEvents} 
+            allFutureEvents={allFutureEventsProps}
+            maxEvents={4}
+            currentDate={currentCalendarDate}/>
           <HomeCalendar
             events={allEvents}
             currentDate={currentCalendarDate}
