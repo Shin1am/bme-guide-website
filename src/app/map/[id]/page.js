@@ -11,6 +11,10 @@ export default function BuildingPage() {
 
     const [zoomed, setZoomed] = useState(false);
 
+    const destination = `${building.latitude},${building.longitude}`;
+
+    const url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`;
+
     useEffect(() => {
         setTimeout(() => {
             setZoomed(true);
@@ -43,16 +47,7 @@ export default function BuildingPage() {
                 <p className="text-xl text-gray-600 mb-6">{building.description}</p>
 
                 <div className="flex flex-row justify-between items-center gap-10">
-                    <div className="relative w-[60%] h-[60vh] mb-4 overflow-hidden rounded-lg shadow-lg">
-                        <div 
-                            className="absolute w-full h-full transition-transform duration-4000 ease-in-out" 
-                            style={{transform: zoomed ? `scale(3.4) translate(${(50-building.x)}%, ${(50 - building.y)}%)` : 'scale(1) translate(0%, 0%)'}}>
-                            <Image src={"/mapsalaya.jpg"} alt="map-salaya" fill className="object-cover" />
-        
-                        </div>
-                        
-                    </div>
-                    <div className="flex flex-col justify-between items-center w-1/2">
+                    
                         <div className="w-full h-1/2 rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                             <Image src={building.images[0]} alt={building.name} width={1000} height={1000} className="object-cover" />
                         </div>
@@ -63,8 +58,16 @@ export default function BuildingPage() {
                                 <li key={room} className="text-gray-600">{room}</li>
                             ))}
                             </ul>
+                            <div className='mt-10 justify-end'>
+                                <a
+                                    href={url}
+                                    target="_blank"
+                                    className='text-blue-500 hover:underline'>
+                                        Get destination
+                                </a>
+                            </div>
                         </div>
-                    </div>
+
                 </div>
                 
             </div>
