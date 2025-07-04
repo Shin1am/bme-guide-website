@@ -12,7 +12,7 @@ export default function Navbar() {
     const currentPath = usePathname();
 
     return (
-        <nav className="font-sans flex justify-between items-center p-4 bg-[#F3F3E4] text-white sticky top-0 z-50 border-b-2 border-b-[#bfb9b0]">
+        <nav className="flex justify-between items-center p-4 bg-[#F3F3E4] text-white sticky top-0 z-50 border-b-2 border-b-[#bfb9b0]">
             <div className="flex items-center gap-4">
                 <Link href="/">
                     <Image src={'/logo.png'} alt={'logo'} width={75} height={75} />
@@ -60,6 +60,13 @@ export default function Navbar() {
             {isMenuOpen && (
                 <div className="absolute top-full left-0 right-0 bg-[#F3F3E4] text-gray-800 md:hidden">
                     <div className="flex flex-col p-4 space-y-4">
+                        <Link 
+                            href="/" 
+                            className="hover:text-blue-200 transition-colors"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            Home
+                        </Link>
                         <Link 
                             href="/learning" 
                             className="hover:text-blue-200 transition-colors"

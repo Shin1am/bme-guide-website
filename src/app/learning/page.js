@@ -42,7 +42,7 @@ export default function Learning() {
     };
 
     return (
-    <div className="flex flex-col min-h-screen p-8">
+    <div className="flex flex-col min-h-screen py-6 md:p-8">
         <div className="relative flex justify-between items-start w-full mb-10">
         {/* Centered "Learning Center" text */}
             <div className="flex flex-col items-center justify-center w-full font-medodica absolute left-1/2 transform -translate-x-1/2">
@@ -51,7 +51,7 @@ export default function Learning() {
             </div>
 
         {/* Top-right current filter + Grading */}
-        <div className="absolute right-0 top-0 mt-4 mr-8 z-10 flex flex-col items-end space-y-3">
+        <div className="sticky md:absolute right-0 top-0 mt-4 mr-8 z-10 flex flex-col items-end space-y-3">
             {/* Year & Term Display */}
             {(selectedYear !== 'all' && selectedTerm !== 'all') && (
                 <div className="text-left text-gray-600 text-md bg-white border rounded-xl px-5 py-2 shadow-md text-xl">
@@ -140,7 +140,7 @@ export default function Learning() {
 
         <div className="flex flex-col gap-4 mt-20">
             <div className="flex flex-row gap-4 justify-between items-start">
-                <h1 className="text-4xl mb-4 flex justify-start items-start mt-10 ml-20 ">Course Syllabus</h1>
+                <h1 className="text-2xl md:text-4xl mb-4 flex justify-start items-start mt-10 ml-20 ">Course Syllabus</h1>
             </div>
             
             {/* Filter Controls */}

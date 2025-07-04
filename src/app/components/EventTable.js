@@ -117,8 +117,8 @@ export default function EventTable({ events, allFutureEvents, maxEvents, current
 
   if (getFilteredEvents.length === 0 && selectedFilters.length === 0) {
     return (
-      <div className="bg-white shadow-lg rounded-lg p-6 w-full">
-        <h3 className="text-2xl font-bold mb-4 text-[#292625]">
+      <div className="flex flex-col md:block bg-white shadow-lg rounded-lg p-6 w-full">
+        <h3 className="text-xl text-center lg:text-left lg:text-2xl font-bold mb-4 text-[#292625]">
            {allEventsView ? 'Upcoming Events' : `Events for ${moment(currentDate).format('MMMM YYYY')}`}
         </h3>
         <button
