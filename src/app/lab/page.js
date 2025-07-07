@@ -1,7 +1,22 @@
 'use client'
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { lab } from "../data/lab";
+
+function useMediaQuery(query) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const media = window.matchMedia(query);
+    const listener = () => setMatches(media.matches);
+    listener();
+    media.addEventListener('change', listener);
+    return () => media.removeEventListener('change', listener);
+  }, [query]);
+
+  return matches;
+}
 
 
 export default function Lab() {
@@ -10,6 +25,9 @@ export default function Lab() {
     const [selectedType, setSelectedType] = useState(['All']); // Initialize with 'All' selected
     const [isMenuOpen, setIsMenuOpen] = useState(false); // State for menu visibility
 
+    const isMobile = useMediaQuery('(max-width: 768px)');
+
+    
     const AllAvailableType = [
         'All', // Add 'All' as the first option
         ...new Set(lab.flatMap(l => l.type))
@@ -72,16 +90,16 @@ export default function Lab() {
     // Define the threshold for when to collapse filters into a menu
     const FILTER_THRESHOLD = 7; // If there are 7 or more filters, collapse them all.
 
-    const shouldCollapseIntoMenu = AllAvailableType.length >= FILTER_THRESHOLD;
+    const shouldCollapseIntoMenu = isMobile || AllAvailableType.length >= FILTER_THRESHOLD;
 
 
     return (
         <div className="p-4 min-h-screen">
-            <div className="flex justify-center items-center mt-7">
-                <h1 className="text-6xl">Our LAB!</h1>
+            <div className="flex justify-center items-center mt-10">
+                <h1 className="text-5xl md:text-6xl">Our LAB!</h1>
             </div>
-            <div className="flex flex-col pl-25 py-15"> {/* Changed to flex-col for vertical stacking */}
-                <div className="flex flex-row items-center gap-4"> {/* Container for search and menu/filters */}
+            <div className="flex flex-col md:pl-25 py-15"> {/* Changed to flex-col for vertical stacking */}
+                <div className="flex flex-col md:flex-row items-center gap-4"> {/* Container for search and menu/filters */}
                     <div className="relative">
                          {/* Cat Image - Positioned absolutely relative to this parent div */}
                             <div className="absolute z-10" style={{ top: '-130px', left: '350px' }}> {/* Adjust top/left for precise placement */}
@@ -97,7 +115,7 @@ export default function Lab() {
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Search building by room"
-                            className="px-4 py-2.5 pl-10 w-[30vw] rounded-xl border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400"
+                            className="px-4 py-2.5 pl-10 md:w-[30vw] rounded-xl border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400"
                         />
                         <svg
                                 className="absolute left-3 top-3 h-5 w-5 text-gray-400"
@@ -116,7 +134,7 @@ export default function Lab() {
 
                     {!shouldCollapseIntoMenu ? (
                         // Display all filters directly if not collapsing
-                        <div className="flex flex-row gap-4"> {/* Ensure these still have horizontal layout */}
+                        <div className="flex flex-row gap-4 mt-10 md:mt-0"> {/* Ensure these still have horizontal layout */}
                             {AllAvailableType.map((type, index) => (
                                 <div key={index} className="flex justify-center items-center">
                                     <div
@@ -194,7 +212,7 @@ export default function Lab() {
                 )}
 
             </div>
-            <div className="grid grid-cols-3 gap-8 px-25">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:px-25">
                 {filteredLab.map((lab,index) => (
                     <div
                         key={index}

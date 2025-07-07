@@ -82,10 +82,10 @@ export default function More() {
 
     return (
         <div className="p-4 min-h-screen">
-            <div className="flex justify-start items-center mt-10 px-25">
-                <h1 className="text-6xl">Mahidol Club!</h1>
+            <div className="flex justify-center md:justify-start items-center mt-10 md:px-25">
+                <h1 className="text-5xl md:text-6xl">Mahidol Club!</h1>
             </div>
-            <div className="flex flex-row pl-25 py-15">
+            <div className="flex flex-col md:flex-row items-center md:items-start md:pl-25 py-15">
                 <div className="relative">
                     {/* Cat Image - Positioned absolutely relative to this parent div */}
                     <div className="absolute z-10" style={{ top: '-130px', left: '350px' }}> {/* Adjust top/left for precise placement */}
@@ -100,8 +100,8 @@ export default function More() {
                         type="text"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Search building by room"
-                        className="px-4 py-2.5 pl-10 w-[30vw] rounded-xl border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400"
+                        placeholder="Search Our Club"
+                        className="px-4 py-2.5 pl-10 md:w-[30vw] rounded-xl border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400"
                     />
                     <svg
                             className="absolute left-3 top-3 h-5 w-5 text-gray-400"
@@ -118,7 +118,7 @@ export default function More() {
                             </svg>
                 </div>
 
-                <div className="px-4 flex flex-row gap-4">
+                <div className="px-10 md:px-4 flex flex-col md:flex-row gap-4 mt-10 md:mt-0">
                     <h1 className="flex justify-center items-center text-2xl">Type: </h1>
                     {AllAvailableType.map((type, index) => (
                     <div key={index} className="flex justify-center items-center">
@@ -137,23 +137,23 @@ export default function More() {
             
                 
             </div>
-            <div className="grid grid-cols-2 gap-8 px-25">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-8 md:px-25">
                 {filteredClub.map((club,index) => (
                     <div
                         key={index}
                         className="block p-6 rounded-2xl border-2"
                         style={{backgroundColor: club.bgColor}}
                     >
-                        <div className="flex flex-row gap-10 justify-start items-center">
-                            <div className="flex w-1/2 h-[20vh] relative">
+                        <div className="flex flex-col md:flex-row gap-10 justify-start items-center">
+                            <div className="flex w-full h-[10vh] md:w-1/2 md:h-[20vh] relative">
                                 <Image src={club.picture} alt={`${club.title} picture`} fill className="object-cover rounded-xl border-2 shadow-lg hover:scale-103"/>
                             </div>
-                            <div className="flex flex-col border-2 w-full h-[20vh]">
-                                <div className="flex justify-start border-b-2">
-                                    <h3 className="text-3xl py-3 px-4">{club.title}</h3>
+                            <div className="flex flex-row md:flex-col border-2 w-full h-full md:h-[20vh]">
+                                <div className="flex justify-start md:border-b-2">
+                                    <h3 className="text-xl md:text-3xl py-3 px-4">{club.title}</h3>
                                 </div>
-                                <div className="mt-6 w-full">
-                                    <p className="text-base px-4">{club.description}</p>
+                                <div className="md:mt-6 w-full">
+                                    <p className="text-xs md:text-base py-2 md:py-0 px-4">{club.description}</p>
                                 </div>
                             </div>
                         </div>
@@ -162,9 +162,9 @@ export default function More() {
                 ))}
             </div>
 
-            <div className="mt-20 ml-30 flex justify-start items-center">
+            <div className="mt-20 md:ml-30 flex flex-col md:flex-row justify-center md:justify-start items-center">
                 <h1 className="text-6xl">STORE</h1>
-                <div className="flex flex-row gap-4 ml-10 capitalize">
+                <div className="flex flex-col md:flex-row gap-4 mt-15 md:mt-0 md:ml-10 capitalize">
                     {AllStoreType.map((type, index) => (
                     <div key={index} className="flex justify-center items-center">
                         <div 
@@ -181,7 +181,7 @@ export default function More() {
                 </div>
                 
             </div>
-            <div className="m-15">
+            <div className="md:m-15">
                 <StoreCarousel data={filteredStore} />
             </div>
 

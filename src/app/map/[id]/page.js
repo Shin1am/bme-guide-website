@@ -37,16 +37,18 @@ export default function BuildingPage() {
     return (
         <div className="min-h-screen p-8">
             <div className="max-w-7xl mx-auto">
-                <div className="mb-8">
-                    <Link href="/map" className="text-blue-500 hover:underline">
+                <div className="mb-12 md:mb-8">
+                    <Link href="/map" className="text-blue-500 hover:underline text-lg md:text-base">
                         ← Back to Map
                     </Link>
                 </div>
                 
-                <h1 className="text-4xl font-bold mb-4">{building.name}</h1>
-                <p className="text-xl text-gray-600 mb-6">{building.description}</p>
+                <div className='flex flex-col justify-center items-center mb-10 md:block'>
+                    <h1 className="text-4xl font-bold mb-4">{building.name}</h1>
+                    <p className="text-xl text-gray-600 mb-6">{building.description}</p>
+                </div>
 
-                <div className="flex flex-row justify-between items-center gap-10">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-10">
                     
                         <div className="w-full h-1/2 rounded-lg overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                             <Image src={building.images[0]} alt={building.name} width={1000} height={1000} className="object-cover" />

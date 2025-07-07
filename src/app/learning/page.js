@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { courses } from '../data/courses';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Learning() {
     const [selectedYear, setSelectedYear] = useState('1');
@@ -277,10 +278,10 @@ export default function Learning() {
                                                         
                                                             <div>
                                                                 <h4 className="text-sm md:text-lg font-medium text-gray-500 mb-2">Details</h4>
-                                                                <div className="space-y-1 text-xl">
+                                                                <div className="space-y-1.5 text-xl">
                                                                     <p className="text-gray-700 text-base md:text-xl">Year: {course.year} <span className='px-2'> Semester: {course.term}</span></p>
-                                                                    <p className='text-gray-700 text-base md:text-xl'>Room: {course.room} <span className='px-2'> Building: {course.building}</span></p>
-                                                                    <p className="text-gray-700 text-base md:text-xl">Grading System: {course.grade}</p>
+                                                                    <Link href={`/map/${course.building}`} className='text-blue-600/70 md:text-gray-700 text-base md:text-xl hover:underline'>Room: {course.room}</Link>
+                                                                    {/* <p className="text-gray-700 text-base md:text-xl">Grading System: {course.grade}</p> */}
                                                                 </div>
                                                             </div>
 
