@@ -52,10 +52,10 @@ export default function Learning() {
             </div>
 
         {/* Top-right current filter + Grading */}
-        <div className="flex flex-col items-center space-y-6 md:space-y-3 mt-10 md:mt-4 md:absolute md:right-0 md:top-0 md:mr-8 md:z-10 md:items-end">
+        <div className="flex flex-col items-center space-y-6 lg:space-y-3 mt-10 lg:mt-4 lg:absolute lg:right-0 lg:top-0 lg:mr-8 lg:z-10 lg:items-end">
             {/* Year & Term Display */}
             {(selectedYear !== 'all' && selectedTerm !== 'all') && (
-                <div className="text-left text-gray-600 text-md bg-white border rounded-xl px-5 py-2 shadow-md text-lg md:text-xl">
+                <div className="text-left text-gray-600 text-md bg-white border rounded-xl px-5 py-2 shadow-md text-lg lg:text-xl">
                     {selectedYear !== 'all' && `Year ${selectedYear}`}
                     {selectedYear !== 'all' && selectedTerm !== 'all' && ' • '}
                     {selectedTerm !== 'all' && `Semester ${selectedTerm}`}
@@ -74,7 +74,7 @@ export default function Learning() {
                             setShowGradeDropdown(!showGradeDropdown);
                         }
                     }}
-                    className="bg-white text-gray-600 px-6 py-2 rounded-xl border shadow-xl hover:scale-105 transition-all duration-300 text-base md:text-lg"
+                    className="bg-white text-gray-600 px-6 py-2 rounded-xl border shadow-xl hover:scale-105 transition-all duration-300 text-base lg:text-lg"
                 >
                     Grading System
                 </button>
@@ -107,7 +107,7 @@ export default function Learning() {
 
                 {/* Sliding Box: Grade Info */}
                 {(selectedGradeType === 'Normal' || selectedGradeType === 'OSU') && (
-                    <div className="absolute md:right-full top-14 mr-4 bg-white rounded-xl shadow-lg border p-4 w-60 z-40">
+                    <div className="absolute lg:right-full top-14 mr-4 bg-white rounded-xl shadow-lg border p-4 w-60 z-40">
                         {selectedGradeType === 'Normal' && (
                             <>
                                 <h4 className="mb-2 text-blue-500">Normal Grading</h4>
@@ -152,7 +152,7 @@ export default function Learning() {
                 <select 
                     value={selectedYear}
                     onChange={(e) => setSelectedYear(e.target.value)}
-                    className="appearance-none w-[33%] md:w-[9vw] text-xs md:text-base bg-white px-4 py-2.5 pr-10 rounded-3xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400 cursor-pointer bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:8px_10px] bg-[right_12px_center] bg-no-repeat"
+                    className="appearance-none w-[33%] md:w-[30%] lg:w-[9vw] text-xs md:text-base bg-white px-4 py-2.5 pr-10 rounded-3xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400 cursor-pointer bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:8px_10px] bg-[right_12px_center] bg-no-repeat"
                 >
                     <option value="all">Select Year</option>
                     <option value="1">Year 1</option>
@@ -164,7 +164,7 @@ export default function Learning() {
                 <select 
                     value={selectedTerm}
                     onChange={(e) => setSelectedTerm(e.target.value)}
-                    className="appearance-none w-[40%] md:w-[9vw] text-xs md:text-base bg-white px-4 py-2.5 pr-10 rounded-3xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400 cursor-pointer bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:8px_10px] bg-[right_12px_center] bg-no-repeat"
+                    className="appearance-none w-[40%] md:w-[30%] lg:w-[9vw] text-xs md:text-base bg-white px-4 py-2.5 pr-10 rounded-3xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400 cursor-pointer bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:8px_10px] bg-[right_12px_center] bg-no-repeat"
                 >
                     <option value="all">Select Semester</option>
                     <option value="1">Semester 1</option>
@@ -248,7 +248,7 @@ export default function Learning() {
                                         <span className="text-xs md:text-sm text-gray-500/80 md:ml-4">(Total {courses.length} courses, Normal: {courses.filter(course => course.grade === 'Normal').length}, OSU: {courses.filter(course => course.grade === 'OSU').length})</span>
                                     </h2>
                                 )}
-                                <div className="flex flex-col justify-center p-2 md:p-4 text-base md:text-2xl bg-white border rounded-xl h-auto">
+                                <div className="flex flex-col justify-center p-2 md:p-4 text-base md:text-xl lg:text-2xl bg-white border rounded-xl h-auto">
                                     {sortedCourses.map((course, index) => (
                                         <div key={index}>
                                             {/* Course Item */}
@@ -266,21 +266,21 @@ export default function Learning() {
                                             {/* Course Details Dropdown */}
                                             {selectedCourse && selectedCourse.code === course.code && (
                                                 <div className={`mx-3 mb-4 p-6 bg-gray-50 border-l-4 ${course.grade === 'OSU' ? 'border-green-500' : 'border-blue-400'} rounded-r-lg shadow-sm`}>
-                                                    <div className='flex flex-col md:flex-row gap-[10%]'>
-                                                        <div className="space-y-4 md:w-1/2">
-                                                                <h3 className="text-lg md:text-2xl font-semibold text-gray-800">{course.fullTitle ? course.fullTitle : course.title}</h3>
+                                                    <div className='flex flex-col lg:flex-row gap-[10%]'>
+                                                        <div className="space-y-4 lg:w-1/2">
+                                                                <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-800">{course.fullTitle ? course.fullTitle : course.title}</h3>
                                                            
                                                         
                                                             <div>
-                                                                <h4 className="text-sm md:text-lg font-medium text-gray-500 mb-2">Description</h4>
-                                                                <p className="text-gray-700 text-base md:text-xl">{course.description}</p>
+                                                                <h4 className="text-sm md:text-base lg:text-lg font-medium text-gray-500 mb-2">Description</h4>
+                                                                <p className="text-gray-700 text-base md:text-lg lg:text-xl">{course.description}</p>
                                                             </div>
                                                         
                                                             <div>
-                                                                <h4 className="text-sm md:text-lg font-medium text-gray-500 mb-2">Details</h4>
+                                                                <h4 className="text-sm md:text-base lg:text-lg font-medium text-gray-500 mb-2">Details</h4>
                                                                 <div className="space-y-1.5 text-xl">
-                                                                    <p className="text-gray-700 text-base md:text-xl">Year: {course.year} <span className='px-2'> Semester: {course.term}</span></p>
-                                                                    <Link href={`/map/${course.building}`} className='text-blue-600/70 md:text-gray-700 text-base md:text-xl hover:underline'>Room: {course.room}</Link>
+                                                                    <p className="text-gray-700 text-base md:text-lg lg:text-xl">Year: {course.year} <span className='px-2'> Semester: {course.term}</span></p>
+                                                                    <Link href={`/map/${course.building}`} className='text-blue-600/70 lg:text-gray-700 text-base lg:text-xl hover:underline'>Room: {course.room}</Link>
                                                                     {/* <p className="text-gray-700 text-base md:text-xl">Grading System: {course.grade}</p> */}
                                                                 </div>
                                                             </div>
@@ -290,7 +290,7 @@ export default function Learning() {
 
                                                                 <button 
                                                                     onClick={() => setShowSyllabus(!showSyllabus)} 
-                                                                    className='py-2 text-gray-500/80 rounded-lg hover:text-gray-600 transition-all duration-300 text-base md:text-lg'
+                                                                    className='py-2 text-gray-500/80 rounded-lg hover:text-gray-600 transition-all duration-300 text-base lg:text-lg'
                                                                 >
                                                                     {showSyllabus ? 'Hide Tips & Tricks' : 'Show Tips & Tricks'}
                                                                 </button>
@@ -304,24 +304,24 @@ export default function Learning() {
                                                                 </div>
                                                             )}
                                                         </div>
-                                                        <div className='flex flex-col mt-5 md:mt-0'>
-                                                            <p className='text-gray-800 text-xl md:text-2xl mt-1 underline md:no-underline'>Course Meterials</p>
+                                                        <div className='flex flex-col mt-5 lg:mt-0'>
+                                                            <p className='text-gray-800 text-xl lg:text-2xl mt-1 underline md:no-underline'>Course Meterials</p>
                                                             {course.links?.syllabus && (
                                                                 <a className='px-10 pt-5 pb-3 hover:underline' href={course.links.syllabus} target='_blank' rel='noopener noreferrer'>
                                                                     <i className="fa-solid fa-folder-open text-amber-800/50"></i>
-                                                                    <span className='px-5 text-base md:text-xl'>Syllabus</span>
+                                                                    <span className='px-5 text-base md:text-lg lg:text-xl'>Syllabus</span>
                                                                 </a>
                                                             )}
                                                             {course.links?.material && (
                                                                 <a className='px-10 pt-5 pb-3 hover:underline' href={course.links.material} target='_blank' rel='noopener noreferrer'>
                                                                     <i className="fa-solid fa-folder-open text-amber-800/50"></i>
-                                                                    <span className='px-5 text-base md:text-xl'>Material</span>
+                                                                    <span className='px-5 text-base md:text-lg lg:text-xl'>Material</span>
                                                                 </a>
                                                             )}
                                                             {course.links?.work && (
                                                                 <a className='px-10 pt-5 pb-3 hover:underline' href={course.links.work} target='_blank' rel='noopener noreferrer'>
                                                                     <i className="fa-solid fa-folder-open text-amber-800/50"></i>
-                                                                    <span className='px-5 text-base md:text-xl'>Work</span>
+                                                                    <span className='px-5 text-base md:text-lg lg:text-xl'>Work</span>
                                                                 </a>
                                                             )}
                                                         </div>

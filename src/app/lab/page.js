@@ -98,8 +98,8 @@ export default function Lab() {
             <div className="flex justify-center items-center mt-10">
                 <h1 className="text-5xl md:text-6xl">Our LAB!</h1>
             </div>
-            <div className="flex flex-col md:pl-25 py-15"> {/* Changed to flex-col for vertical stacking */}
-                <div className="flex flex-col md:flex-row items-center gap-4"> {/* Container for search and menu/filters */}
+            <div className="flex flex-col lg:pl-25 py-15"> {/* Changed to flex-col for vertical stacking */}
+                <div className="flex flex-col lg:flex-row items-center gap-8"> {/* Container for search and menu/filters */}
                     <div className="relative">
                          {/* Cat Image - Positioned absolutely relative to this parent div */}
                             <div className="absolute z-10" style={{ top: '-130px', left: '350px' }}> {/* Adjust top/left for precise placement */}
@@ -115,7 +115,7 @@ export default function Lab() {
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Search building by room"
-                            className="px-4 py-2.5 pl-10 md:w-[30vw] rounded-xl border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400"
+                            className="px-4 py-2.5 pl-10 md:w-[50vw] lg:w-[30vw] rounded-xl border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400"
                         />
                         <svg
                                 className="absolute left-3 top-3 h-5 w-5 text-gray-400"
@@ -134,7 +134,7 @@ export default function Lab() {
 
                     {!shouldCollapseIntoMenu ? (
                         // Display all filters directly if not collapsing
-                        <div className="flex flex-row gap-4 mt-10 md:mt-0"> {/* Ensure these still have horizontal layout */}
+                        <div className="flex flex-row gap-4 mt-10 lg:mt-0"> {/* Ensure these still have horizontal layout */}
                             {AllAvailableType.map((type, index) => (
                                 <div key={index} className="flex justify-center items-center">
                                     <div
@@ -151,7 +151,7 @@ export default function Lab() {
                         </div>
                     ) : (
                         // Display only the menu icon with conditional chevron if collapsing
-                        <div className="flex justify-center items-center gap-2"> {/* Added gap for chevron */}
+                        <div className="flex justify-center items-center gap-1"> {/* Added gap for chevron */}
                             <div
                                 className="flex px-4 py-1 text-xl rounded-4xl shadow-2xl transition-all duration-300 ease-in-out
                                     border-gray-300  text-gray-800 cursor-pointer hover:scale-105 active:scale-98 active:shadow-md"
@@ -194,7 +194,7 @@ export default function Lab() {
 
                 {/* This is the container for ALL filters, displayed only when in "collapsed" mode and menu is open */}
                 {shouldCollapseIntoMenu && isMenuOpen && (
-                    <div className="mt-4 p-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 ">
+                    <div className="mt-4 p-2 md:px-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 ">
                         {AllAvailableType.map((type, index) => (
                             <div key={index} className="flex justify-center items-center">
                                 <div
@@ -212,7 +212,7 @@ export default function Lab() {
                 )}
 
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:px-25">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:px-10 lg:px-25">
                 {filteredLab.map((lab,index) => (
                     <div
                         key={index}

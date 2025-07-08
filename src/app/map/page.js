@@ -121,8 +121,8 @@ export default function Map() {
         
                 
             </div>       
-            <div className="flex flex-col md:flex-row w-full md:h-[80vh] mt-5">
-                <div className="relative w-full h-full md:w-1/2 md:h-auto justify-center items-center md:mx-10 my-5">
+            <div className="flex flex-col lg:flex-row w-full lg:h-[80vh] mt-5">
+                <div className="relative w-full h-full lg:w-1/2 md:h-auto justify-center items-center lg:mx-10 my-5">
                     <Image 
                         src="/mapsalaya.jpg" 
                         alt="map-salaya" 

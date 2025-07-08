@@ -64,7 +64,7 @@ export default function HomeCalendar({ events, currentDate, onNavigate }) { // R
     );
 
     return (
-        <div className="rounded-lg px-2 py-10 md:p-6 w-full md:w-[60%]" > {/* Original width, no changes */}
+        <div className="rounded-lg px-2 py-10 md:p-6 w-full lg:w-[60%]" > {/* Original width, no changes */}
             <div style={{ height: 450 }}> {/* Original height, no changes */}
               <div className="flex flex-row justify-between md:mx-6 md:mt-3 md:mb-6">
                   <h1 className="text-[20px] md:text-[27px] text-[#4d639b]" onClick={onTodayClick}>MU Schedule</h1>
