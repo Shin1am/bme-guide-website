@@ -67,12 +67,12 @@ export default function HomeCalendar({ events, currentDate, onNavigate }) { // R
         <div className="rounded-lg px-2 py-10 md:p-6 w-full lg:w-[60%]" > {/* Original width, no changes */}
             <div style={{ height: 450 }}> {/* Original height, no changes */}
               <div className="flex flex-row justify-between md:mx-6 md:mt-3 md:mb-6">
-                  <h1 className="text-[20px] md:text-[27px] text-[#4d639b]" onClick={onTodayClick}>MU Schedule</h1>
+                  <h1 className="text-[20px] md:text-[27px] lg:text-[24px] xl:text-[27px] text-[#4d639b]" onClick={onTodayClick}>MU Schedule</h1>
                   <div className="flex gap-3 justify-center items-center">
                     <button className="text-[#5b70a5] hover:scale-120 transition-all duration-200" onClick={onPrevClick}>
                       <i className="fa-solid fa-chevron-left fa-lg"></i>
                     </button>
-                    <h2 className="text-2xl md:text-4xl text-[#5b70a5] font-medodica">{moment(currentDate).format("MMM YYYY")}</h2>
+                    <h2 className="text-2xl md:text-4xl lg:text-3xl xl:text-4xl text-[#5b70a5] font-medodica">{moment(currentDate).format("MMM YYYY")}</h2>
                     <button className="text-[#5b70a5] hover:scale-120 transition-all duration-200" onClick={onNextClick}>
                       <i className="fa-solid fa-chevron-right fa-lg"></i>
                     </button>
