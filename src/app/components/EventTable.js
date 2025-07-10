@@ -117,8 +117,8 @@ export default function EventTable({ events, allFutureEvents, maxEvents, current
 
   if (getFilteredEvents.length === 0 && selectedFilters.length === 0) {
     return (
-      <div className="bg-white shadow-lg rounded-lg p-6 w-full">
-        <h3 className="text-2xl font-bold mb-4 text-[#292625]">
+      <div className="flex flex-col lg:block bg-white shadow-lg rounded-lg p-6 w-full">
+        <h3 className="text-xl text-center lg:text-left lg:text-2xl font-bold mb-4 text-[#292625]">
            {allEventsView ? 'Upcoming Events' : `Events for ${moment(currentDate).format('MMMM YYYY')}`}
         </h3>
         <button
@@ -131,7 +131,7 @@ export default function EventTable({ events, allFutureEvents, maxEvents, current
           >
             {allEventsView ? 'Show Month View' : 'All Events View'}
           </button>
-        <div className='flex justify-center items-center'>
+        <div className='flex justify-center items-center mt-5'>
             <p className="text-gray-600">No upcoming events to display.</p>
         </div>
       </div>
@@ -139,13 +139,13 @@ export default function EventTable({ events, allFutureEvents, maxEvents, current
   }
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-6 max-h-[80vh] w-full overflow-y-auto">
+    <div className="bg-white shadow-lg rounded-lg p-4 sm:p-6 max-h-[80vh] w-full overflow-y-auto">
       {/* Header */}
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="text-2xl font-bold text-[#292625]">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-2">
+        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#292625]">
           {allEventsView ? 'All Upcoming Events' : `Events for ${moment(currentDate).format('MMMM YYYY')}`}
         </h3>
-        <span className="text-sm text-gray-500">
+        <span className="text-xs sm:text-sm text-gray-500">
           Showing {displayedEvents.length} of {getFilteredEvents.length} events
         </span>
       </div>
@@ -153,31 +153,27 @@ export default function EventTable({ events, allFutureEvents, maxEvents, current
       {/* Filter Controls */}
       <div className="mb-6">
         {/* All Events View Toggle */}
-        <div className="flex items-center gap-4 mb-4">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-4">
           <button
             onClick={() => setAllEventsView(!allEventsView)}
-            className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-              allEventsView
-                ? 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-            }`}
+            className="px-3 py-1 sm:px-4 sm:py-2 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 text-xs sm:text-sm"
           >
             {allEventsView ? 'Show Month View' : 'All Events View'}
           </button>
           {!allEventsView && currentDate && (
-            <span className="text-sm text-gray-600">
+            <span className="text-xs sm:text-sm text-gray-600">
               Viewing events for {moment(currentDate).format('MMMM YYYY')}
             </span>
           )}
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-3">
-          <span className="text-sm font-medium text-gray-700 self-center mr-2">Filter by type:</span>
+        <div className="flex flex-wrap gap-1 sm:gap-2 mb-3">
+          <span className="text-xs sm:text-sm font-medium text-gray-700 self-center mr-2">Filter by type:</span>
           {availableTypes.map(type => (
             <button
               key={type}
               onClick={() => toggleFilter(type)}
-              className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+              className={`px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-medium transition-colors ${
                 selectedFilters.includes(type)
                   ? 'bg-blue-100 text-blue-800 border-2 border-blue-300'
                   : 'bg-gray-100 text-gray-700 border-2 border-transparent hover:bg-gray-200'
@@ -189,13 +185,12 @@ export default function EventTable({ events, allFutureEvents, maxEvents, current
           {selectedFilters.length > 0 && (
             <button
               onClick={clearFilters}
-              className="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 hover:bg-red-200 transition-colors"
+              className="px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-medium bg-red-100 text-red-800 hover:bg-red-200 transition-colors"
             >
               Clear All
             </button>
           )}
         </div>
-        
         {/* Show All Toggle */}
         <div className="flex items-center gap-2">
           <input
@@ -205,7 +200,7 @@ export default function EventTable({ events, allFutureEvents, maxEvents, current
             onChange={(e) => setShowAll(e.target.checked)}
             className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
           />
-          <label htmlFor="showAll" className="text-sm text-gray-700">
+          <label htmlFor="showAll" className="text-xs sm:text-sm text-gray-700">
             Show all events
           </label>
         </div>
@@ -217,20 +212,20 @@ export default function EventTable({ events, allFutureEvents, maxEvents, current
           <p className="text-gray-500">No events match the selected filters.</p>
           <button
             onClick={clearFilters}
-            className="mt-2 text-blue-600 hover:text-blue-800 text-sm underline"
+            className="mt-2 text-blue-600 hover:text-blue-800 text-xs sm:text-sm underline"
           >
             Clear filters to see all events
           </button>
         </div>
       ) : (
-        <>
-          <table className="min-w-full divide-y divide-gray-200">
+        <div className="overflow-x-auto">
+          <table className="min-w-[600px] w-full divide-y divide-gray-200 text-xs sm:text-sm md:text-base">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">Type</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">Title</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">Date</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-900 uppercase tracking-wider">Description</th>
+                <th className="px-2 sm:px-4 py-2 text-left text-[10px] sm:text-xs font-medium text-gray-900 uppercase tracking-wider whitespace-nowrap">Type</th>
+                <th className="px-2 sm:px-4 py-2 text-left text-[10px] sm:text-xs font-medium text-gray-900 uppercase tracking-wider whitespace-nowrap">Title</th>
+                <th className="px-2 sm:px-4 py-2 text-left text-[10px] sm:text-xs font-medium text-gray-900 uppercase tracking-wider whitespace-nowrap">Date</th>
+                <th className="px-2 sm:px-4 py-2 text-left text-[10px] sm:text-xs font-medium text-gray-900 uppercase tracking-wider whitespace-nowrap">Description</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
@@ -238,26 +233,26 @@ export default function EventTable({ events, allFutureEvents, maxEvents, current
                 const eventType = getEventType(event);
                 return (
                   <tr key={event.id} style={{backgroundColor: `${event.color}1A`}}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                    <td className="px-2 sm:px-4 py-2 whitespace-nowrap text-xs sm:text-sm">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-medium bg-gray-100 text-gray-800">
                         {EVENT_TYPES[eventType]?.icon} {EVENT_TYPES[eventType]?.label || eventType}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-md font-medium text-gray-800">
+                    <td className="px-2 sm:px-4 py-2 whitespace-normal break-words text-xs sm:text-sm font-medium text-gray-800 max-w-[8rem] sm:max-w-xs">
                       {event.title}
                       {index === 0 && (
-                        <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-medium bg-green-100 text-green-800">
                           Next
                         </span>
                       )}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-lg text-gray-800">
+                    <td className="px-2 sm:px-4 py-2 whitespace-nowrap text-xs sm:text-sm text-gray-800">
                       {event.end && moment(event.start).startOf('day').isBefore(moment(event.end).startOf('day'))
                         ? `${moment(event.start).format('D MMM')} - ${moment(event.end).format('D MMM ')}`
                         : moment(event.start).format('D MMM')
                       }
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-800 max-w-xs overflow-hidden text-ellipsis">
+                    <td className="px-2 sm:px-4 py-2 text-xs sm:text-sm text-gray-800 max-w-[8rem] sm:max-w-xs whitespace-normal break-words">
                       {event.description || 'No description available.'}
                     </td>
                   </tr>
@@ -265,16 +260,16 @@ export default function EventTable({ events, allFutureEvents, maxEvents, current
               })}
             </tbody>
           </table>
+        </div>
+      )}
 
-          {/* Show remaining events count */}
-          {remainingEventsCount > 0 && !showAll && (
-            <div className="flex justify-center items-center mt-4">
-              <p className="text-base text-gray-700">
-                + {remainingEventsCount} more events
-              </p>
-            </div>
-          )}
-        </>
+      {/* Show remaining events count */}
+      {remainingEventsCount > 0 && !showAll && (
+        <div className="flex justify-center items-center mt-4">
+          <p className="text-xs sm:text-base text-gray-700">
+            + {remainingEventsCount} more events
+          </p>
+        </div>
       )}
     </div>
   );

@@ -12,14 +12,14 @@ export default function Navbar() {
     const currentPath = usePathname();
 
     return (
-        <nav className="font-sans flex justify-between items-center p-4 bg-[#F3F3E4] text-white sticky top-0 z-50 border-b-2 border-b-[#bfb9b0]">
+        <nav className="flex justify-between items-center p-4 bg-[#F3F3E4] text-white sticky top-0 z-50 border-b-2 border-b-[#bfb9b0]">
             <div className="flex items-center gap-4">
                 <Link href="/">
                     <Image src={'/logo.png'} alt={'logo'} width={75} height={75} />
                 </Link>
             </div>
 
-            <div className="hidden md:flex items-center gap-6 text-lg text-gray-400">
+            <div className="hidden lg:flex items-center gap-6 lg:text-lg text-gray-400">
                 <Link href="/" className={`${currentPath === '/' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Home</Link>
                 <Link href="/learning" className={`${currentPath === '/learning' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Learning</Link>
                 <Link href="/map" className={`${currentPath === '/map' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Map</Link>
@@ -29,7 +29,7 @@ export default function Navbar() {
             </div>
 
             <button 
-                className="text-gray-800 md:hidden p-2"
+                className="text-gray-800 lg:hidden p-2"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
             >
@@ -58,8 +58,15 @@ export default function Navbar() {
             </button>
 
             {isMenuOpen && (
-                <div className="absolute top-full left-0 right-0 bg-[#F3F3E4] text-gray-800 md:hidden">
+                <div className="absolute top-full left-0 right-0 bg-[#F3F3E4] text-gray-800 lg:hidden">
                     <div className="flex flex-col p-4 space-y-4">
+                        <Link 
+                            href="/" 
+                            className="hover:text-blue-200 transition-colors"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            Home
+                        </Link>
                         <Link 
                             href="/learning" 
                             className="hover:text-blue-200 transition-colors"

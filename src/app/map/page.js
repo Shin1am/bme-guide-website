@@ -85,9 +85,9 @@ export default function Map() {
                     ))}
                 </div>
             </div> */}
-            <div className="flex flex-row justify-start mt-5">
-                <h1 className="text-5xl p-8 "> Campus Map</h1>
-                <div className="relative mt-8 mr-20 ">
+            <div className="flex flex-col md:flex-row justify-start mt-5">
+                <h1 className="text-5xl p-2 md:p-8 "> Campus Map</h1>
+                <div className="relative mt-8 md:mr-20 ">
                     {/* Cat Image - Positioned absolutely relative to this parent div */}
                     <div className="absolute z-10" style={{ top: '-130px', left: '350px' }}> {/* Adjust top/left for precise placement */}
                         <Image
@@ -102,10 +102,10 @@ export default function Map() {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search building by room"
-                        className="px-4 py-2.5 pl-10 w-[30vw] rounded-xl border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400"
+                        className="px-4 py-2 md:py-2.5 pl-10 w-full md:w-[30vw] rounded-lg border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400 placeholder:text-[15px] md:placeholder:text-base"
                     />
                     <svg
-                            className="absolute left-3 top-3 h-5 w-5 text-gray-400"
+                            className="absolute left-3 top-3 h-5 w-5 scale-80 md:scale-100 text-gray-400"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -121,8 +121,8 @@ export default function Map() {
         
                 
             </div>       
-            <div className="flex flex-row w-full h-[80vh] mt-5">
-                <div className="relative w-1/2 h-auto justify-center items-center mx-10 my-5">
+            <div className="flex flex-col lg:flex-row w-full lg:h-[80vh] mt-5">
+                <div className="relative w-full h-full lg:w-1/2 md:h-auto justify-center items-center lg:mx-10 my-5">
                     <Image 
                         src="/mapsalaya.jpg" 
                         alt="map-salaya" 

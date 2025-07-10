@@ -78,36 +78,48 @@ export default function Home() {
     <div className="font-pixelify min-h-screen">
       <main className="w-full p-8 sm:p-20">
         {/* Hero Section*/}
-        <div className="flex flex-col justify-center w-[80vw] h-[40vh] md:h-[40vh] lg:w-full lg:h-[60vh] border-b-2 border-b-[#bfb9b0]">
-          <div className="flex flex-col items-start justify-center gap-6">
-            <h1 className="text-3xl w-1/2 md:text-5xl lg:text-6xl font-bold px-8 transition-all duration-300">
-              <span className="text-[#b61c1c] inline-block overflow-hidden whitespace-nowrap border-r-4 border-r-black animate-[typing_3.5s_steps(40,end),blink-caret_.75s_step-end_infinite]">
-                Welcome to BME Learning Platform!
+        <div className="flex flex-col justify-center min-h-[40vh] lg:min-h-[60vh] border-b-2 border-b-[#bfb9b0]">
+          {/* This div will now grow to fill available space */}
+          <div className="flex flex-col items-center md:items-start justify-center gap-6">
+            <h1 className="text-[clamp(1.875rem,4.2vw,3.75rem)] w-full md:w-3/4 lg:w-1/2 font-bold px-8 transition-all duration-300">
+              <span className="text-[#b61c1c] hidden md:inline-block overflow-hidden md:whitespace-nowrap border-r-2 md:border-r-4 border-r-black animate-[typing_3.5s_steps(40,end),blink-caret_.75s_step-end_infinite]">
+                Welcome to <br className="md:hidden"/>BME Learning <br className='md:hidden' />Platform!
               </span>
             </h1>
-            <h2 className="text-[#292625] text-xl md:text-3xl lg:text-4xl font-bold px-8 transition-all duration-300">
+            <h1 className="md:hidden text-[1.5rem] text-[#b61c1c] w-full text-center font-bold px-8 transition-all duration-300">
+              Welcome to BME Learning Platform!
+            </h1>
+            <h2 className="text-[#292625] text-xl text-center md:text-left md:text-[1.65rem] lg:text-4xl font-bold px-8 transition-all duration-300">
               Your journey to becoming a better Biomedical Engineer starts here!
             </h2>
           </div>
 
-          <div className='px-8 flex flex-row gap-6 mt-25 text-center items-center justify-center'>
-            <Link className='text-base bg-white rounded-3xl shadow-lg md:text-xl lg:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/learning">Learning</Link>
-            <Link className='text-base bg-white rounded-3xl shadow-lg md:text-xl lg:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/map">Map</Link>
-            <Link className='text-base bg-white rounded-3xl shadow-lg md:text-xl lg:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link>
-            <Link className='text-base bg-white rounded-3xl shadow-lg md:text-xl lg:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/more">More</Link>
-            <Link className='text-base bg-white rounded-3xl shadow-lg md:text-xl lg:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/about-us">About Us</Link>
+          <div className='px-8 hidden lg:flex flex-row gap-6 mt-25 text-center items-center justify-center'>
+            <Link className=' bg-white rounded-3xl shadow-lg lg:text-xl xl:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/learning">Learning</Link>
+            <Link className=' bg-white rounded-3xl shadow-lg lg:text-xl xl:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/map">Map</Link>
+            <Link className=' bg-white rounded-3xl shadow-lg lg:text-xl xl:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link>
+            <Link className=' bg-white rounded-3xl shadow-lg lg:text-xl xl:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/more">More</Link>
+            <Link className=' bg-white rounded-3xl shadow-lg lg:text-xl xl:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/about-us">About Us</Link>
+          </div>
+
+          <div className='px-8 grid grid-cols-2 grid-rows-3 lg:hidden gap-6 mt-15 mb-10 text-center items-center justify-center'>
+            <Link className='text-base md:text-xl bg-white rounded-3xl shadow-lg h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/learning">Learning</Link>
+            <Link className='text-base md:text-xl bg-white rounded-3xl shadow-lg h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/map">Map</Link>
+            <Link className='text-base md:text-xl bg-white rounded-3xl shadow-lg h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link>
+            <Link className='text-base md:text-xl bg-white rounded-3xl shadow-lg h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/more">More</Link>
+            <Link className='text-base md:text-xl bg-white rounded-3xl shadow-lg h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/about-us">About Us</Link>
           </div>
         </div>
 
         {/*roadmap journey*/}
         <div className="p-8">
           <div className="flex flex-col justify-center items-center p-10">
-            <p className="text-4xl lg:text-[80px]">Roadmap</p>
-            <p className="text-3xl lg:text-[56px] lg:-mt-5">Journey</p>
+            <p className="text-5xl md:text-6xl xl:text-[80px]">Roadmap</p>
+            <p className="text-4xl md:text-5xl xl:text-[56px] lg:-mt-2">Journey</p>
           </div>
-          <div className="p-20">
-            <div className="flex flex-col lg:flex-row">
-              <div className="flex flex-col items-center hover:scale-110 transition-all duration-300">
+          <div className="-mt-20 md:mt-0 xl:p-20">
+            <div className="flex flex-col scale-85 md:scale-90 lg:scale-80 xl:scale-100 lg:flex-row lg:justify-center lg:gap-6 xl:gap-0">
+              <div className="flex flex-col items-center scale-75 md:scale-100 hover:scale-110 transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" fill="#4D639B" viewBox="0 0 120 100" stroke="none">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M100 30A45 45 0 1 0 100 70 1 1 0 1 1 100 30z"/>
                   <g transform="translate(44.64 30) scale(0.07)">
@@ -117,11 +129,14 @@ export default function Home() {
                   <text x={90.5} y={55} fontSize={18} fill="#ffffff">01</text>
                 </svg>
                 <p className="text-2xl text-center w-auto">Submit English Test</p>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55 rotate-90 scale-80 lg:hidden" viewBox="0 0 100 100" stroke="#B6AFA6" strokeWidth={9}>
+                  <line x1={20} y1={50} x2={80} y2={50} />
+                </svg>
               </div>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" viewBox="0 0 100 100" stroke="#B6AFA6" strokeWidth={9}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55 hidden lg:flex" viewBox="0 0 100 100" stroke="#B6AFA6" strokeWidth={9}>
                 <line x1={20} y1={50} x2={80} y2={50} />
               </svg>
-              <div className="flex flex-col items-center hover:scale-110 transition-all duration-300">
+              <div className="flex flex-col items-center scale-75 -mt-30 md:mt-0 md:scale-100 hover:scale-110 transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" fill="#4D639B" viewBox="0 0 120 100" stroke="none">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M100 30A45 45 0 1 0 100 70 1 1 0 1 1 100 30z"/>
                   <g transform="translate(44.64 30) scale(0.07)">
@@ -131,11 +146,14 @@ export default function Home() {
                   <text x={90.5} y={55} fontSize={18} fill="#ffffff">02</text>
                 </svg>
                 <p className="text-2xl text-center w-auto">Submit English Test</p>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55 rotate-90 scale-80 lg:hidden" viewBox="0 0 100 100" stroke="#B6AFA6" strokeWidth={9}>
+                  <line x1={20} y1={50} x2={80} y2={50} />
+                </svg>
               </div>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" viewBox="0 0 100 100" stroke="#B6AFA6" strokeWidth={9}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55 hidden lg:flex" viewBox="0 0 100 100" stroke="#B6AFA6" strokeWidth={9}>
                 <line x1={20} y1={50} x2={80} y2={50} />
               </svg>
-              <div className="flex flex-col items-center hover:scale-110 transition-all duration-300">
+              <div className="flex flex-col items-center scale-75 -mt-30 md:mt-0 md:scale-100 hover:scale-110 transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" fill="#4D639B" viewBox="0 0 120 100" stroke="none">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M100 30A45 45 0 1 0 100 70 1 1 0 1 1 100 30z"/>
                   <g transform="translate(44.64 30) scale(0.07)">
@@ -145,11 +163,14 @@ export default function Home() {
                   <text x={90.5} y={55} fontSize={18} fill="#ffffff">03</text>
                 </svg>
                 <p className="text-2xl text-center w-auto">Submit English Test</p>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55 rotate-90 scale-80 lg:hidden" viewBox="0 0 100 100" stroke="#B6AFA6" strokeWidth={9}>
+                  <line x1={20} y1={50} x2={80} y2={50} />
+                </svg>
               </div>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" viewBox="0 0 100 100" stroke="#B6AFA6" strokeWidth={9}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55 hidden lg:flex" viewBox="0 0 100 100" stroke="#B6AFA6" strokeWidth={9}>
                 <line x1={20} y1={50} x2={80} y2={50} />
               </svg>
-              <div className="flex flex-col items-center hover:scale-110 transition-all duration-300">
+              <div className="flex flex-col items-center scale-75 -mt-15 md:mt-0 md:scale-100 hover:scale-110 transition-all duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-55 w-55" fill="#4D639B" viewBox="0 0 120 100" stroke="none">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M100 30A45 45 0 1 0 100 70 1 1 0 1 1 100 30z"/>
                   <g transform="translate(44.64 30) scale(0.07)">
@@ -167,7 +188,7 @@ export default function Home() {
         </div>
 
         {/* --- Calendar Section --- */}
-        <div className="flex justify-between mt-15">
+        <div className="flex flex-col lg:flex-row justify-between ">
           <EventTable 
             events={filteredEvents} 
             allFutureEvents={allFutureEventsProps}
@@ -184,10 +205,10 @@ export default function Home() {
 
 
         {/*Mahidol Website, contact list - NO STYLE CHANGES*/}
-        <div className = "flex flex-row gap-6 w-full h-auto p-6 mt-15">
+        <div className = "flex flex-col lg:flex-row gap-6 w-full h-auto p-2 md:p-6 mt-15">
           <div className="flex flex-col gap-8 w-full bg-white p-8 rounded-3xl shadow-2xl justify-center items-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Mahidol Website, contact list</h2>
-            <div className="flex flex-row gap-6 items-start">
+            <h2 className="text-center md:text-left lg:text-center text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-4">Mahidol Website, contact list</h2>
+            <div className="flex flex-col md:flex-row gap-6 items-start ">
               <div className="flex flex-col gap-6 items-start">
                 <a href="https://mahidol.ac.th/th/" target="_blank" rel="noopener noreferrer"
                   className="group flex items-center gap-3 rounded-full px-4 py-2 hover:shadow-lg hover:scale-105 transition-all duration-300">
@@ -249,8 +270,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-8 w-full rounded-3xl bg-white shadow-2xl justify-center items-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Engineering Website, contact list</h2>
+          <div className="flex flex-col gap-8 w-full rounded-3xl bg-white shadow-2xl p-4 md:p-6 lg:p-4 xl:p-0 justify-center items-center">
+            <h2 className="text-center md:text-left lg:text-center text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 p-2 md:p-0 md:mb-4 lg:mb-8">Engineering Website, contact list</h2>
             <div className="flex flex-col gap-6 items-start">
               <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer"
                 className="group flex items-center gap-3 rounded-full px-4 py-2 hover:shadow-lg hover:scale-105 transition-all duration-300">
