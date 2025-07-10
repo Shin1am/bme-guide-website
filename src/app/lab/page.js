@@ -25,7 +25,7 @@ export default function Lab() {
     const [selectedType, setSelectedType] = useState(['All']); // Initialize with 'All' selected
     const [isMenuOpen, setIsMenuOpen] = useState(false); // State for menu visibility
 
-    const isMobile = useMediaQuery('(max-width: 768px)');
+    const isMobile = useMediaQuery('(max-width: 1280px)');
 
     
     const AllAvailableType = [
@@ -99,7 +99,7 @@ export default function Lab() {
                 <h1 className="text-5xl md:text-6xl">Our LAB!</h1>
             </div>
             <div className="flex flex-col lg:pl-25 py-15"> {/* Changed to flex-col for vertical stacking */}
-                <div className="flex flex-col lg:flex-row items-center gap-8"> {/* Container for search and menu/filters */}
+                <div className="flex flex-col lg:flex-row items-center lg:justify-center xl:justify-start gap-8"> {/* Container for search and menu/filters */}
                     <div className="relative">
                          {/* Cat Image - Positioned absolutely relative to this parent div */}
                             <div className="absolute z-10" style={{ top: '-130px', left: '350px' }}> {/* Adjust top/left for precise placement */}
@@ -115,7 +115,7 @@ export default function Lab() {
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Search building by room"
-                            className="px-4 py-2.5 pl-10 md:w-[50vw] lg:w-[30vw] rounded-xl border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400"
+                            className="px-4 py-2.5 pl-10 md:w-[50vw] lg:w-[50vw] xl:w-[30vw] rounded-xl border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400"
                         />
                         <svg
                                 className="absolute left-3 top-3 h-5 w-5 text-gray-400"
@@ -212,7 +212,7 @@ export default function Lab() {
                 )}
 
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:px-10 lg:px-25">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 md:px-10 lg:px-25">
                 {filteredLab.map((lab,index) => (
                     <div
                         key={index}

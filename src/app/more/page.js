@@ -150,10 +150,10 @@ export default function More() {
                             </div>
                             <div className="flex flex-row md:flex-col border-2 w-full h-full md:h-[20vh]">
                                 <div className="flex justify-start md:border-b-2">
-                                    <h3 className="text-xl md:text-3xl py-3 px-4">{club.title}</h3>
+                                    <h3 className="text-xl md:text-3xl lg:text-2xl xl:text-3xl py-3 px-4">{club.title}</h3>
                                 </div>
                                 <div className="md:mt-6 w-full">
-                                    <p className="text-xs md:text-base py-2 md:py-0 px-4">{club.description}</p>
+                                    <p className="text-xs md:text-base lg:text-xs xl:text-base py-2 md:py-0 px-4">{club.description}</p>
                                 </div>
                             </div>
                         </div>
