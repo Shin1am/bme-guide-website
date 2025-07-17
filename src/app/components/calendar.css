@@ -1,0 +1,105 @@
+
+.calendar-container {
+    border-radius: 15px; /* Rounded corners for the entire calendar */
+    overflow: hidden; /* Ensures content inside respects border-radius */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Subtle shadow */
+    background-color: #fff; /* White background for the calendar area */
+    padding-bottom: 0px; /* Add some space at the bottom */
+}
+
+.rbc-calendar {
+    height: full;
+    width: full;
+}
+
+.rbc-row-segment,
+.rbc-time-slot,
+.rbc-day-bg,
+.rbc-header,
+.rbc-date-cell,
+.rbc-month-view,
+.rbc-month-row {
+    border: none !important;
+}
+
+.rbc-header {
+    font-size: 28px !important;
+    font-family: Medodica, "sans-serif";
+}
+
+.rbc-month-row {
+    display: flex;
+    justify-content: center;
+}
+
+
+.rbc-date-cell {
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    align-items: center;
+}
+
+.rbc-month-view .rbc-off-range-bg {
+    opacity: 0 !important;
+}
+
+.rbc-month-view .rbc-day-bg + .rbc-day-bg {
+    border-left: none !important;
+}
+
+.rbc-day-bg, .rbc-date-cell {
+    padding: -10;
+    margin: 15;
+}
+
+
+
+.rbc-month-view .rbc-event-content,
+.rbc-event {
+  display: none !important;
+}
+.rbc-date-cell-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stack date and counts vertically */
+    height: 100%; /* Ensure it fills the cell */
+    position: relative; /* For absolute positioning if needed */
+    padding: 10px 0; /* Add some vertical padding */
+}
+
+.rbc-month-view .rbc-header:first-child,
+.rbc-month-view .rbc-date-cell:first-child{
+    color: red !important;
+}
+
+
+.rbc-month-view .rbc-date-cell.rbc-off-range {
+    opacity: 0.6 !important;
+}
+
+.rbc-month-view .rbc-day-bg.rbc-today {
+    background-color: #419622b5;
+}
+
+.rbc-date-cell.rbc-now.rbc-current {
+    font-weight: normal;
+}
+
+.rbc-day-bg {
+     /* Adjust this value as needed */
+    height: 50px; /* Must be same as width for a perfect circle */
+    border-radius: 50%; /* Makes it a circle */
+
+    /* Center the circle within its allocated space */
+    /* This often requires flexbox or absolute positioning within a relative parent */
+    display: flex; /* Make it a flex container */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    margin-top: auto;
+    margin-bottom: auto;
+
+    opacity: 0.7;
+
+}

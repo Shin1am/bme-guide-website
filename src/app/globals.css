@@ -1,20 +1,36 @@
+@font-face {
+  font-family: Pixelify;
+  src: url('/fonts/PixelifySans-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: Medodica;
+  src: url('/fonts/MedodicaRegular.otf');
+}
+
+
+
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #F3F3E4;
   --foreground: #171717;
 }
+
+
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-pixelify: Pixelify, "san-serif";
+  --font-medodica: Medodica, "san-serif";
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #f0f0f0;
+    --background: #F3F3E4;
     --foreground: #0a0a0a;
   }
 }
@@ -22,7 +38,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Pixelify, "san-serif";
 }
 
 @keyframes typing {
@@ -33,4 +49,23 @@ body {
 @keyframes blink-caret {
   from, to { border-color: transparent; }
  50% { border-color: orange; }
+}
+
+/* In your styles/globals.css or similar */
+
+@keyframes revealText {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.char-animation {
+  opacity: 0; /* Initially hide each character */
+  animation: revealText 0.6s ease-out forwards;
+  display: inline-block; /* Crucial for transform to work on inline elements */
 }
