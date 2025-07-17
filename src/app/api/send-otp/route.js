@@ -11,6 +11,10 @@ export async function POST(req) {
 
   const store = globalThis.otpStore;
 
+  console.log("GMAIL_USER:", process.env.GMAIL_USER);
+  console.log("GMAIL_PASS:", process.env.GMAIL_PASS);
+
+
   // Cleanup expired OTPs before processing
   for (const key in store) {
     if (store[key].expireAT < currentTime) {
