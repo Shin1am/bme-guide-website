@@ -2,7 +2,7 @@ import { jwtDecrypt } from 'jose';
 import { NextResponse } from 'next/server';
 import { decode as base64Decode } from 'base64-arraybuffer';
 
-const PROTECTED_PATHS = ['/learning', '/labs'];
+const PROTECTED_PATHS = ['/learning', '/lab'];
 
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
