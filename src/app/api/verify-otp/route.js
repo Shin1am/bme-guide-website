@@ -1,38 +1,30 @@
 import { EncryptJWT } from "jose";
 import { NextResponse } from "next/server";
 import { decode as base64Decode } from "base64-arraybuffer";
+import { Redis } from '@upstash/redis';
+import { redirect } from "next/dist/server/api-utils";
+
+const redis = new Redis({
+  url: process.env.REDIS_URL,
+  token: process.env.REDIS_TOKEN,
+});
 
 const MAX_VERIFY_ATTEMPTS = 5;
 const VERIFY_ATTEMPT_WINDOW = 10 * 60 * 1000; // 10 minutes
 
-if (!globalThis.otpStore) {
-    globalThis.otpStore = {};
-}
-if (!globalThis.verifyAttempts) {
-    globalThis.verifyAttempts = {};
-}
-
 export async function POST(req) {
   const { otp, email } = await req.json();
-  const store = globalThis.otpStore || {};
   const currentTime = Date.now();
 
-  console.log('Verifying OTP:', { email, otp, currentTime });
-  console.log('Current store state:', store);
+  // Get OTP data from Redis
+  const otpData = await redis.get(`otp:${email}`);
 
-  // Cleanup expired OTPs
-  for (const key in store) {
-    if (store[key].expireAT < currentTime - 300000) { // 5 minutes buffer
-      console.log('Cleaning up very old OTP for:', key);
-      delete store[key];
-    }
-  }
 
-  const otpData = store[email];
-  console.log('OTP Data found:', otpData); // Debug log
+  // Track verify attempts in Redis
+  const attemptsKey = `attempts:${email}`;
+  const attempts = await redis.get(attemptsKey) || [];
 
-  // Track verify attempts per email
-  const attempts = globalThis.verifyAttempts[email] || [];
+  // Remove old attempts outside the window
   const recentAttempts = attempts.filter(ts => currentTime - ts < VERIFY_ATTEMPT_WINDOW);
 
   if (recentAttempts.length >= MAX_VERIFY_ATTEMPTS) {
@@ -41,39 +33,35 @@ export async function POST(req) {
 
   // Record this attempt
   recentAttempts.push(currentTime);
-  globalThis.verifyAttempts[email] = recentAttempts;
+  await redis.setex(attemptsKey, 600, recentAttempts); // 10 minutes TTL
 
-  // Better validation logic
+  // Validation logic
   if (!otpData) {
-    console.log('No OTP data found for email:', email);
     return Response.json({ success: false, error: 'Invalid or Expired OTP' }, { status: 400 });
   }
 
   if (!otp || !email) {
-    console.log('Missing OTP or email');
     return Response.json({ success: false, error: 'Invalid or Expired OTP' }, { status: 400 });
   }
 
   if (currentTime > otpData.expireAT) {
-    console.log('OTP expired:', { currentTime, expireAT: otpData.expireAT });
+    // Clean up expired OTP
+    await redis.del(`otp:${email}`);
     return Response.json({ success: false, error: 'Invalid or Expired OTP' }, { status: 400 });
   }
 
   if (otpData.otp !== otp) {
-    console.log('OTP mismatch:', { provided: otp, stored: otpData.otp });
     return Response.json({ success: false, error: 'Invalid or Expired OTP' }, { status: 400 });
   }
 
+  // OTP is valid - clean up from Redis
+  await redis.del(`otp:${email}`);
+  await redis.del(attemptsKey); // Reset attempts on success
 
-  // OTP is valid
-  delete store[email];
-  delete globalThis.verifyAttempts[email]; // Reset attempts on success
-
-  // 🔐 Create Encrypted JWT
+  // Create Encrypted JWT
   const iat = Math.floor(Date.now() / 1000);
   const exp = iat + 60 * 60 * 24 * 7; // 7 days
   const secret = new Uint8Array(base64Decode(process.env.JWT_SECRET));
-
 
   const token = await new EncryptJWT({ email, iat, exp })
     .setProtectedHeader({ alg: 'dir', enc: 'A256GCM' })
@@ -81,8 +69,11 @@ export async function POST(req) {
     .setExpirationTime(exp)
     .encrypt(secret);
 
-
-  const response = NextResponse.json({ success: true, message: 'OTP verified successfully' });
+  const response = NextResponse.json({ 
+    success: true, 
+    message: 'OTP verified successfully',
+    redirect: '/learning'
+  });
 
   response.cookies.set('token', token, {
     httpOnly: true,

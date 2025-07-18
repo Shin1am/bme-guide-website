@@ -6,7 +6,6 @@ import HomeCalendar from "./components/Calendar";
 import EventTable from "./components/EventTable";
 import { schedule as initialScheduleData } from "./data/schedule";
 import moment from "moment";
-import DayBanner from "./components/DayBanner";
 
 
 export default function Home() {

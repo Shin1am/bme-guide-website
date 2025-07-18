@@ -1,8 +1,10 @@
 import nodemailer from 'nodemailer';
+import { Redis } from '@upstash/redis';
 
-if (!globalThis.otpStore) {
-    globalThis.otpStore = {};
-}
+const redis = new Redis({
+  url: process.env.REDIS_URL,
+  token: process.env.REDIS_TOKEN,
+});
 
 const MAX_REQUESTS = 5;
 const OTP_EXPIRY = 10 * 60 * 1000; // 10 minutes
@@ -11,22 +13,24 @@ export async function POST(req) {
   const { email } = await req.json();
   const currentTime = Date.now();
 
-  const store = globalThis.otpStore;
-
-  // Cleanup expired OTPs before processing
-  for (const key in store) {
-    if (store[key].expireAT < currentTime - 30000 ) {
-      delete store[key];
-    }
-  }
 
   if (!email || !email.endsWith('@student.mahidol.edu')) {
     return Response.json({ success: false, error: 'Invalid university email' }, { status: 400 });
   }
 
-  const OTP_exists = store[email];
+  const existingOtp = await redis.get(`otp:${email}`);
+  let otpExists =  existingOtp || null;
 
-  if (OTP_exists && OTP_exists.count >= MAX_REQUESTS) {
+    // Check if OTP exists in Redis
+    if (otpExists) {
+        if (otpExists.expireAT < currentTime) {
+            await redis.del(`otp:${email}`);
+            otpExists = null;
+        }
+    }
+
+
+  if (otpExists && otpExists.count >= MAX_REQUESTS) {
     return Response.json({ success: false, error: 'Too many OTP requests. Try again later' }, { status: 429 });
   }
   // Generate a 6-digit OTP
@@ -51,13 +55,15 @@ export async function POST(req) {
       html: `<p>Your one-time password (OTP) is:</p><h2>${otp}</h2><p>This code will expire in 10 minutes.</p>`,
     });
 
-    store[email] = {
+    const otpData = {
       otp,
       expireAT,
-      count: (OTP_exists ? OTP_exists.count : 0) + 1,
+      count: (otpExists? otpExists.count : 0) + 1,
     };
 
-    console.log('OTP stored successfully for:', email, store[email]);
+    await redis.setex(`otp:${email}`, 600, otpData);
+
+
 
     // TODO: Store OTP in memory or cache (for verification later)
 
