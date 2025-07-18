@@ -48,6 +48,7 @@ export default function LoginPage() {
 
         if (data.success) {
             setMessage('OTP verified! Redirecting...');
+            router.refresh()
             router.push(redirect); // Redirect to home page
         } else {
             setMessage(data.error || 'Failed to verify OTP');

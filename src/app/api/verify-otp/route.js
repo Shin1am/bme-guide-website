@@ -12,18 +12,21 @@ export async function POST(req) {
   const store = globalThis.otpStore || {};
   const currentTime = Date.now();
 
+  console.log('Verifying OTP:', { email, otp, currentTime }); // Debug log
+
   // Cleanup expired OTPs
   for (const key in store) {
     if (store[key].expireAT < currentTime) {
+      console.log('Cleaning up expired OTP for:', key); // Debug log
       delete store[key];
     }
   }
 
   const otpData = store[email];
+  console.log('OTP Data found:', otpData); // Debug log
 
   // Track verify attempts per email
   const attempts = globalThis.verifyAttempts[email] || [];
-  // Remove old attempts outside the window
   const recentAttempts = attempts.filter(ts => currentTime - ts < VERIFY_ATTEMPT_WINDOW);
 
   if (recentAttempts.length >= MAX_VERIFY_ATTEMPTS) {
@@ -34,7 +37,24 @@ export async function POST(req) {
   recentAttempts.push(currentTime);
   globalThis.verifyAttempts[email] = recentAttempts;
 
-  if (!otpData || !otp || !email || currentTime > otpData.expireAT || otpData.otp !== otp) {
+  // Better validation logic
+  if (!otpData) {
+    console.log('No OTP data found for email:', email);
+    return Response.json({ success: false, error: 'Invalid or Expired OTP' }, { status: 400 });
+  }
+
+  if (!otp || !email) {
+    console.log('Missing OTP or email');
+    return Response.json({ success: false, error: 'Invalid or Expired OTP' }, { status: 400 });
+  }
+
+  if (currentTime > otpData.expireAT) {
+    console.log('OTP expired:', { currentTime, expireAT: otpData.expireAT });
+    return Response.json({ success: false, error: 'Invalid or Expired OTP' }, { status: 400 });
+  }
+
+  if (otpData.otp !== otp) {
+    console.log('OTP mismatch:', { provided: otp, stored: otpData.otp });
     return Response.json({ success: false, error: 'Invalid or Expired OTP' }, { status: 400 });
   }
 
