@@ -50,10 +50,11 @@ export default function LoginPage() {
             if (data.success) {
                 setMessage('OTP verified! Redirecting...');
                 // Wait for token to be stored
-                await new Promise(resolve => setTimeout(resolve, 1000));
+                //await new Promise(resolve => setTimeout(resolve, 1000));
                 // Then refresh and redirect
-                await router.refresh();
-                router.push(redirect);
+                //await router.refresh();
+                //router.push(redirect);
+                window.location.href = redirect;
             } else {
                 setMessage(data.error || 'Failed to verify OTP');
             }
