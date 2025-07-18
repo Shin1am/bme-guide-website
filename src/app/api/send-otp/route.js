@@ -1,6 +1,8 @@
 import nodemailer from 'nodemailer';
 
-if (!globalThis.otpStore) globalThis.otpStore = {};
+if (!globalThis.otpStore) {
+    globalThis.otpStore = {};
+}
 
 const MAX_REQUESTS = 5;
 const OTP_EXPIRY = 10 * 60 * 1000; // 10 minutes
@@ -13,7 +15,7 @@ export async function POST(req) {
 
   // Cleanup expired OTPs before processing
   for (const key in store) {
-    if (store[key].expireAT < currentTime) {
+    if (store[key].expireAT < currentTime - 30000 ) {
       delete store[key];
     }
   }
@@ -54,6 +56,8 @@ export async function POST(req) {
       expireAT,
       count: (OTP_exists ? OTP_exists.count : 0) + 1,
     };
+
+    console.log('OTP stored successfully for:', email, store[email]);
 
     // TODO: Store OTP in memory or cache (for verification later)
 

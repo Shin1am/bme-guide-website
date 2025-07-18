@@ -36,22 +36,29 @@ export default function LoginPage() {
 
     const verifyOtp = async () => {
         setMessage('verifying OTP...');
-        const res = await fetch('/api/verify-otp', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ otp, email }),
-        });
+        try {
+            const res = await fetch('/api/verify-otp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ otp, email }),
+            });
 
-        const data = await res.json();
+            const data = await res.json();
 
-        if (data.success) {
-            setMessage('OTP verified! Redirecting...');
-            router.refresh()
-            router.push(redirect); // Redirect to home page
-        } else {
-            setMessage(data.error || 'Failed to verify OTP');
+            if (data.success) {
+                setMessage('OTP verified! Redirecting...');
+                // Wait for token to be stored
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                // Then refresh and redirect
+                await router.refresh();
+                router.push(redirect);
+            } else {
+                setMessage(data.error || 'Failed to verify OTP');
+            }
+        } catch (error) {
+            setMessage('Verification failed. Please try again.');
         }
     };
 

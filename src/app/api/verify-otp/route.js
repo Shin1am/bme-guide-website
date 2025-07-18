@@ -5,19 +5,25 @@ import { decode as base64Decode } from "base64-arraybuffer";
 const MAX_VERIFY_ATTEMPTS = 5;
 const VERIFY_ATTEMPT_WINDOW = 10 * 60 * 1000; // 10 minutes
 
-globalThis.verifyAttempts = globalThis.verifyAttempts || {};
+if (!globalThis.otpStore) {
+    globalThis.otpStore = {};
+}
+if (!globalThis.verifyAttempts) {
+    globalThis.verifyAttempts = {};
+}
 
 export async function POST(req) {
   const { otp, email } = await req.json();
   const store = globalThis.otpStore || {};
   const currentTime = Date.now();
 
-  console.log('Verifying OTP:', { email, otp, currentTime }); // Debug log
+  console.log('Verifying OTP:', { email, otp, currentTime });
+  console.log('Current store state:', store);
 
   // Cleanup expired OTPs
   for (const key in store) {
-    if (store[key].expireAT < currentTime) {
-      console.log('Cleaning up expired OTP for:', key); // Debug log
+    if (store[key].expireAT < currentTime - 300000) { // 5 minutes buffer
+      console.log('Cleaning up very old OTP for:', key);
       delete store[key];
     }
   }
