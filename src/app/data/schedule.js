@@ -41,7 +41,7 @@ export const schedule = [
     start: "2025-12-29",
     end: "2026-01-09",
     description: "Semester break between semester 1 and 2",
-    color: "#c52f3cff",
+    color: "#FF7477",
     specificTime: false
   },
   {
@@ -86,7 +86,7 @@ export const schedule = [
     start: "2026-06-08",
     end: "2026-07-10",
     description: "End-of-year academic break",
-    color: "#c52f3cff",
+    color: "#FF7477",
     specificTime: false
   }
 ];

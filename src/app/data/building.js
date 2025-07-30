@@ -98,7 +98,47 @@ export const buildings = [
          images: ['/mlc_image.jpg'],
         latitude: 13.7939127,
         longitude: 100.3212291
-    }
+    },
+    {
+        id:'vet-building',
+        name: 'Vet Building',
+        description: "Veterinary Science Building",
+        link: '/map/vet-building',
+        roomStart: 'vet',
+        images: ['/vet_image.jpg'],
+        latitude: 13.7981126,
+        longitude: 100.3171897
+    },
+    {
+        id:'nurse-building',
+        name: 'Nurse Building',
+        description: "Nurse Building",
+        link: '/map/nurse-building',
+        roomStart: 'nurse',
+        images: ['/nurse_image.jpg'],
+        latitude: 13.7888038,
+        longitude: 100.3260393
+    },
+    {
+        id:'muic-building',
+        name: 'MUIC Building',
+        description: "International College Building",
+        link: '/map/muic-building',
+        roomStart: 'muic',
+        images: ['/muic_image.jpg'],
+        latitude: 13.7927655,
+        longitude: 100.3260273
+    },
+    {
+        id:'music-building',
+        name: 'Music',
+        description: "College of Music",
+        link: '/map/music-building',
+        roomStart: 'music',
+        images: ['/music_image.jpg'],
+        latitude: 13.7888686,
+        longitude: 100.3239081
+    },
 
     // Add more buildings as needed
 ];

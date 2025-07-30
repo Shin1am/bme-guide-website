@@ -161,7 +161,7 @@ export default function Map() {
                         </div>
                     )}; */}
         </div>
-        <div className="flex flex-col lg:grid lg:grid-cols-4 lg:grid-rows-6 gap-5 mt-5">
+        <div className="flex flex-col lg:grid lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 lg:grid-rows-6 gap-5 mt-5">
           {sortedBuildings.map((building) => (
             <Link
               key={building.id}
@@ -171,12 +171,12 @@ export default function Map() {
               onMouseLeave={() => setHoveredBuilding(null)}
             >
               <div className="flex flex-col justify-center items-center">
-                <h3 className="font-semibold text-lg text-center">{building.name}</h3>
-                {building.examples && 
-                  <p className="text-sm text-gray-500">
+                <h3 className="font-semibold 2xl:text-lg text-center">{building.name}</h3>
+                {/* {building.examples && 
+                  <p className="text-xs 2xl:text-sm text-gray-500">
                     ex. {building.examples.join(", ")}
                   </p>
-                }
+                } */}
               </div>
             </Link>
           ))}

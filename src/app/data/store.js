@@ -6,21 +6,86 @@ export const MahidolStore = [
     category: "mahidol",
   },
   {
-    id: 'mlc',
-    name: "MLC",
-    link: '/map/mlc',
-    category: "food"
+    id: "mlc-canteen",
+    name: "MLC Canteen",
+    link: "/map/mlc",
+    category: "canteen",
   },
   {
-    id: 'eng-canteen',
+    id: "eng-canteen",
     name: "Engineer Canteen",
-    link: '/map/white-building',
-    category: 'food'
+    link: "/map/white-building",
+    category: "canteen",
   },
   {
-    id: 'sh-canteen',
+    id: "sh-canteen",
     name: "Social Canteen",
-    link: '/map/sh-building',
-    category: 'food'
-  }
+    link: "/map/sh-building",
+    category: "canteen",
+  },
+  {
+    id: "vet-canteen",
+    name: "Vet Canteen",
+    link: "/map/vet-building",
+    category: "canteen",
+  },
+  {
+    id: "la-canteen",
+    name: "LA Canteen",
+    link: "/map/la-building",
+    category: "canteen",
+  },
+  {
+    id: "nurse-canteen",
+    name: "Nurse Canteen",
+    link: "/map/nurse-building",
+    category: "canteen",
+  },
+  {
+    id: "muic-canteen",
+    name: "IC Canteen",
+    link: "/map/muic-building",
+    category: "canteen",
+  },
+  {
+    id: "music-canteen",
+    name: "Music Canteen",
+    link: "/map/music-building",
+    category: "canteen",
+  },
+  {
+    id: "tahrod",
+    name: "Ta Rod",
+    description: "A restaurant locate at college of music",
+    image: "/tahrod.png",
+    category: "food",
+    latitude: 13.78791,
+    longitude: 100.324838,
+  },
+  {
+    id: "zhangliang",
+    name: "ZhangLiang Mhala",
+    description: "",
+    image: "/zhangliang.png",
+    category: "food",
+    latitude: 13.800773,
+    longitude: 100.3118223,
+  },
+  {
+    id: "lumber",
+    name: "Lumber",
+    description: "",
+    image: "/lumber.png",
+    category: "food",
+    latitude: 13.7979081,
+    longitude: 100.3120285,
+  },
+  {
+    id: "blaze",
+    name: "blaze",
+    description: "",
+    image: "/Blaze.png",
+    category: "jersey",
+    linkURL: "https://www.instagram.com/blaze.voyage?igsh=MWtrdzRhajRwYmw3ZQ=="
+  },
 ];
