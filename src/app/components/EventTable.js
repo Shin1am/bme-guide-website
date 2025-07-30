@@ -6,7 +6,7 @@ import moment from 'moment';
 const EVENT_TYPES = {
   university: { colors: ['#3357FF'], label: 'University', icon: '🎓' },
   exam: { colors: ['#33FF57'], label: 'Exams', icon: '📝' },
-  holiday: { colors: ['#800080', '#FFD700', '#4682B4'], label: 'Holidays', icon: '🏖️' },
+  holiday: { colors: ['#c52f3cff', '#FFD700', '#4682B4'], label: 'Holidays', icon: '🏖️' },
   meeting: { colors: ['#FFC300'], label: 'Meetings', icon: '👥' }
 };
 

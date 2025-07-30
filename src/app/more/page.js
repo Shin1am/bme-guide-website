@@ -6,12 +6,11 @@ import { MahidolStore } from "../data/store";
 import StoreCarousel from "../components/StoreCard";
 
 
-
 export default function More() {
 
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedType, setSelectedType] = useState(['All']); // Initialize with 'All' selected
-    const [selectedStoreType, setSelectedStoreType] = useState('mahidol');
+    const [selectedStoreType, setSelectedStoreType] = useState('food');
 
     const AllStoreType = [
         ...new Set(MahidolStore.flatMap(c => c.category))

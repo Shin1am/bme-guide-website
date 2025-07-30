@@ -96,7 +96,7 @@ export default function Home() {
           <div className='px-8 hidden lg:flex flex-row gap-6 mt-25 text-center items-center justify-center'>
             <Link className=' bg-white rounded-3xl shadow-lg lg:text-xl xl:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/learning">Learning</Link>
             <Link className=' bg-white rounded-3xl shadow-lg lg:text-xl xl:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/map">Map</Link>
-            <Link className=' bg-white rounded-3xl shadow-lg lg:text-xl xl:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link>
+            {/* <Link className=' bg-white rounded-3xl shadow-lg lg:text-xl xl:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link> */}
             <Link className=' bg-white rounded-3xl shadow-lg lg:text-xl xl:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/more">More</Link>
             <Link className=' bg-white rounded-3xl shadow-lg lg:text-xl xl:text-3xl w-[20%] h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/about-us">About Us</Link>
           </div>
@@ -104,7 +104,7 @@ export default function Home() {
           <div className='px-8 grid grid-cols-2 grid-rows-3 lg:hidden gap-6 mt-15 mb-10 text-center items-center justify-center'>
             <Link className='text-base md:text-xl bg-white rounded-3xl shadow-lg h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/learning">Learning</Link>
             <Link className='text-base md:text-xl bg-white rounded-3xl shadow-lg h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/map">Map</Link>
-            <Link className='text-base md:text-xl bg-white rounded-3xl shadow-lg h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link>
+            {/* <Link className='text-base md:text-xl bg-white rounded-3xl shadow-lg h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/lab">Lab</Link> */}
             <Link className='text-base md:text-xl bg-white rounded-3xl shadow-lg h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/more">More</Link>
             <Link className='text-base md:text-xl bg-white rounded-3xl shadow-lg h-auto p-4 hover:shadow-[0_6px_20px_rgba(56,125,255,0.17)] hover:scale-110 transition-all duration-300' href="/about-us">About Us</Link>
           </div>
