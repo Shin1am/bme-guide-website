@@ -68,7 +68,7 @@ export default function LoginPage() {
             <div className="bg-white shadow-xl rounded-2xl p-10 w-full max-w-md ">
                 <div className="mb-10"> 
                     <Image
-                        src="/logo.png"
+                        src="/images/logo.png"
                         alt="Logo"
                         width={80}
                         height={80}
