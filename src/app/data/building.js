@@ -139,6 +139,16 @@ export const buildings = [
         latitude: 13.7888686,
         longitude: 100.3239081
     },
+     {
+        id:'lecture-theater',
+        name: 'Lecture',
+        description: "Lecture theater, have an auditorium like room, first number mean floor",
+        link: '/map/lecture-theater',
+        roomStart: 'l-',
+        images: ['/lecture-theater.jpg'],
+        latitude: 13.7936961,
+        longitude: 100.3248126
+    },
 
     // Add more buildings as needed
 ];

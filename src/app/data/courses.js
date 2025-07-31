@@ -8,7 +8,6 @@ export const courses = [
     room: 'SC2-323',
     grade: 'Normal',
     description: 'TODO: Add description',
-    tips: '1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \n2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/15S6fZD2sCUMqf7Id_56qI4gPZlv2Wudw?usp=sharing',
       material: 'https://drive.google.com/drive/folders/1BFK_nKaGgoDmUrtfLjCIe8RFIA-6ym5U?usp=sharing',
@@ -20,6 +19,8 @@ export const courses = [
     term: 1,
     code: 'SCBE100',
     title: 'Wonder of Life',
+    building: 'sc2-building',
+    room: 'SC2-154',
     description: 'TODO: Add description',
     grade: 'OSU',
     links: { 
@@ -47,6 +48,8 @@ export const courses = [
     term: 1,
     code: 'LAEN180',
     title: 'English for Academic Purposes 1',
+    building: 'la-building',
+    room: 'LA-131, LA-132',
     description: 'TODO: Add description',
     grade: 'OSU',
     links: { 
@@ -61,6 +64,8 @@ export const courses = [
     code: 'SCBE102',
     title: 'General Biology Laboratory 1',
     description: 'TODO: Add description',
+    building:'sc3-building',
+    room: 'Lab SC',
     grade: 'Normal',
     links: { 
         syllabus: 'https://drive.google.com/drive/folders/1MyELo6KzJEYmzFiE7nsv2wmxuXaBZv3z', 
@@ -73,6 +78,8 @@ export const courses = [
     term: 1,
     code: 'EGBI100',
     title: 'BME in the Real World',
+    building: 'white-building',
+    room: 'R-232',
     description: 'TODO: Add description',
     grade: 'OSU',
     links: { 
@@ -87,6 +94,8 @@ export const courses = [
     code: 'SCMA174',
     title: 'Calculus and Systems of ODE',
     fullTitle: 'Calculus and Systems of Ordinary Differential Equations',
+    building: 'sc1-building',
+    room: 'SC1-152',
     description: 'TODO: Add description',
     grade: 'Normal',
     links: { 
@@ -113,6 +122,8 @@ export const courses = [
     term: 1,
     code: 'SCCH161',
     title: 'General Chemistry',
+    building: 'sc2-building',
+    room: 'SC2-323',
     description: 'TODO: Add description',
     grade: 'Normal',
     links: { 
@@ -126,6 +137,8 @@ export const courses = [
     term: 1,
     code: 'SCPY111',
     title: 'Physics Laboratory 1',
+    building: 'sc4-building',
+    room: 'Lab SC',
     description: 'TODO: Add description',
     grade: 'Normal',
     links: { 
@@ -139,6 +152,8 @@ export const courses = [
     term: 1,
     code: 'SCCH169',
     title: 'General Chemistry Laboratory 1',
+    building: 'sc4-building',
+    room: 'SC4-323',
     description: 'TODO: Add description',
     grade: 'Normal',
     links: { 

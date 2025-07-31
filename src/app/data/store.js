@@ -84,7 +84,7 @@ export const MahidolStore = [
     id: "blaze",
     name: "blaze",
     description: "",
-    image: "/Blaze.png",
+    image: "/images/store/Blaze.PNG",
     category: "jersey",
     linkURL: "https://www.instagram.com/blaze.voyage?igsh=MWtrdzRhajRwYmw3ZQ=="
   },

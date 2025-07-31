@@ -10,8 +10,9 @@ export default function Map() {
 
   const filteredBuildings = buildings.filter((building) => {
     const roomStart = building.roomStart.toLowerCase();
+    const lowerSearchQuery = searchQuery.toLowerCase();
 
-    const MatchedNumber = searchQuery.startsWith(roomStart);
+    const MatchedNumber = lowerSearchQuery.startsWith(roomStart);
 
     const MatchPrefix = roomStart.startsWith(searchQuery.toLowerCase());
 
@@ -100,7 +101,7 @@ export default function Map() {
             {" "}
             {/* Adjust top/left for precise placement */}
             <Image
-              src={"/cat.png"}
+              src={"/images/cat.png"}
               alt="cat-on-searchbar"
               width={150} // Adjust size for optimal look
               height={150} // Adjust size for optimal look
@@ -136,7 +137,7 @@ export default function Map() {
             rel="noopener noreferrer"
           >
             <Image
-              src="/mapsalaya.jpg"
+              src="/images/map/mapsalaya.jpg"
               alt="map-salaya"
               width={4596}
               height={3355}
