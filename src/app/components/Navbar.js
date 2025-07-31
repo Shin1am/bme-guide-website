@@ -15,7 +15,7 @@ export default function Navbar() {
         <nav className="flex justify-between items-center p-4 bg-[#F3F3E4] text-white sticky top-0 z-50 border-b-2 border-b-[#bfb9b0]">
             <div className="flex items-center gap-4">
                 <Link href="/">
-                    <Image src={'/logo.png'} alt={'logo'} width={75} height={75} />
+                    <Image src={'/images/logo.png'} alt={'logo'} width={75} height={75} />
                 </Link>
             </div>
 
@@ -23,7 +23,7 @@ export default function Navbar() {
                 <Link href="/" className={`${currentPath === '/' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Home</Link>
                 <Link href="/learning" className={`${currentPath === '/learning' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Learning</Link>
                 <Link href="/map" className={`${currentPath === '/map' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Map</Link>
-                <Link href="/lab" className={`${currentPath === '/lab' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Lab</Link>
+                {/* <Link href="/lab" className={`${currentPath === '/lab' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>Lab</Link> */}
                 <Link href="/more" className={`${currentPath === '/more' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>More</Link>
                 <Link href="/about-us" className={`${currentPath === '/about-us' ? 'text-black' : ''} hover:text-black hover:scale-110 transition-all duration-300`}>About Us</Link>
             </div>
@@ -81,13 +81,13 @@ export default function Navbar() {
                         >
                             Map
                         </Link>
-                        <Link 
+                        {/* <Link 
                             href="/lab" 
                             className="hover:text-blue-200 transition-colors"
                             onClick={() => setIsMenuOpen(false)}
                         >
                             Lab
-                        </Link>
+                        </Link> */}
                         <Link 
                             href="/more" 
                             className="hover:text-blue-200 transition-colors"

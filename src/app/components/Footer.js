@@ -17,36 +17,33 @@ export default function Footer() {
                     <div className="flex flex-col gap-5 md:gap-10">
                         <p className="font-semibold underline md:no-underline">Website</p>
                         <div className="text-base md:text-xl flex flex-col justify-center items-start gap-3">
-                            <Link href={'/'} className="hover:underline">Mahidol</Link>
-                            <Link href={'/learning'} className="hover:underline">Engineer</Link>
+                            <a href="https://mahidol.ac.th/th/" target="_blank" rel="noopener noreferrer" className="hover:underline">Mahidol</a>
+                             <a href="https://www.eg.mahidol.ac.th" target="_blank" rel="noopener noreferrer" className="hover:underline">Engineer</a>
                         </div>
                     </div>
                     <div className="flex flex-col gap-5 md:gap-10">
-                        <p className="font-semibold underline md:no-underline md:ml-10 md:mt-10 lg:mt-0">Navigation</p>
+                        <p className="font-semibold underline md:no-underline md: md:mt-10 lg:mt-0">Navigation</p>
                         <div className="text-base md:text-xl flex flex-col gap-3 md:flex-row md:gap-10">
                             <div className="flex flex-col justify-center items-start gap-3">
                                 <Link href={'/'} className="hover:underline">Home</Link>
                                 <Link href={'/learning'} className="hover:underline">Learning</Link>
                                 <Link href={'/map'} className="hover:underline">Map</Link>
-                            </div>
-                            <div className="flex flex-col justify-center items-start gap-3">
-                                <Link href={'/lab'} className="hover:underline">Lab</Link>
-                                <Link href={'/lab'} className="hover:underline">More</Link>
-                                <Link href={'/lab'} className="hover:underline">About Us</Link>
+                                <Link href={'/more'} className="hover:underline">More</Link>
                             </div>
                         </div>
                     </div>
                     <div className="flex flex-col gap-5 md:gap-10">
                         <p className="font-semibold underline md:no-underline ">Contact</p>
                         <div className="text-base md:text-xl flex flex-col justify-center items-start gap-3">
-                            <Link href={'/'} className="hover:underline">Phone</Link>
+                            {/* <Link href={'/'} className="hover:underline">Phone</Link> */}
                             <a className="hover:underline" href="https://mail.google.com/mail/?view=cm&fs=1&to=maimmchanel@gmail.com" target="_blank">Email</a>
+                            <Link href={'/about-us'} className="hover:underline">About Us</Link>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="hidden absolute bottom-10 right-0 w-[50%] lg:flex justify-end pr-[10%]"> {/* Changed width and justify */}
+            <div className="hidden absolute bottom-10 right-0 w-[50%] lg:flex justify-end pr-[5%]"> {/* Changed width and justify */}
                 <p className="text-white lg:text-4xl xl:text-6xl font-bold">CONTACT</p>
             </div>
             <div className="flex lg:hidden flex-col justify-center items-center py-20">

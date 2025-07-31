@@ -16,6 +16,8 @@ export async function POST(req) {
   const { otp, email } = await req.json();
   const currentTime = Date.now();
 
+
+
   // Get OTP data from Redis
   const otpData = await redis.get(`otp:${email}`);
 

@@ -1,26 +1,31 @@
-'use client'
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { buildings } from "../data/building";
 
 export default function Map() {
-    const [hoveredBuilding, setHoveredBuilding] = useState(null);
-    const [searchQuery, setSearchQuery] = useState('');
+  const [hoveredBuilding, setHoveredBuilding] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
-    const filteredBuildings = buildings.filter(building => {
-        const roomStart = building.roomStart.toLowerCase();
+  const filteredBuildings = buildings.filter((building) => {
+    const roomStart = building.roomStart.toLowerCase();
+    const lowerSearchQuery = searchQuery.toLowerCase();
 
-        const MatchedNumber = searchQuery.startsWith(roomStart);
+    const MatchedNumber = lowerSearchQuery.startsWith(roomStart);
 
-        const MatchPrefix = roomStart.startsWith(searchQuery.toLowerCase());
+    const MatchPrefix = roomStart.startsWith(searchQuery.toLowerCase());
 
-        return MatchedNumber || MatchPrefix
-    });
+    return MatchedNumber || MatchPrefix;
+  });
 
-    return (
-        <div className="min-h-screen p-10">
-            {/*<div className="max-w-7xl mx-auto">
+  const sortedBuildings = filteredBuildings.sort((a, b) => {
+    return a.name.localeCompare(b.name);
+  });
+
+  return (
+    <div className="min-h-screen p-10">
+      {/*<div className="max-w-7xl mx-auto">
                 <h1 className="text-4xl font-bold mb-8">Campus Map</h1>
                 
                 {/* Map Container with Hotspots *}
@@ -85,53 +90,61 @@ export default function Map() {
                     ))}
                 </div>
             </div> */}
-            <div className="flex flex-col md:flex-row justify-start mt-5">
-                <h1 className="text-5xl p-2 md:p-8 "> Campus Map</h1>
-                <div className="relative mt-8 md:mr-20 ">
-                    {/* Cat Image - Positioned absolutely relative to this parent div */}
-                    <div className="absolute z-10" style={{ top: '-130px', left: '350px' }}> {/* Adjust top/left for precise placement */}
-                        <Image
-                            src={'/cat.png'}
-                            alt='cat-on-searchbar'
-                            width={150} // Adjust size for optimal look
-                            height={150} // Adjust size for optimal look
-                        />
-                    </div>
-                    <input 
-                        type="text"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Search building by room"
-                        className="px-4 py-2 md:py-2.5 pl-10 w-full md:w-[30vw] rounded-lg border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400 placeholder:text-[15px] md:placeholder:text-base"
-                    />
-                    <svg
-                            className="absolute left-3 top-3 h-5 w-5 scale-80 md:scale-100 text-gray-400"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={4}
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                />
-                            </svg>
-                </div>
-        
-                
-            </div>       
-            <div className="flex flex-col lg:flex-row w-full lg:h-[80vh] mt-5">
-                <div className="relative w-full h-full lg:w-1/2 md:h-auto justify-center items-center lg:mx-10 my-5">
-                    <Image 
-                        src="/mapsalaya.jpg" 
-                        alt="map-salaya" 
-                        width={4596} 
-                        height={3355}
-                        className="object-contain rounded-xl shadow-xl hover:scale-105 transition-all duration-150 border-2 border-black"
-                    />
-
-                    {/* {buildings.map((building) =>
+      <div className="flex flex-col md:flex-row justify-start mt-5">
+        <h1 className="text-5xl p-2 md:p-8 "> Campus Map</h1>
+        <div className="relative mt-8 md:mr-20 ">
+          {/* Cat Image - Positioned absolutely relative to this parent div */}
+          <div
+            className="absolute z-10"
+            style={{ top: "-130px", left: "350px" }}
+          >
+            {" "}
+            {/* Adjust top/left for precise placement */}
+            <Image
+              src={"/images/cat.png"}
+              alt="cat-on-searchbar"
+              width={150} // Adjust size for optimal look
+              height={150} // Adjust size for optimal look
+            />
+          </div>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search building by room"
+            className="px-4 py-2 md:py-2.5 pl-10 w-full md:w-[30vw] rounded-lg border bg-white border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400 placeholder:text-[15px] md:placeholder:text-base"
+          />
+          <svg
+            className="absolute left-3 top-3 h-5 w-5 scale-80 md:scale-100 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={4}
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div className="flex flex-col lg:flex-row w-full lg:h-[80vh] mt-5">
+        <div className="relative w-full h-full lg:w-1/2 md:h-auto justify-center items-center lg:mx-10 my-5">
+          <Link
+            href="https://rilca.mahidol.ac.th/documents/Contact/Map-MUSalaya.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              src="/images/map/mapsalaya.jpg"
+              alt="map-salaya"
+              width={4596}
+              height={3355}
+              className="object-contain rounded-xl shadow-xl hover:scale-105 transition-all duration-150 border-2 border-black"
+            />
+          </Link>
+          {/* {buildings.map((building) =>
                         <div 
                             key={building.id} 
                             className="absolute transform -translate-x-1/2 -translate-y-1/2 group"
@@ -148,27 +161,28 @@ export default function Map() {
 
                         </div>
                     )}; */}
-                </div>
-                <div className="flex flex-col gap-5 mt-5">
-                    {filteredBuildings.map((building) => (
-                        <Link 
-                            key={building.id}
-                            href={`/map/${building.id}`}
-                            className="py-6 pl-5 pr-8 w-auto bg-white rounded-3xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
-                            onMouseEnter={() => setHoveredBuilding(building)}
-                            onMouseLeave={() => setHoveredBuilding(null)}
-                        >
-                            <div className="flex flex-col justify-center items-center">
-                                <h3 className="font-semibold text-lg">{building.name}</h3>
-                                <p className="text-sm text-gray-500">
-                                    ex. {building.examples.join(', ')}
-                                </p>
-
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-            </div>
         </div>
-    );
+        <div className="flex flex-col lg:grid lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 lg:grid-rows-6 gap-5 mt-5">
+          {sortedBuildings.map((building) => (
+            <Link
+              key={building.id}
+              href={`/map/${building.id}`}
+              className="py-6 pl-5 pr-8 w-auto bg-white rounded-3xl shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+              onMouseEnter={() => setHoveredBuilding(building)}
+              onMouseLeave={() => setHoveredBuilding(null)}
+            >
+              <div className="flex flex-col justify-center items-center">
+                <h3 className="font-semibold 2xl:text-lg text-center">{building.name}</h3>
+                {/* {building.examples && 
+                  <p className="text-xs 2xl:text-sm text-gray-500">
+                    ex. {building.examples.join(", ")}
+                  </p>
+                } */}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }

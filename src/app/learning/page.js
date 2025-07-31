@@ -180,7 +180,7 @@ export default function Learning() {
                             {/* Cat Image - Positioned absolutely relative to this parent div */}
                             <div className="absolute z-10" style={{ top: '-130px', left: '350px' }}> {/* Adjust top/left for precise placement */}
                                 <Image
-                                    src={'/cat.png'}
+                                    src={'/images/cat.png'}
                                     alt='cat-on-searchbar'
                                     width={150} // Adjust size for optimal look
                                     height={150} // Adjust size for optimal look
@@ -285,6 +285,8 @@ export default function Learning() {
                                                                 </div>
                                                             </div>
 
+                                                            {course.tips && (
+
                                                             <div className='flex flex-row justify-between items-center gap-4 pt-4'>
                                                             
 
@@ -295,6 +297,7 @@ export default function Learning() {
                                                                     {showSyllabus ? 'Hide Tips & Tricks' : 'Show Tips & Tricks'}
                                                                 </button>
                                                             </div>
+                                                            )}
 
                                                             {/* Tips & Tricks Section */}
                                                             {showSyllabus && (

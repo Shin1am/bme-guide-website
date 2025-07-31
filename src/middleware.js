@@ -4,6 +4,7 @@ import { decode as base64Decode } from 'base64-arraybuffer';
 
 const PROTECTED_PATHS = ['/learning', '/lab'];
 
+
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
   const token = request.cookies.get('token')?.value;
