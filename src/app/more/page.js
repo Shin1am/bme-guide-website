@@ -94,7 +94,7 @@ export default function More() {
             {" "}
             {/* Adjust top/left for precise placement */}
             <Image
-              src={"/cat.png"}
+              src={"/images/cat.png"}
               alt="cat-on-searchbar"
               width={150} // Adjust size for optimal look
               height={150} // Adjust size for optimal look
