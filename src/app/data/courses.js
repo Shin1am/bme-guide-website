@@ -7,7 +7,7 @@ export const courses = [
     building: 'sc2-building',
     room: 'SC2-323',
     grade: 'Normal',
-    description: 'TODO: Add description',
+    description: "Learn about basic physics such as, newton's law, wave, pressure etc. both midterm and final is a writing exam",
     links: {
       syllabus: 'https://drive.google.com/drive/folders/15S6fZD2sCUMqf7Id_56qI4gPZlv2Wudw?usp=sharing',
       material: 'https://drive.google.com/drive/folders/1BFK_nKaGgoDmUrtfLjCIe8RFIA-6ym5U?usp=sharing',
@@ -21,7 +21,7 @@ export const courses = [
     title: 'Wonder of Life',
     building: 'sc2-building',
     room: 'SC2-154',
-    description: 'TODO: Add description',
+    description: "It's like a basic biology that cover almost high school year.",
     grade: 'OSU',
     links: { 
         syllabus: 'https://drive.google.com/drive/folders/1Ow6l-JxEImVyv_8ETlb9dBwXRMVj60HB', 
@@ -35,7 +35,7 @@ export const courses = [
     code: 'EGBI180',
     title: 'Entrepreneurial Skills for BME',
     fullTitle: 'Entrepreneurial Skills for Biomedical Engineering',
-    description: 'TODO: Add description',
+    description: 'Learn about the skill for being an entrepreneur on BME, such as business model, customer persona',
     grade: 'Normal',
     links: { 
         syllabus: 'https://drive.google.com/drive/folders/1GjMkz6fXRD2zfeLDPw62Pp2A7IKQxFVU', 
@@ -50,7 +50,6 @@ export const courses = [
     title: 'English for Academic Purposes 1',
     building: 'la-building',
     room: 'LA-131, LA-132',
-    description: 'TODO: Add description',
     grade: 'OSU',
     links: { 
         syllabus: 'https://drive.google.com/drive/folders/1mUJIvoJ9JnxvFx9BiNGnGEvmJdA95PDV',
@@ -63,7 +62,7 @@ export const courses = [
     term: 1,
     code: 'SCBE102',
     title: 'General Biology Laboratory 1',
-    description: 'TODO: Add description',
+    description: 'Biology lab, like using microscope, watching cell wall etc.',
     building:'sc3-building',
     room: 'Lab SC',
     grade: 'Normal',
@@ -80,7 +79,7 @@ export const courses = [
     title: 'BME in the Real World',
     building: 'white-building',
     room: 'R-232',
-    description: 'TODO: Add description',
+    description: 'Learn about how we can apply our courses into the real world.',
     grade: 'OSU',
     links: { 
         syllabus: 'https://drive.google.com/drive/folders/1sk-DsrOWnAFXzqHvmXUf1BLewITyAay3', 
@@ -96,7 +95,7 @@ export const courses = [
     fullTitle: 'Calculus and Systems of Ordinary Differential Equations',
     building: 'sc1-building',
     room: 'SC1-152',
-    description: 'TODO: Add description',
+    description: 'Learn the basic calculus, limit, differential, integral and the Differential Equations',
     grade: 'Normal',
     links: { 
         syllabus: 'https://drive.google.com/drive/folders/17OE82m8H-f213fUMyKliHdpSFOrw4ZsP', 
@@ -109,7 +108,6 @@ export const courses = [
     term: 1,
     code: 'ENGE113',
     title: 'Integrating Health and Environment',
-    description: 'TODO: Add description',
     grade: 'OSU',
     links: { 
         syllabus: 'https://drive.google.com/drive/folders/1DDjVcw57WLixbHiH3qVL5AvmXBnRVwhQ', 
@@ -124,7 +122,7 @@ export const courses = [
     title: 'General Chemistry',
     building: 'sc2-building',
     room: 'SC2-323',
-    description: 'TODO: Add description',
+    description: 'Basic Chemistry, cover around high school',
     grade: 'Normal',
     links: { 
         syllabus: 'https://drive.google.com/drive/folders/1tPQcutLJPD98RtyRjnWwE4S0wsM0A3lu', 
@@ -139,7 +137,6 @@ export const courses = [
     title: 'Physics Laboratory 1',
     building: 'sc4-building',
     room: 'Lab SC',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: { 
         syllabus: 'https://drive.google.com/drive/folders/1SIcXjfhR5BRulpAEBoGoE02F6P_QUKxi', 
@@ -154,7 +151,6 @@ export const courses = [
     title: 'General Chemistry Laboratory 1',
     building: 'sc4-building',
     room: 'SC4-323',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: { 
         syllabus: 'https://drive.google.com/drive/folders/1J0Fki0PKkVtnvlTsICkXX7XQKWE9ZKqr', 
@@ -167,7 +163,6 @@ export const courses = [
     term: 2,
     code: 'LAEN380',
     title: 'Academic Presentation in English',
-    description: 'TODO: Add description',
     grade: 'OSU',
     links: { 
       syllabus: 'https://drive.google.com/drive/folders/1P9RKhtMXEVoNwvJyqn0IukN2hGOxJaaC', 
@@ -181,7 +176,6 @@ export const courses = [
     code: 'EGBI120',
     title: 'Engineering Drawing and CAD',
     fullTitle: 'Engineering Drawing and Computer-Aided Design',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: { 
       syllabus: 'https://drive.google.com/drive/folders/1xlf8HXxw-OMuw1lMy8_8DlICMCNZR0Ni', 
@@ -194,7 +188,6 @@ export const courses = [
     term: 2,
     code: 'SCPY162',
     title: 'General Physics 2',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: { 
       syllabus: 'https://drive.google.com/drive/folders/1JPiPLTY40rNyQM-5GxWV2p0iNTwoC6YM', 
@@ -207,7 +200,6 @@ export const courses = [
     term: 2,
     code: 'LAEN181',
     title: 'English for Academic Purposes 2',
-    description: 'TODO: Add description',
     grade: 'OSU',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1DLnwofmHD826kyCaBCgFw-dOlaelGHPL', 
@@ -220,7 +212,6 @@ export const courses = [
     term: 2,
     code: 'SHHU126',
     title: 'Humans and Development',
-    description: 'TODO: Add description',
     grade: 'OSU',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1kZll0Ds2qmc0_p-axWI-aiZAN-1hBY7v', 
@@ -233,7 +224,6 @@ export const courses = [
     term: 2,
     code: 'SCCH172',
     title: 'Organic Chemistry',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/16iyVtYX_eD13pKI5XsK3JJ3iNfuAqDT0', 
@@ -246,7 +236,6 @@ export const courses = [
     term: 2,
     code: 'SCGI160',
     title: 'Trends of Innovative disruptions for Modern Society',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1l_DouGEFFWDMdiRteoI53ar8xXyrIfaY', 
@@ -259,7 +248,6 @@ export const courses = [
     term: 2,
     code: 'SCBM121',
     title: 'Cell and Molecular Biology',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1YCFt5yuVcgiHneoJHP2JBC8DiL8u81lY', 
@@ -272,7 +260,6 @@ export const courses = [
     term: 2,
     code: 'EGBI101',
     title: 'Basic Engineering Skills in BME',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1ci6sWcGA_EjSNclJbzmmpAOvdVCegONz', 
@@ -285,7 +272,6 @@ export const courses = [
     term: 1,
     code: 'EGBI260',
     title: 'Biomechanics 1',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1ppuskSDIpk_z2AKExT5doFXReJwRoI0R', 
@@ -298,7 +284,6 @@ export const courses = [
     term: 1,
     code: 'EGBI250',
     title: 'General Biochemistry',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1Xm2DuHJvR4pVmXRTRhIvUCN0rXdOIheG', 
@@ -311,7 +296,6 @@ export const courses = [
     term: 1,
     code: 'EGBI202',
     title: 'Engineering Mathematics',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1cruV3bNzStt7Jc6d0ObwYqFKOdONMtoF', 
@@ -324,7 +308,6 @@ export const courses = [
     term: 1,
     code: 'EGBI222',
     title: 'Computer Programming',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1Fl0Txoyj0iKtslzrUQRWAdR2DxcYL3VJ', 
@@ -337,7 +320,6 @@ export const courses = [
     term: 1,
     code: 'EGBI280',
     title: 'Basic Physiology',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1BzuDCgrYNeRbgJwe-r3dxge1L3kqoJwo', 
@@ -350,7 +332,6 @@ export const courses = [
     term: 1,
     code: 'EGBI233',
     title: 'Electrical and Electronics in Medicine',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1UeqdTBl_seWAr3rIWvHhD0VpGCElOnNe', 
@@ -363,7 +344,6 @@ export const courses = [
     term: 1,
     code: 'SCAN201',
     title: 'Essential Human Anatomy',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1C3SJLM6kmZMMv9yqrvvRm30GrXnXJ1Vg', 
@@ -376,7 +356,6 @@ export const courses = [
     term: 2,
     code: 'EGBI261',
     title: 'Biomechanics 2',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1PRyDXHl5UwpalgOBTlj4Aad7mFTutYPG', 
@@ -389,7 +368,6 @@ export const courses = [
     term: 2,
     code: 'EGBI210',
     title: 'Engineering Materials',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1_m0gbuzHSjwezhin0IV24Cj-xa0CcKQY', 
@@ -402,7 +380,6 @@ export const courses = [
     term: 2,
     code: 'EGBI221',
     title: 'Biostatistics and Probability',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1A-Nmq-LVhuyqZxbzFdsVPlpLdR8Zaq1i', 
@@ -415,7 +392,6 @@ export const courses = [
     term: 2,
     code: 'EGBI220',
     title: 'Computational Methods for BME',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/14qbap5Qc4N0vg4B0FKVVkqnJvFvgJjeL', 
@@ -428,7 +404,6 @@ export const courses = [
     term: 2,
     code: 'EGBI223',
     title: 'Digital Systems and Microprocessors',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1PAkcWOkF9K8zr-eVJ8fKs6YjJn9ZM8xO', 
@@ -441,7 +416,6 @@ export const courses = [
     term: 2,
     code: 'EGBI201',
     title: 'Biomedical Engineering Lab 1',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1a3_xk6LzX9t5GznOI6tV-eX_RjEgIUK2', 
@@ -454,7 +428,6 @@ export const courses = [
     term: 1,
     code: 'EGBI330',
     title: 'Biomedical Measurement and Instrumentation',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1YGf9yI2d6y5tEj-QnSpdEfopMOFRrgtU', 
@@ -467,7 +440,6 @@ export const courses = [
     term: 1,
     code: 'EGBI370',
     title: 'Biomedical Thermodynamics',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1alPklRBABzKcNV1HT8BGAwRKKxC7JeEd', 
@@ -480,7 +452,6 @@ export const courses = [
     term: 1,
     code: 'EGBI352',
     title: 'Biomaterials',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1q8udWMg9kgdolZZEfi-lhBYDj-ktvP6W', 
@@ -493,7 +464,6 @@ export const courses = [
     term: 1,
     code: 'EGBI340',
     title: 'Biomedical Signal and Systems',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/10n6J6RT58dLEMGhjrKrDwSOiwR3cSC7_', 
@@ -506,7 +476,6 @@ export const courses = [
     term: 1,
     code: 'EGBI301',
     title: 'Design for BME',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1cESDswhTezEQ9HFWNO4T8iPVD-69LkO2', 
@@ -519,7 +488,6 @@ export const courses = [
     term: 1,
     code: 'EGBI300',
     title: 'Biomedical Engineering Lab 2',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1M7Bnt2nSdGcj-h_cf5oeUUwAbICTU3ye', 
@@ -532,7 +500,6 @@ export const courses = [
     term: 2,
     code: 'EGBI390',
     title: 'Business for Medical Entrepreneur',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1oR6otticuozfHDz2CgGHrRHf-yvGVkJt', 
@@ -545,7 +512,6 @@ export const courses = [
     term: 2,
     code: 'EGBI331',
     title: 'Control Systems for BME',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/12pc_AbAx83HgQpeg3Kk0z4rIQhNcM1Po', 
@@ -558,7 +524,6 @@ export const courses = [
     term: 2,
     code: 'EGBI351',
     title: 'Biocompatibility',
-    description: 'TODO: Add description',
     grade: 'Normal',
     links: {
       syllabus: 'https://drive.google.com/drive/folders/1mBj4XkRcCBZHIawwNPECXDqvl5zqqNYr', 

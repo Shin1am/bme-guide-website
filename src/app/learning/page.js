@@ -271,16 +271,18 @@ export default function Learning() {
                                                                 <h3 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-800">{course.fullTitle ? course.fullTitle : course.title}</h3>
                                                            
                                                         
-                                                            <div>
-                                                                <h4 className="text-sm md:text-base lg:text-lg font-medium text-gray-500 mb-2">Description</h4>
-                                                                <p className="text-gray-700 text-base md:text-lg lg:text-xl">{course.description}</p>
-                                                            </div>
+                                                            {course.description && (
+                                                                <div>
+                                                                    <h4 className="text-sm md:text-base lg:text-lg font-medium text-gray-500 mb-2">Description</h4>
+                                                                    <p className="text-gray-700 text-base md:text-lg lg:text-xl">{course.description}</p>
+                                                                </div>
+                                                            )}
                                                         
                                                             <div>
                                                                 <h4 className="text-sm md:text-base lg:text-lg font-medium text-gray-500 mb-2">Details</h4>
                                                                 <div className="space-y-1.5 text-xl">
                                                                     <p className="text-gray-700 text-base md:text-lg lg:text-xl">Year: {course.year} <span className='px-2'> Semester: {course.term}</span></p>
-                                                                    <Link href={`/map/${course.building}`} className='text-blue-600/70 lg:text-gray-700 text-base lg:text-xl hover:underline'>Room: {course.room}</Link>
+                                                                    <Link href={`/map/${course.building}`} className='text-blue-600/70  text-base lg:text-xl hover:underline'>Room: {course.room}</Link>
                                                                     {/* <p className="text-gray-700 text-base md:text-xl">Grading System: {course.grade}</p> */}
                                                                 </div>
                                                             </div>
